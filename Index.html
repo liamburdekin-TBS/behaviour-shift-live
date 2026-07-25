@@ -1,0 +1,1034 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0, viewport-fit=cover" name="viewport"/>
+<meta content="#0b0b0a" name="theme-color"/>
+<title>The Behaviour Shift | Founding Collaborative Session</title>
+<style>
+:root{--black:#0b0b0a;--black2:#141412;--cream:#f7f0e6;--soft:rgba(247,240,230,.82);--gold:#d7a84a;--peach:#f4b7a5;--sage:#b9d8bd;--blue:#b7dadd;--lav:#d0b8e8;--kin:#e2c8a4}
+*{box-sizing:border-box;margin:0;padding:0;-webkit-tap-highlight-color:transparent}html,body{height:100%;overflow:hidden}body{font-family:-apple-system,BlinkMacSystemFont,"SF Pro Display","Segoe UI",Arial,sans-serif;background:var(--black);color:var(--cream)}button{font:inherit}.deck{height:100%;position:relative}.slide{position:absolute;inset:0;padding:88px 6vw 78px;display:flex;flex-direction:column;justify-content:center;opacity:0;pointer-events:none;transform:translateX(28px);transition:opacity .45s ease,transform .45s ease;overflow-y:auto}.slide.active,.slide:target{opacity:1;pointer-events:auto;transform:none}.deck:has(.slide:target) .slide.active:not(:target){opacity:0;pointer-events:none;transform:translateX(28px)}.dark{background:radial-gradient(circle at 12% 18%,rgba(244,183,165,.10),transparent 28%),radial-gradient(circle at 90% 72%,rgba(185,216,189,.12),transparent 30%),linear-gradient(180deg,#11110f 0%,#0b0b0a 100%)}.hero{background:linear-gradient(180deg,rgba(11,11,10,.25),rgba(11,11,10,.94)),radial-gradient(circle at 50% 26%,rgba(215,168,74,.32),transparent 35%),radial-gradient(circle at 82% 76%,rgba(183,218,221,.14),transparent 32%),linear-gradient(135deg,#191611 0%,#0b0b0a 62%,#141412 100%)}.light{background:radial-gradient(circle at 10% 20%,rgba(215,168,74,.18),transparent 30%),radial-gradient(circle at 88% 70%,rgba(183,218,221,.18),transparent 34%),var(--cream);color:var(--black)}.kicker{color:var(--gold);text-transform:uppercase;letter-spacing:4px;font-size:11px;font-weight:900;margin-bottom:20px}.logo-small{font-size:clamp(26px,4vw,52px);letter-spacing:.34em;font-weight:350;text-transform:uppercase}.logo-main{font-size:clamp(48px,9vw,112px);letter-spacing:.18em;font-weight:360;line-height:.92;text-transform:uppercase;margin-top:14px}.tm{font-size:.35em;vertical-align:top;letter-spacing:0;margin-left:8px}.gold-rule{width:min(360px,60vw);height:3px;margin:28px 0 20px;background:linear-gradient(90deg,var(--gold),rgba(215,168,74,.12));box-shadow:0 0 18px rgba(215,168,74,.5)}.tagline{color:var(--gold);text-transform:uppercase;letter-spacing:.28em;font-size:clamp(11px,1.5vw,18px);line-height:1.7}.title{font-size:clamp(40px,7.4vw,96px);line-height:.94;letter-spacing:-1.8px;text-transform:uppercase;font-weight:950;max-width:1100px}.subtitle{font-size:clamp(18px,2.2vw,28px);line-height:1.45;max-width:880px;margin-top:26px;color:var(--soft)}.light .subtitle{color:#4c453d}.gold{color:var(--gold)}.peach{color:var(--peach)}.sage{color:var(--sage)}.blue{color:var(--blue)}.kin{color:var(--kin)}.lav{color:var(--lav)}.grid{display:grid;gap:14px;margin-top:30px}.grid.two{grid-template-columns:repeat(2,minmax(0,1fr))}.grid.three{grid-template-columns:repeat(3,minmax(0,1fr))}.card{border:1px solid rgba(215,168,74,.34);border-radius:24px;background:rgba(255,255,255,.045);padding:20px;line-height:1.4;backdrop-filter:blur(10px)}.light .card{background:rgba(11,11,10,.035);border-color:rgba(11,11,10,.12)}.card strong{display:block;text-transform:uppercase;letter-spacing:1px;margin-bottom:8px;color:var(--gold)}.quote{border-left:3px solid var(--gold);padding-left:22px;font-size:clamp(25px,3vw,42px);line-height:1.24;max-width:980px;margin-top:28px}.prompt{margin-top:30px;padding:22px;border:1px solid rgba(215,168,74,.45);border-radius:26px;background:rgba(215,168,74,.08);max-width:980px}.prompt-label{text-transform:uppercase;letter-spacing:3px;font-size:11px;color:var(--gold);font-weight:900}.prompt p{font-size:clamp(20px,2.5vw,34px);line-height:1.3;margin-top:10px}.chips{display:flex;flex-wrap:wrap;gap:10px;margin-top:24px}.chip{border:1px solid rgba(247,240,230,.26);border-radius:999px;padding:10px 14px;color:var(--soft);background:rgba(255,255,255,.03)}.light .chip{color:#4c453d;border-color:rgba(11,11,10,.15)}.reveal-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px;margin-top:30px}.reveal{min-height:132px;border-radius:22px;border:1px solid rgba(215,168,74,.34);background:rgba(255,255,255,.045);color:var(--cream);padding:18px;text-align:left;cursor:pointer;transition:.25s}.reveal:hover{transform:translateY(-2px);border-color:var(--gold)}.reveal .front{font-weight:800;text-transform:uppercase;letter-spacing:1px}.reveal .back{display:none;margin-top:10px;color:var(--soft);line-height:1.4}.reveal.open .back{display:block}.sticky-wall{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:12px;margin-top:26px}.sticky{min-height:110px;padding:18px;border-radius:6px;color:#17130f;font-weight:800;line-height:1.25;transform:rotate(var(--r));display:flex;align-items:center;justify-content:center;text-align:center;box-shadow:0 12px 30px rgba(0,0,0,.22);opacity:0;transition:.25s}.sticky.show{opacity:1}.sticky:nth-child(4n+1){background:#f5d790;--r:-1deg}.sticky:nth-child(4n+2){background:#f4b7a5;--r:1deg}.sticky:nth-child(4n+3){background:#b9d8bd;--r:-.7deg}.sticky:nth-child(4n){background:#b7dadd;--r:.8deg}.btn-row{display:flex;flex-wrap:wrap;gap:12px;margin-top:28px}.btn{min-height:46px;padding:13px 18px;border-radius:999px;border:1px solid rgba(215,168,74,.75);color:var(--gold);text-transform:uppercase;letter-spacing:2px;font-size:12px;font-weight:900;background:rgba(255,255,255,.025);cursor:pointer}.btn.fill{background:var(--gold);color:var(--black)}.controls{position:fixed;z-index:20;left:0;right:0;bottom:0;padding:14px max(18px,env(safe-area-inset-right)) max(14px,env(safe-area-inset-bottom)) max(18px,env(safe-area-inset-left));display:flex;align-items:center;justify-content:space-between;background:linear-gradient(to top,rgba(11,11,10,.94),rgba(11,11,10,0))}.nav-btn{width:46px;height:46px;border-radius:50%;border:1px solid rgba(247,240,230,.24);background:rgba(11,11,10,.66);color:var(--cream);font-size:22px;cursor:pointer}.progress{display:flex;align-items:center;gap:9px}.dot{width:7px;height:7px;border-radius:99px;border:0;background:rgba(247,240,230,.3);cursor:pointer}.dot.active{width:28px;background:var(--gold)}.counter{position:fixed;top:22px;right:24px;z-index:20;color:var(--gold);font-size:11px;letter-spacing:3px;text-transform:uppercase;font-weight:900}.role-line{display:flex;flex-wrap:wrap;gap:10px;margin-top:24px}.role{padding:12px 15px;border-radius:999px;border:1px solid currentColor}.speaker-note{position:absolute;right:5vw;bottom:88px;max-width:330px;font-size:12px;line-height:1.45;color:rgba(247,240,230,.55);border-left:1px solid rgba(215,168,74,.45);padding-left:14px}.light .speaker-note{color:#756b60}.final-lockup{font-size:clamp(30px,4vw,58px);line-height:1.15;max-width:1050px;text-transform:uppercase;font-weight:850}.small{font-size:15px;color:var(--soft);margin-top:15px;max-width:780px;line-height:1.5}
+.slide-nav{position:sticky;z-index:30;left:0;right:0;bottom:-64px;margin-top:34px;padding:12px 0;display:flex;align-items:center;justify-content:space-between;background:linear-gradient(to top,rgba(11,11,10,.96),rgba(11,11,10,.2));}.light .slide-nav{background:linear-gradient(to top,rgba(247,240,230,.98),rgba(247,240,230,.3))}.slide-nav .nav-btn{display:flex;align-items:center;justify-content:center;text-decoration:none}.slide-nav .disabled{opacity:.25;pointer-events:none}.slide-count{color:var(--gold);font-size:11px;letter-spacing:3px;font-weight:900}.slide:target{scroll-margin-top:0}@media(max-width:800px){.slide{padding:72px 22px 86px;justify-content:flex-start}.grid.two,.grid.three,.reveal-grid{grid-template-columns:1fr}.sticky-wall{grid-template-columns:repeat(2,minmax(0,1fr))}.title{font-size:clamp(34px,11vw,58px);line-height:1}.subtitle{font-size:17px}.speaker-note{position:static;margin-top:24px;max-width:none}.progress{gap:5px}.dot{width:5px;height:5px}.dot.active{width:18px}.counter{top:16px;right:16px}.logo-main{letter-spacing:.1em}.reveal{min-height:auto}}
+
+.case-options{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px;margin-top:24px}.flip-card{min-height:180px;background:transparent;border:0;padding:0;perspective:1200px;cursor:pointer;text-align:left;color:inherit}.flip-card-inner{position:relative;width:100%;height:100%;min-height:180px;transition:transform .6s cubic-bezier(.2,.7,.2,1);transform-style:preserve-3d}.flip-card.flipped .flip-card-inner{transform:rotateY(180deg)}.flip-card-face{position:absolute;inset:0;border:1px solid rgba(215,168,74,.34);border-radius:22px;padding:20px;backface-visibility:hidden;-webkit-backface-visibility:hidden;display:flex;flex-direction:column;justify-content:center;background:rgba(255,255,255,.045);line-height:1.45}.flip-card-front{align-items:center;text-align:center}.flip-card-front strong{display:block;color:var(--gold);text-transform:uppercase;letter-spacing:1.5px;font-size:clamp(16px,2vw,23px)}.flip-card-front span{margin-top:10px;color:var(--soft);font-size:13px}.flip-card-back{transform:rotateY(180deg);color:var(--soft)}.flip-card-back strong{display:block;color:var(--gold);text-transform:uppercase;letter-spacing:1px;margin-bottom:9px}.flip-card:hover .flip-card-face{border-color:var(--gold)}.response-box{margin-top:22px;max-width:980px}.response-box label{display:block;color:var(--gold);font-size:11px;font-weight:900;letter-spacing:3px;text-transform:uppercase;margin-bottom:10px}.response-box textarea{width:100%;min-height:112px;resize:vertical;border-radius:20px;border:1px solid rgba(215,168,74,.5);background:rgba(255,255,255,.055);color:var(--cream);padding:16px;font:inherit;line-height:1.45;outline:none}.response-box textarea:focus{border-color:var(--gold);box-shadow:0 0 0 3px rgba(215,168,74,.13)}.light .response-box textarea{background:rgba(11,11,10,.04);color:var(--black)}.scenario-banner{margin-top:22px;padding:18px 20px;border-radius:20px;border:1px solid rgba(215,168,74,.4);background:rgba(215,168,74,.09);font-size:clamp(18px,2.1vw,27px);line-height:1.35;max-width:980px}.discussion-cue{margin-top:12px;color:var(--soft);font-size:14px;line-height:1.45;max-width:920px}@media(max-width:800px){.case-options{grid-template-columns:1fr}.response-box textarea{min-height:135px}.flip-card,.flip-card-inner{min-height:165px}}
+
+/* Reliable no-script reveal cards: native <details>/<summary> */
+.reveal-card{min-height:168px;border:1px solid rgba(215,168,74,.34);border-radius:22px;background:rgba(255,255,255,.045);overflow:hidden;color:var(--cream)}
+.reveal-card[open]{border-color:var(--gold);background:rgba(215,168,74,.075)}
+.reveal-card summary{min-height:168px;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:20px;cursor:pointer;list-style:none;user-select:none}
+.reveal-card summary::-webkit-details-marker{display:none}
+.reveal-card summary strong{display:block;color:var(--gold);text-transform:uppercase;letter-spacing:1.5px;font-size:clamp(16px,2vw,23px)}
+.reveal-card summary span{margin-top:10px;color:var(--soft);font-size:13px}
+.reveal-card[open] summary{min-height:auto;padding-bottom:12px;border-bottom:1px solid rgba(215,168,74,.2)}
+.reveal-card[open] summary span::after{content:' — tap to close'}
+.reveal-card-body{padding:18px 20px 22px;color:var(--soft);line-height:1.5}
+.reveal-card-body strong{display:block;color:var(--gold);text-transform:uppercase;letter-spacing:1px;margin-bottom:8px}
+@media(max-width:800px){.reveal-card,.reveal-card summary{min-height:150px}}
+
+
+/* Page 2 role information — refined original pastel-gradient pills */
+.role-explorer{margin-top:24px;max-width:1100px}
+.role-explorer input{position:absolute;opacity:0;width:1px;height:1px;pointer-events:none}
+.role-explorer .role-line{display:flex;flex-wrap:wrap;gap:12px;margin-top:0}
+.role-explorer label.role{
+  --role-a:rgba(247,240,230,.9);
+  --role-b:rgba(247,240,230,.58);
+  display:inline-flex;align-items:center;justify-content:center;
+  min-height:46px;padding:11px 20px;border-radius:999px;
+  border:1.15px solid transparent;
+  background:
+    linear-gradient(rgba(15,15,14,.86),rgba(15,15,14,.86)) padding-box,
+    linear-gradient(105deg,var(--role-a),var(--role-b) 55%,var(--role-a)) border-box;
+  cursor:pointer;user-select:none;
+  transition:transform .18s ease,opacity .22s ease,filter .22s ease,box-shadow .22s ease;
+  box-shadow:0 0 0 rgba(0,0,0,0);
+}
+.role-explorer label.role span{
+  font-weight:430;letter-spacing:-.01em;
+  color:var(--role-a);
+  background:linear-gradient(105deg,var(--role-a),var(--role-b) 62%,var(--role-a));
+  -webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;
+}
+.role-explorer label.role:active{transform:scale(.985)}
+.role-explorer input:focus-visible + label{outline:2px solid var(--cream);outline-offset:4px}
+.role-explorer input:checked + label{
+  opacity:.46;
+  filter:saturate(.72);
+  box-shadow:none;
+}
+.role-explorer label.peach{--role-a:#f4b7a5;--role-b:#e5a99c}
+.role-explorer label.kin{--role-a:#e2c8a4;--role-b:#d4b995}
+.role-explorer label.blue{--role-a:#b7dadd;--role-b:#a8cdd2}
+.role-explorer label.gold{--role-a:#d7a84a;--role-b:#c9983e}
+.role-explorer label.sage{--role-a:#b9d8bd;--role-b:#a9c9ae}
+.role-explorer label.lav{--role-a:#d0b8e8;--role-b:#bea4d8}
+.role-info-panel{margin-top:18px;min-height:150px;max-width:980px}
+.role-info-default,.role-info{border:1px solid rgba(247,240,230,.2);border-radius:24px;padding:20px 22px;background:rgba(255,255,255,.055);line-height:1.5}
+.role-info-default{color:rgba(247,240,230,.62);border-style:dashed}
+.role-info{display:none;color:var(--soft);animation:roleBubbleIn .28s ease both}
+@keyframes roleBubbleIn{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
+.role-info strong{display:block;text-transform:uppercase;letter-spacing:1.4px;margin-bottom:8px;color:var(--gold)}
+.role-info p{font-size:clamp(15px,1.6vw,20px)}
+.role-info .bubble-question{margin-top:10px;color:var(--cream);font-weight:800}
+#r-parents:checked ~ .role-info-panel .info-parents,
+#r-kinship:checked ~ .role-info-panel .info-kinship,
+#r-social:checked ~ .role-info-panel .info-social,
+#r-residential:checked ~ .role-info-panel .info-residential,
+#r-foster:checked ~ .role-info-panel .info-foster,
+#r-support:checked ~ .role-info-panel .info-support{display:block}
+#r-parents:checked ~ .role-info-panel .role-info-default,
+#r-kinship:checked ~ .role-info-panel .role-info-default,
+#r-social:checked ~ .role-info-panel .role-info-default,
+#r-residential:checked ~ .role-info-panel .role-info-default,
+#r-foster:checked ~ .role-info-panel .role-info-default,
+#r-support:checked ~ .role-info-panel .role-info-default{display:none}
+@media(max-width:700px){
+  .role-explorer{margin-top:18px}
+  .role-explorer .role-line{gap:9px}
+  .role-explorer label.role{padding:9px 14px;min-height:40px;font-size:13px;border-width:1px}
+  .role-info-panel{min-height:175px;margin-top:14px}
+  .role-info-default,.role-info{padding:17px 18px;border-radius:20px}
+}
+
+
+/* Page 3 pressure explorer — same interaction language as page 2 */
+.pressure-explorer{margin-top:26px;max-width:1100px;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px;align-items:start}
+.pressure-expand{border:1px solid transparent;border-radius:24px;background:rgba(255,255,255,.035);overflow:hidden;transition:transform .25s ease,box-shadow .25s ease,min-height .35s ease}
+.pressure-expand summary{list-style:none;min-height:132px;padding:22px;display:flex;flex-direction:column;justify-content:center;cursor:pointer;user-select:none;position:relative}
+.pressure-expand summary::-webkit-details-marker{display:none}
+.pressure-expand summary::after{content:'+';position:absolute;right:20px;top:18px;width:30px;height:30px;border:1px solid currentColor;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:20px;font-weight:500;opacity:.8;transition:transform .3s ease}
+.pressure-expand[open] summary::after{transform:rotate(45deg)}
+.pressure-expand summary strong{font-size:clamp(19px,2.1vw,28px);text-transform:uppercase;letter-spacing:1.2px;margin-bottom:9px;padding-right:38px}
+.pressure-expand summary span{color:var(--soft);line-height:1.4;padding-right:30px}
+.pressure-expand:hover{transform:translateY(-2px)}
+.pressure-expand[open]{box-shadow:0 18px 48px rgba(0,0,0,.22)}
+.pressure-expand.families{color:var(--peach);background:linear-gradient(var(--black),var(--black)) padding-box,linear-gradient(120deg,rgba(244,183,165,.95),rgba(244,183,165,.22),rgba(215,168,74,.62)) border-box}
+.pressure-expand.professionals{color:var(--blue);background:linear-gradient(var(--black),var(--black)) padding-box,linear-gradient(120deg,rgba(183,218,221,.95),rgba(183,218,221,.20),rgba(208,184,232,.62)) border-box}
+.pressure-expand.children{color:var(--sage);background:linear-gradient(var(--black),var(--black)) padding-box,linear-gradient(120deg,rgba(185,216,189,.95),rgba(185,216,189,.20),rgba(215,168,74,.58)) border-box}
+.pressure-expanded-content{padding:0 22px 22px;color:var(--cream);line-height:1.55;animation:pressureExpand .3s ease}
+.pressure-expanded-content p+p{margin-top:10px}
+.pressure-expanded-content .bubble-question{margin-top:16px;padding-top:14px;border-top:1px solid rgba(247,240,230,.14);font-weight:800;color:currentColor}
+@keyframes pressureExpand{from{opacity:0;transform:translateY(-6px)}to{opacity:1;transform:none}}
+@media(max-width:800px){.pressure-explorer{grid-template-columns:1fr}.pressure-expand summary{min-height:102px;padding:18px}.pressure-expanded-content{padding:0 18px 18px}.pressure-expand summary::after{right:16px;top:15px}}
+
+
+/* Page 2 staged discussion — think first, reveal second */
+.room-agreement{max-width:980px;margin-top:28px}
+.room-discussion{padding:26px 28px;border:1px solid rgba(215,168,74,.42);border-radius:28px;background:linear-gradient(135deg,rgba(215,168,74,.10),rgba(255,255,255,.025));box-shadow:0 18px 54px rgba(0,0,0,.16)}
+.room-discussion .prompt-label{margin-bottom:10px}
+.room-discussion p{font-size:clamp(22px,2.8vw,38px);line-height:1.28}
+.room-discussion-cue{margin-top:13px;color:var(--soft);font-size:14px;line-height:1.45}
+.room-principles-details{margin-top:20px}
+.room-principles-details summary{list-style:none}
+.room-principles-details summary::-webkit-details-marker{display:none}
+.room-reveal-button{display:inline-flex;align-items:center;justify-content:center;min-height:48px;padding:13px 19px;border-radius:999px;border:1px solid rgba(215,168,74,.72);background:rgba(215,168,74,.06);color:var(--gold);text-transform:uppercase;letter-spacing:2px;font-size:12px;font-weight:900;cursor:pointer;transition:transform .2s ease,background .2s ease,box-shadow .2s ease}
+.room-reveal-button:hover{transform:translateY(-1px);background:rgba(215,168,74,.11);box-shadow:0 0 25px rgba(215,168,74,.10)}
+.room-principles{margin-top:18px;padding:20px 22px;border-radius:24px;border:1px solid rgba(215,168,74,.30);background:rgba(255,255,255,.035);animation:roomReveal .28s ease}
+
+.room-reveal-button .hide-label{display:none}
+.room-principles-details[open] .room-reveal-button .show-label{display:none}
+.room-principles-details[open] .room-reveal-button .hide-label{display:inline}
+.room-principles-details[open] .room-principles{animation:roomReveal .28s ease}
+.room-principles-heading{color:var(--gold);font-size:11px;font-weight:900;letter-spacing:3px;text-transform:uppercase;margin-bottom:13px}
+.room-principles .chips{margin-top:0}
+.room-principles-note{margin-top:14px;color:var(--soft);font-size:14px;line-height:1.45}
+@keyframes roomReveal{from{opacity:0;transform:translateY(7px)}to{opacity:1;transform:none}}
+@media(max-width:800px){.room-discussion{padding:21px}.room-discussion p{font-size:21px}.room-principles{padding:18px}}
+
+
+.core-flip-toggle{position:absolute;opacity:0;pointer-events:none;width:1px;height:1px;overflow:hidden}.core-flip-toggle:checked + .core-card .flip-card-inner{transform:rotateY(180deg)}.core-flip-toggle:focus-visible + .core-card{outline:2px solid var(--gold);outline-offset:4px}.core-card{display:block;cursor:pointer}.core-title{font-size:clamp(38px,6.7vw,88px);max-width:1180px}.core-statement{margin-top:18px;font-size:clamp(24px,3vw,42px);font-weight:800;letter-spacing:-.5px}.core-subtitle{margin-top:12px;max-width:1050px;font-size:clamp(16px,1.8vw,23px)}.core-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px;margin-top:26px}.core-card,.core-card .flip-card-inner{min-height:210px}.light .core-card .flip-card-face{background:linear-gradient(145deg,rgba(25,22,17,.96),rgba(11,11,10,.94));border-color:rgba(215,168,74,.42);color:var(--cream);box-shadow:0 16px 36px rgba(11,11,10,.22),inset 0 1px 0 rgba(255,255,255,.035)}.light .core-card .flip-card-front span{color:rgba(247,240,230,.68)}.light .core-card .flip-card-back{background:linear-gradient(145deg,#f7f0e6,#efe3d3);color:#17130f;border-color:rgba(215,168,74,.34);box-shadow:0 18px 42px rgba(11,11,10,.18),inset 0 1px 0 rgba(255,255,255,.45)}.light .core-card .flip-card-back p{color:#2f2a24}.light .core-card .flip-card-back strong{color:var(--gold)}.light .core-card:hover .flip-card-face{border-color:var(--gold)}.core-card .flip-card-back p{font-size:15px;line-height:1.5}.core-footer{margin-top:18px;color:#756b60;text-transform:uppercase;letter-spacing:2px;font-size:11px;font-weight:900}@media(max-width:800px){.core-grid{grid-template-columns:1fr}.core-card,.core-card .flip-card-inner{min-height:180px}.core-title{font-size:clamp(34px,10vw,54px)}.core-statement{font-size:24px}}
+
+
+/* Page 6 — Behaviour Shift Live shared wall prototype */
+.shared-wall-prototype{margin-top:24px;max-width:1180px;border:0}
+.shared-wall-prototype>summary{display:inline-flex;align-items:center;justify-content:center;min-height:48px;padding:13px 20px;border-radius:999px;border:1px solid rgba(215,168,74,.75);background:var(--gold);color:var(--black);text-transform:uppercase;letter-spacing:2px;font-size:12px;font-weight:900;cursor:pointer;list-style:none;user-select:none}
+.shared-wall-prototype>summary::-webkit-details-marker{display:none}
+.shared-wall-prototype[open]>summary{background:transparent;color:var(--gold);margin-bottom:18px}
+.shared-wall-prototype[open]>summary::after{content:' — close wall'}
+.shared-wall-panel{width:min(1180px,100%);border:1px solid rgba(215,168,74,.42);border-radius:28px;padding:24px;background:linear-gradient(145deg,rgba(255,255,255,.07),rgba(255,255,255,.025));box-shadow:0 28px 80px rgba(0,0,0,.28);backdrop-filter:blur(14px)}
+.wall-status{display:flex;align-items:center;justify-content:space-between;gap:16px;padding-bottom:16px;border-bottom:1px solid rgba(247,240,230,.12)}
+.wall-status strong{font-size:clamp(18px,2.2vw,28px);text-transform:uppercase;letter-spacing:1.5px}
+.beta-badge{display:inline-flex;align-items:center;gap:8px;border:1px solid rgba(215,168,74,.55);border-radius:999px;padding:8px 12px;color:var(--gold);font-size:10px;font-weight:900;letter-spacing:2px;text-transform:uppercase;white-space:nowrap}
+.beta-dot{width:7px;height:7px;border-radius:50%;background:var(--gold);box-shadow:0 0 12px rgba(215,168,74,.8)}
+.wall-note{margin-top:14px;color:var(--soft);line-height:1.45;max-width:860px}
+.wall-columns{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px;margin-top:20px}
+.wall-column{border:1px solid rgba(247,240,230,.13);border-radius:20px;padding:16px;background:rgba(11,11,10,.22)}
+.wall-column h3{font-size:13px;text-transform:uppercase;letter-spacing:2px;margin-bottom:12px}
+.wall-column.parents h3{color:var(--peach)}.wall-column.carers h3{color:var(--sage)}.wall-column.social h3{color:var(--blue)}
+.wall-response{padding:13px 14px;border-radius:15px;background:rgba(247,240,230,.07);line-height:1.4;margin-top:9px;font-size:14px;border-left:2px solid currentColor}
+.wall-column.parents .wall-response{color:var(--peach)}.wall-column.carers .wall-response{color:var(--sage)}.wall-column.social .wall-response{color:var(--blue)}
+.wall-response span{color:var(--cream)}
+.wall-footer{display:flex;justify-content:center;text-align:center;margin-top:18px;padding-top:16px;border-top:1px solid rgba(247,240,230,.12);color:var(--soft);font-size:13px;letter-spacing:.4px}
+@media(max-width:800px){.shared-wall-panel{padding:18px;border-radius:22px}.wall-status{align-items:flex-start;flex-direction:column}.wall-columns{grid-template-columns:1fr}.wall-response{font-size:13px}}
+
+
+
+/* Page 7 — mobile-safe cinematic reflection */
+#slide-8{overflow:hidden;justify-content:center;text-align:center}
+#slide-8 .reflection-stage{position:relative;width:min(100%,980px);min-height:min(640px,72vh);margin:auto;display:flex;align-items:center;justify-content:center;padding:30px 12px}
+#slide-8 .reflection-particles{position:absolute;inset:0;pointer-events:none;opacity:.55}
+#slide-8 .reflection-particles span{position:absolute;width:4px;height:4px;border-radius:50%;background:var(--gold);opacity:.18;animation:bsFloat 9s ease-in-out infinite alternate}
+#slide-8 .reflection-copy{position:relative;z-index:2;width:100%;max-width:900px;min-height:430px}
+#slide-8 .beat{opacity:0;transform:translateY(10px);transition:opacity .8s ease,transform .8s ease;position:absolute;left:0;right:0;top:50%;translate:0 -50%;padding:0 12px}
+#slide-8 .beat.show{opacity:1;transform:none}
+#slide-8 .beat.hide{opacity:0;transform:translateY(-8px)}
+#slide-8 .beat h2{font-size:clamp(30px,7vw,66px);line-height:1.05;text-transform:uppercase;letter-spacing:-1px}
+#slide-8 .beat p{font-size:clamp(20px,4.6vw,34px);line-height:1.45;color:var(--soft)}
+#slide-8 .groups{display:flex;justify-content:center;gap:14px;flex-wrap:wrap;margin-top:26px}
+#slide-8 .groups span{border:1px solid rgba(215,168,74,.45);border-radius:999px;padding:10px 16px;color:var(--gold);font-weight:800;letter-spacing:.5px;background:rgba(215,168,74,.07)}
+#slide-8 .differences p{margin:10px 0}
+#slide-8 .hope{font-size:clamp(36px,8vw,82px)!important;font-weight:950;color:var(--cream)!important;line-height:1.03!important;letter-spacing:-1.5px}
+#slide-8 .same-hope{margin-top:26px;color:var(--gold)!important;font-weight:900;text-transform:uppercase;letter-spacing:2px;font-size:clamp(15px,3.6vw,24px)!important}
+#slide-8 .closing{font-size:clamp(20px,4.6vw,34px)!important;line-height:1.35!important}
+#slide-8 .closing strong{color:var(--gold)}
+#slide-8 .tap-cue{position:absolute;z-index:5;left:50%;bottom:74px;transform:translateX(-50%);color:rgba(247,240,230,.72);font-size:11px;letter-spacing:2px;text-transform:uppercase;white-space:nowrap;border:1px solid rgba(215,168,74,.35);background:rgba(5,5,5,.72);border-radius:999px;padding:11px 16px;touch-action:manipulation}
+#slide-8 .reflection-stage.ready{cursor:pointer}
+@keyframes bsFloat{0%{transform:translate3d(-5px,10px,0) scale(.75)}100%{transform:translate3d(8px,-14px,0) scale(1.2)}}
+@media(max-width:800px){#slide-8{padding:58px 18px 80px;justify-content:center}#slide-8 .reflection-stage{min-height:68vh;padding:12px 2px}#slide-8 .beat{padding:0 4px}#slide-8 .groups{gap:8px;margin-top:20px}#slide-8 .groups span{padding:9px 12px;font-size:14px}#slide-8 .tap-cue{bottom:58px}}
+@media(prefers-reduced-motion:reduce){#slide-8 .reflection-particles span{animation:none}#slide-8 .beat{transition:none}}
+
+
+
+/* Page 7 — native, no-JavaScript cinematic sequence for iPhone, Android and PC */
+#slide-8{overflow:hidden;justify-content:center;text-align:center}
+#slide-8 .native-reflection{position:relative;width:min(100%,980px);min-height:min(650px,74vh);margin:auto;display:flex;align-items:center;justify-content:center;padding:26px 12px;isolation:isolate}
+#slide-8 .reflection-state{position:absolute!important;inline-size:1px!important;block-size:1px!important;opacity:0!important;pointer-events:none!important}
+#slide-8 .reflection-scene{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:44px 18px 88px;opacity:0;transform:translateY(14px) scale(.985);transition:opacity .75s ease,transform .75s ease;pointer-events:none;z-index:2}
+#slide-8 .reflection-scene h2{font-size:clamp(30px,7vw,66px);line-height:1.06;text-transform:uppercase;letter-spacing:-1px;max-width:900px}
+#slide-8 .reflection-scene p{font-size:clamp(20px,4.6vw,34px);line-height:1.45;color:var(--soft);max-width:900px}
+#slide-8 .groups{display:flex;justify-content:center;gap:12px;flex-wrap:wrap;margin-top:28px}
+#slide-8 .groups span{border:1px solid rgba(215,168,74,.48);border-radius:999px;padding:10px 16px;color:var(--gold);font-weight:800;letter-spacing:.45px;background:rgba(215,168,74,.07)}
+#slide-8 .differences p{margin:9px 0}
+#slide-8 .hope{font-size:clamp(38px,8.5vw,84px)!important;font-weight:950;color:var(--cream)!important;line-height:1.03!important;letter-spacing:-1.5px}
+#slide-8 .same-hope{margin-top:26px;color:var(--gold)!important;font-weight:900;text-transform:uppercase;letter-spacing:2px;font-size:clamp(15px,3.6vw,24px)!important}
+#slide-8 .closing{font-size:clamp(21px,4.7vw,35px)!important;color:var(--cream)!important}
+#slide-8 .closing strong{color:var(--gold)}
+#slide-8 .reflection-tap{position:absolute;inset:0;z-index:5;display:none;cursor:pointer;-webkit-tap-highlight-color:transparent;touch-action:manipulation;user-select:none}
+#slide-8 .reflection-tap span{position:absolute;left:50%;bottom:24px;transform:translateX(-50%);width:max-content;max-width:88%;padding:11px 16px;border:1px solid rgba(215,168,74,.4);border-radius:999px;background:rgba(7,7,7,.7);color:var(--gold);font-size:13px;font-weight:800;letter-spacing:.55px;text-transform:uppercase;backdrop-filter:blur(8px)}
+#reflection-step-1:checked~.scene-1,#reflection-step-2:checked~.scene-2,#reflection-step-3:checked~.scene-3,#reflection-step-4:checked~.scene-4,#reflection-step-5:checked~.scene-5{opacity:1;transform:none}
+#reflection-step-1:checked~.tap-1,#reflection-step-2:checked~.tap-2,#reflection-step-3:checked~.tap-3,#reflection-step-4:checked~.tap-4,#reflection-step-5:checked~.tap-5{display:block}
+#slide-8 .native-particles{position:absolute;inset:0;overflow:hidden;pointer-events:none;z-index:1;opacity:.65}
+#slide-8 .native-particles i{position:absolute;width:4px;height:4px;border-radius:50%;background:var(--gold);opacity:.18;animation:bsNativeFloat 8s ease-in-out infinite alternate}
+#slide-8 .native-particles i:nth-child(1){left:5%;top:20%;animation-delay:-1s}#slide-8 .native-particles i:nth-child(2){left:12%;top:70%;animation-delay:-4s}#slide-8 .native-particles i:nth-child(3){left:19%;top:42%;animation-delay:-2s}#slide-8 .native-particles i:nth-child(4){left:27%;top:82%;animation-delay:-6s}#slide-8 .native-particles i:nth-child(5){left:34%;top:15%;animation-delay:-3s}#slide-8 .native-particles i:nth-child(6){left:42%;top:60%;animation-delay:-7s}#slide-8 .native-particles i:nth-child(7){left:49%;top:33%;animation-delay:-5s}#slide-8 .native-particles i:nth-child(8){left:56%;top:77%;animation-delay:-1.5s}#slide-8 .native-particles i:nth-child(9){left:63%;top:24%;animation-delay:-4.5s}#slide-8 .native-particles i:nth-child(10){left:71%;top:55%;animation-delay:-2.5s}#slide-8 .native-particles i:nth-child(11){left:78%;top:12%;animation-delay:-6.5s}#slide-8 .native-particles i:nth-child(12){left:86%;top:72%;animation-delay:-3.5s}#slide-8 .native-particles i:nth-child(13){left:93%;top:38%;animation-delay:-7.5s}#slide-8 .native-particles i:nth-child(14){left:9%;top:48%;animation-delay:-5.5s}#slide-8 .native-particles i:nth-child(15){left:23%;top:8%;animation-delay:-2.2s}#slide-8 .native-particles i:nth-child(16){left:39%;top:88%;animation-delay:-4.2s}#slide-8 .native-particles i:nth-child(17){left:58%;top:9%;animation-delay:-6.2s}#slide-8 .native-particles i:nth-child(18){left:68%;top:88%;animation-delay:-1.8s}#slide-8 .native-particles i:nth-child(19){left:82%;top:44%;animation-delay:-3.8s}#slide-8 .native-particles i:nth-child(20){left:96%;top:80%;animation-delay:-5.8s}
+@keyframes bsNativeFloat{from{transform:translate3d(-8px,10px,0);opacity:.08}to{transform:translate3d(10px,-18px,0);opacity:.35}}
+@media(max-width:600px){#slide-8 .native-reflection{min-height:68vh;padding-inline:4px}#slide-8 .reflection-scene{padding:34px 10px 88px}#slide-8 .groups{gap:8px}#slide-8 .groups span{padding:9px 12px;font-size:13px}#slide-8 .reflection-tap span{bottom:18px;font-size:11px;padding:10px 13px}}
+@media(prefers-reduced-motion:reduce){#slide-8 .reflection-scene{transition:none}#slide-8 .native-particles i{animation:none}}
+
+/* Page 2 — Behaviour Shift Live shared wall beta */
+#slide-3 .room-wall-panel{margin-top:14px}
+#slide-3 .room-wall-examples{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px;margin:16px 0 20px}
+#slide-3 .room-wall-note{min-height:82px;display:flex;align-items:center;padding:15px 16px;border:1px solid rgba(247,240,230,.16);border-radius:16px;background:linear-gradient(145deg,rgba(247,240,230,.07),rgba(215,168,74,.055));color:var(--cream);font-size:14px;line-height:1.45}
+#slide-3 .room-wall-note:nth-child(3n+2){background:linear-gradient(145deg,rgba(185,216,189,.10),rgba(247,240,230,.045))}
+#slide-3 .room-wall-note:nth-child(3n){background:linear-gradient(145deg,rgba(183,218,221,.10),rgba(247,240,230,.045))}
+#slide-3 .room-principles-heading{margin-top:4px}
+@media(max-width:600px){#slide-3 .room-wall-examples{grid-template-columns:1fr}#slide-3 .room-wall-note{min-height:auto;padding:13px 14px}}
+
+
+/* V28 — Page 2: What is Behaviour Shift? */
+#slide-2{overflow-y:auto}
+#slide-2 .identity-wrap{width:min(100%,1120px);margin:auto}
+#slide-2 .identity-lead{font-size:clamp(22px,3vw,38px);line-height:1.28;max-width:900px;margin-top:26px;color:var(--soft)}
+#slide-2 .identity-lead strong{color:var(--cream)}
+#slide-2 .identity-path{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px;margin-top:34px}
+#slide-2 .identity-card{position:relative;min-height:190px;padding:24px;border-radius:26px;border:1px solid rgba(215,168,74,.32);background:linear-gradient(145deg,rgba(255,255,255,.065),rgba(255,255,255,.025));overflow:hidden}
+#slide-2 .identity-card:before{content:"";position:absolute;width:120px;height:120px;border-radius:50%;right:-42px;top:-50px;background:radial-gradient(circle,rgba(215,168,74,.18),transparent 70%)}
+#slide-2 .identity-number{display:block;color:var(--gold);font-size:11px;font-weight:900;letter-spacing:3px;text-transform:uppercase;margin-bottom:22px}
+#slide-2 .identity-card strong{display:block;font-size:clamp(22px,2.5vw,34px);line-height:1.08;text-transform:uppercase;margin-bottom:12px}
+#slide-2 .identity-card p{color:var(--soft);font-size:15px;line-height:1.5}
+#slide-2 .identity-declaration{margin-top:28px;padding:22px 24px;border-left:3px solid var(--gold);background:rgba(215,168,74,.07);border-radius:0 20px 20px 0;font-size:clamp(20px,2.7vw,34px);line-height:1.3;max-width:1000px}
+#slide-2 .identity-declaration span{display:block;color:var(--gold);font-weight:900;margin-top:8px}
+#slide-2 .identity-bullets{margin:22px 0 16px 24px;font-size:clamp(16px,1.85vw,23px);line-height:1.42;color:var(--cream);list-style:disc}
+#slide-2 .identity-bullets li{margin:6px 0;padding-left:4px}
+#slide-2 .identity-bullets li.identity-best{color:var(--cream);font-weight:700}
+@media(max-width:760px){#slide-2 .identity-path{grid-template-columns:1fr}#slide-2 .identity-card{min-height:auto;padding:20px}#slide-2 .identity-lead{font-size:20px;margin-top:20px}#slide-2 .identity-declaration{font-size:20px;margin-top:22px}}
+
+
+/* V36 — Page 2 compact spacing; no wording or other slides changed */
+#slide-2{padding-top:68px;padding-bottom:72px}
+#slide-2 .identity-wrap{width:min(100%,1080px)}
+#slide-2 .kicker{margin-bottom:14px}
+#slide-2 .title{font-size:clamp(36px,6.4vw,82px);line-height:.96}
+#slide-2 .identity-lead{font-size:clamp(18px,2.35vw,30px);line-height:1.24;margin-top:15px;max-width:960px}
+#slide-2 .identity-declaration{margin-top:18px;padding:17px 20px;font-size:clamp(17px,2.1vw,27px);line-height:1.24}
+#slide-2 .identity-bullets{margin:14px 0 12px 22px;font-size:clamp(15px,1.55vw,20px);line-height:1.3}
+#slide-2 .identity-bullets li{margin:4px 0;padding-left:3px}
+#slide-2 .identity-card{min-height:auto;margin-top:16px;padding:18px 20px;border-radius:22px}
+#slide-2 .identity-card strong{font-size:clamp(19px,2.1vw,28px);margin-bottom:8px}
+#slide-2 .identity-card p{font-size:14px;line-height:1.38}
+#slide-2 .identity-card p+p{margin-top:6px}
+#slide-2 .identity-declaration:last-of-type{margin-top:16px;padding-top:15px;padding-bottom:15px}
+#slide-2 .speaker-note{font-size:11px;line-height:1.35}
+@media(max-width:800px){
+  #slide-2{padding:58px 20px 82px}
+  #slide-2 .kicker{margin-bottom:10px}
+  #slide-2 .title{font-size:clamp(31px,9vw,46px);line-height:.98}
+  #slide-2 .identity-lead{font-size:16px;line-height:1.3;margin-top:11px}
+  #slide-2 .identity-declaration{margin-top:14px;padding:15px 16px;font-size:17px;line-height:1.25;border-radius:0 17px 17px 0}
+  #slide-2 .identity-bullets{margin:12px 0 10px 18px;font-size:14px;line-height:1.28}
+  #slide-2 .identity-bullets li{margin:3px 0;padding-left:2px}
+  #slide-2 .identity-card{margin-top:13px;padding:15px 16px;border-radius:18px}
+  #slide-2 .identity-card strong{font-size:18px;margin-bottom:6px}
+  #slide-2 .identity-card p{font-size:13px;line-height:1.34}
+  #slide-2 .identity-declaration:last-of-type{margin-top:13px;padding-top:13px;padding-bottom:13px}
+  #slide-2 .speaker-note{margin-top:15px}
+}
+
+
+/* V38 — Page 2 premium tap-to-flip sequence; no other slides changed */
+#slide-2{overflow:hidden;justify-content:center;perspective:1600px;padding-top:54px;padding-bottom:86px}
+#slide-2 .identity-flip-toggle{position:absolute;opacity:0;width:1px;height:1px;pointer-events:none}
+#slide-2 .identity-flip-card{display:block;width:min(100%,1120px);height:min(690px,calc(100dvh - 164px));min-height:520px;margin:auto;cursor:pointer;perspective:1600px;color:inherit}
+@supports (height:100svh){#slide-2 .identity-flip-card{height:min(690px,calc(100svh - 164px))}}
+#slide-2 .identity-flip-inner{position:relative;width:100%;height:100%;transition:transform .72s cubic-bezier(.2,.7,.2,1);transform-style:preserve-3d}
+#slide-2 .identity-flip-toggle:checked + .identity-flip-card .identity-flip-inner{transform:rotateY(180deg)}
+#slide-2 .identity-flip-face{position:absolute;inset:0;border:1px solid rgba(215,168,74,.35);border-radius:32px;background:linear-gradient(145deg,rgba(255,255,255,.075),rgba(255,255,255,.026));box-shadow:0 28px 80px rgba(0,0,0,.28);backface-visibility:hidden;-webkit-backface-visibility:hidden;overflow-y:auto;padding:28px 30px 24px;display:flex;align-items:center;scrollbar-width:none}
+#slide-2 .identity-flip-face::-webkit-scrollbar{display:none}
+#slide-2 .identity-flip-back{transform:rotateY(180deg)}
+#slide-2 .identity-wrap{width:100%;margin:0 auto}
+#slide-2 .identity-back-title{font-size:clamp(34px,5.4vw,72px);line-height:1.02;max-width:1050px}
+#slide-2 .identity-consequence span{font-size:clamp(20px,2.6vw,34px)}
+#slide-2 .tap-cue{margin-top:18px;color:var(--gold);text-transform:uppercase;letter-spacing:2px;font-size:11px;font-weight:900;text-align:right}
+#slide-2 .slide-nav{position:absolute;left:22px;right:22px;bottom:calc(12px + env(safe-area-inset-bottom));margin-top:0;padding:10px 0 0;z-index:8}
+#slide-2 .speaker-note{z-index:7;pointer-events:none}
+@media(max-width:800px){
+  #slide-2{padding:calc(48px + env(safe-area-inset-top)) 16px calc(82px + env(safe-area-inset-bottom));justify-content:center}
+  #slide-2 .identity-flip-card{height:calc(100dvh - 152px - env(safe-area-inset-top) - env(safe-area-inset-bottom));min-height:460px}
+  @supports (height:100svh){#slide-2 .identity-flip-card{height:calc(100svh - 152px - env(safe-area-inset-top) - env(safe-area-inset-bottom))}}
+  #slide-2 .identity-flip-face{border-radius:26px;padding:20px 18px 18px;align-items:flex-start}
+  #slide-2 .title{font-size:clamp(29px,8.4vw,42px);line-height:1}
+  #slide-2 .identity-back-title{font-size:clamp(29px,8.2vw,42px);line-height:1.03}
+  #slide-2 .identity-lead{font-size:15.5px;line-height:1.28;margin-top:10px}
+  #slide-2 .identity-declaration{font-size:16px;line-height:1.24;margin-top:13px;padding:14px 15px}
+  #slide-2 .identity-bullets{font-size:13.5px;line-height:1.26;margin:10px 0 8px 17px}
+  #slide-2 .identity-bullets li{margin:3px 0}
+  #slide-2 .identity-card{margin-top:12px;padding:14px 15px}
+  #slide-2 .identity-card strong{font-size:17px;line-height:1.12}
+  #slide-2 .identity-card p{font-size:12.5px;line-height:1.32}
+  #slide-2 .tap-cue{font-size:10px;margin-top:14px;text-align:left}
+  #slide-2 .speaker-note{display:none}
+}
+@media(max-width:380px){
+  #slide-2 .identity-flip-card{height:calc(100dvh - 140px - env(safe-area-inset-top) - env(safe-area-inset-bottom));min-height:430px}
+  #slide-2 .identity-flip-face{padding:17px 15px 15px}
+  #slide-2 .title,#slide-2 .identity-back-title{font-size:28px}
+  #slide-2 .identity-lead{font-size:14px}
+  #slide-2 .identity-declaration{font-size:14.5px}
+  #slide-2 .identity-bullets{font-size:12.7px}
+}
+
+/* V37 — Page 1 iPhone-first fit only */
+#slide-1.hero{min-height:100dvh}
+@supports (height:100svh){#slide-1.hero{min-height:100svh}}
+@media(max-width:800px){
+  #slide-1{
+    min-height:100dvh;
+    padding:calc(44px + env(safe-area-inset-top)) 22px calc(92px + env(safe-area-inset-bottom));
+    justify-content:center;
+    overflow:hidden;
+  }
+  @supports (height:100svh){#slide-1{min-height:100svh}}
+  #slide-1 .logo-small{font-size:clamp(22px,8vw,36px);letter-spacing:.28em}
+  #slide-1 .logo-main{font-size:clamp(46px,15vw,70px);line-height:.88;letter-spacing:.095em;margin-top:10px}
+  #slide-1 .gold-rule{width:min(300px,75vw);margin:24px 0 18px}
+  #slide-1 .tagline{font-size:clamp(10px,3vw,13px);letter-spacing:.18em;line-height:1.6;max-width:330px}
+  #slide-1 .small{font-size:13px;margin-top:12px;max-width:310px}
+  #slide-1 .slide-nav{position:absolute;left:22px;right:22px;bottom:calc(12px + env(safe-area-inset-bottom));margin-top:0;padding:10px 0 0}
+}
+
+
+/* V39 — Page 2 back side: tighter iPhone fit with no internal scrolling */
+#slide-2 .identity-flip-back{overflow:hidden}
+#slide-2 .identity-flip-back .identity-wrap{display:flex;flex-direction:column;justify-content:center}
+#slide-2 .identity-flip-back .kicker{margin-bottom:10px}
+#slide-2 .identity-flip-back .identity-declaration{margin-top:12px;padding:13px 15px;line-height:1.18}
+#slide-2 .identity-flip-back .identity-card{margin-top:12px;padding:13px 15px}
+#slide-2 .identity-flip-back .identity-card p{line-height:1.26}
+#slide-2 .identity-flip-back .identity-card p+p{margin-top:5px}
+#slide-2 .identity-flip-back .tap-cue{margin-top:10px}
+@media(max-width:800px){
+  #slide-2 .identity-flip-back{padding:16px 15px 14px}
+  #slide-2 .identity-flip-back .identity-back-title{font-size:clamp(24px,7vw,34px);line-height:1.01}
+  #slide-2 .identity-flip-back .identity-declaration{font-size:13.2px;line-height:1.17;margin-top:10px;padding:10px 12px}
+  #slide-2 .identity-flip-back .identity-consequence span{font-size:clamp(16px,4.8vw,22px);line-height:1.08;margin-top:5px}
+  #slide-2 .identity-flip-back .identity-card{margin-top:10px;padding:10px 12px;border-radius:16px}
+  #slide-2 .identity-flip-back .identity-card strong{font-size:15.2px;line-height:1.08;margin-bottom:5px}
+  #slide-2 .identity-flip-back .identity-card p{font-size:11.4px;line-height:1.22}
+  #slide-2 .identity-flip-back .identity-card p+p{margin-top:4px}
+  #slide-2 .identity-flip-back .tap-cue{font-size:9px;margin-top:8px}
+}
+@media(max-width:390px){
+  #slide-2 .identity-flip-back{padding:13px 12px 12px}
+  #slide-2 .identity-flip-back .kicker{font-size:10px;letter-spacing:3px;margin-bottom:8px}
+  #slide-2 .identity-flip-back .identity-back-title{font-size:23px;line-height:1.0}
+  #slide-2 .identity-flip-back .identity-declaration{font-size:12.3px;line-height:1.13;margin-top:8px;padding:9px 10px}
+  #slide-2 .identity-flip-back .identity-consequence span{font-size:16px;line-height:1.05}
+  #slide-2 .identity-flip-back .identity-card{margin-top:8px;padding:9px 10px}
+  #slide-2 .identity-flip-back .identity-card strong{font-size:14px;line-height:1.04;margin-bottom:4px}
+  #slide-2 .identity-flip-back .identity-card p{font-size:10.7px;line-height:1.16}
+  #slide-2 .identity-flip-back .identity-card p+p{margin-top:3px}
+  #slide-2 .identity-flip-back .tap-cue{font-size:8.5px;margin-top:7px}
+}
+
+
+/* V44 — Slide 7 live shared wall input */
+#slide-7 .shared-input-card{margin-top:22px;max-width:980px;border:1px solid rgba(215,168,74,.42);border-radius:26px;background:linear-gradient(135deg,rgba(215,168,74,.09),rgba(255,255,255,.035));padding:18px;box-shadow:0 16px 46px rgba(0,0,0,.16)}
+#slide-7 .shared-input-card .prompt-label{margin-bottom:10px}
+#slide-7 .shared-input-row{display:grid;grid-template-columns:1fr auto;gap:12px;align-items:end}
+#slide-7 .shared-wall-input{width:100%;min-height:82px;resize:vertical;border-radius:18px;border:1px solid rgba(215,168,74,.5);background:rgba(255,255,255,.055);color:var(--cream);padding:15px 16px;font:inherit;font-size:16px;line-height:1.4;outline:none}
+#slide-7 .shared-wall-input::placeholder{color:rgba(247,240,230,.48)}
+#slide-7 .shared-wall-input:focus{border-color:var(--gold);box-shadow:0 0 0 3px rgba(215,168,74,.13)}
+#slide-7 .shared-wall-send{min-height:52px;padding:14px 18px;border-radius:999px;border:1px solid rgba(215,168,74,.75);background:var(--gold);color:var(--black);font-weight:900;text-transform:uppercase;letter-spacing:2px;font-size:12px;cursor:pointer;white-space:nowrap}
+#slide-7 .shared-wall-send.sent{background:rgba(185,216,189,.95);border-color:rgba(185,216,189,.95);color:#10100f}
+#slide-7 .live-responses{display:none;margin-top:16px;border:1px solid rgba(215,168,74,.28);border-radius:20px;padding:14px;background:rgba(215,168,74,.06)}
+#slide-7 .live-responses.has-items{display:block}
+#slide-7 .live-responses h3{font-size:12px;text-transform:uppercase;letter-spacing:2px;color:var(--gold);margin-bottom:10px}
+#slide-7 .live-response{padding:13px 14px;border-radius:15px;background:rgba(247,240,230,.075);line-height:1.4;margin-top:8px;font-size:14px;border-left:2px solid var(--gold);color:var(--cream);animation:wallSendIn .28s ease both}
+#slide-7 .live-response.seed{opacity:.82;background:rgba(247,240,230,.052);border-left-color:rgba(215,168,74,.58)}
+@keyframes wallSendIn{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
+@media(max-width:700px){#slide-7 .shared-input-card{padding:16px;border-radius:22px}#slide-7 .shared-input-row{grid-template-columns:1fr;gap:10px}#slide-7 .shared-wall-input{min-height:74px;font-size:15px}#slide-7 .shared-wall-send{width:100%}}
+
+
+
+/* V45 — Shared-wall input modules used across room agreement and case studies */
+.wall-exercise{margin-top:20px;max-width:980px}
+.wall-exercise .shared-input-card{border:1px solid rgba(215,168,74,.42);border-radius:26px;background:linear-gradient(135deg,rgba(215,168,74,.09),rgba(255,255,255,.035));padding:18px;box-shadow:0 16px 46px rgba(0,0,0,.16)}
+.wall-exercise .prompt-label{margin-bottom:10px}
+.wall-exercise .shared-input-row{display:grid;grid-template-columns:1fr auto;gap:12px;align-items:end}
+.wall-exercise .shared-wall-input{width:100%;min-height:78px;resize:vertical;border-radius:18px;border:1px solid rgba(215,168,74,.5);background:rgba(255,255,255,.055);color:var(--cream);padding:15px 16px;font:inherit;font-size:16px;line-height:1.4;outline:none}
+.wall-exercise .shared-wall-input::placeholder{color:rgba(247,240,230,.48)}
+.wall-exercise .shared-wall-input:focus{border-color:var(--gold);box-shadow:0 0 0 3px rgba(215,168,74,.13)}
+.wall-exercise .shared-wall-send{min-height:52px;padding:14px 18px;border-radius:999px;border:1px solid rgba(215,168,74,.75);background:var(--gold);color:var(--black);font-weight:900;text-transform:uppercase;letter-spacing:2px;font-size:12px;cursor:pointer;white-space:nowrap}
+.wall-exercise .shared-wall-send.sent{background:rgba(185,216,189,.95);border-color:rgba(185,216,189,.95);color:#10100f}
+.wall-exercise .mini-wall{margin-top:14px;border:0}
+.wall-exercise .mini-wall>summary{display:inline-flex;align-items:center;justify-content:center;min-height:44px;padding:12px 17px;border-radius:999px;border:1px solid rgba(215,168,74,.68);background:rgba(215,168,74,.06);color:var(--gold);text-transform:uppercase;letter-spacing:2px;font-size:11px;font-weight:900;cursor:pointer;list-style:none;user-select:none}
+.wall-exercise .mini-wall>summary::-webkit-details-marker{display:none}
+.wall-exercise .mini-wall-panel{margin-top:14px;border:1px solid rgba(215,168,74,.32);border-radius:22px;background:rgba(255,255,255,.035);padding:16px}
+.wall-exercise .live-responses{display:none;margin-bottom:12px;border:1px solid rgba(215,168,74,.28);border-radius:18px;padding:12px;background:rgba(215,168,74,.06)}
+.wall-exercise .live-responses.has-items{display:block}
+.wall-exercise .live-responses h3{font-size:12px;text-transform:uppercase;letter-spacing:2px;color:var(--gold);margin-bottom:10px}
+.wall-exercise .live-response{padding:12px 13px;border-radius:14px;background:rgba(247,240,230,.075);line-height:1.38;margin-top:8px;font-size:14px;border-left:2px solid var(--gold);color:var(--cream);animation:wallSendIn .28s ease both}
+.wall-exercise .live-response.seed{opacity:.82;background:rgba(247,240,230,.052);border-left-color:rgba(215,168,74,.58)}
+.room-expectations{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:11px;margin-top:10px}
+.room-expectation{border:1px solid rgba(247,240,230,.13);border-radius:17px;padding:14px 15px;background:rgba(247,240,230,.055);line-height:1.35;color:var(--soft);font-size:14px}
+.room-expectation strong{display:block;color:var(--gold);text-transform:uppercase;letter-spacing:1.4px;font-size:11px;margin-bottom:5px}
+.case-wall-examples{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px;margin-top:10px}
+.case-wall-note{padding:12px 13px;border-radius:14px;background:rgba(247,240,230,.07);border-left:2px solid var(--gold);color:var(--cream);font-size:14px;line-height:1.4}
+@media(max-width:700px){.wall-exercise{margin-top:16px}.wall-exercise .shared-input-card{padding:15px;border-radius:22px}.wall-exercise .shared-input-row{grid-template-columns:1fr;gap:10px}.wall-exercise .shared-wall-input{min-height:70px;font-size:15px}.wall-exercise .shared-wall-send{width:100%}.room-expectations,.case-wall-examples{grid-template-columns:1fr}}
+
+/* V49 — rebuilt live-wall feed behaviour */
+.live-wall-form{margin:0}
+.live-response.user-response{background:rgba(215,168,74,.13);border-left-color:var(--gold);box-shadow:0 0 0 1px rgba(215,168,74,.12) inset}
+.live-response.user-response::before{content:'You added';display:block;color:var(--gold);font-size:10px;letter-spacing:2px;text-transform:uppercase;font-weight:900;margin-bottom:5px}
+
+
+
+/* V50 — Page 12: flip-card behaviour matching page 6 */
+#slide-11 .what-changed-grid{grid-template-columns:repeat(2,minmax(0,1fr));max-width:980px}
+#slide-11 .core-card,#slide-11 .core-card .flip-card-inner{min-height:235px}
+#slide-11 .flip-card-front span{font-size:clamp(14px,1.55vw,19px);line-height:1.45;max-width:360px}
+#slide-11 .flip-card-back p{font-size:clamp(13px,1.28vw,16px);line-height:1.48}
+@media(max-width:800px){#slide-11 .what-changed-grid{grid-template-columns:1fr}#slide-11 .core-card,#slide-11 .core-card .flip-card-inner{min-height:200px}#slide-11 .quote{font-size:22px}}
+
+
+
+/* V51 — Page 13 flip cards only; original colour layout preserved */
+#slide-12 .role-puzzle-grid{grid-template-columns:repeat(3,minmax(0,1fr));gap:14px;margin-top:28px}
+#slide-12 .role-puzzle-grid .core-card,#slide-12 .role-puzzle-grid .core-card .flip-card-inner{min-height:190px}
+#slide-12 .role-puzzle-grid .flip-card-face{background:rgba(255,255,255,.045);border-color:rgba(215,168,74,.34);color:var(--cream)}
+#slide-12 .role-puzzle-grid .flip-card-front span{color:var(--soft);line-height:1.4}
+#slide-12 .role-puzzle-grid .flip-card-back p{font-size:14px;line-height:1.42;color:var(--soft)}
+#slide-12 .role-puzzle-grid .flip-card:hover .flip-card-face{border-color:var(--gold)}
+@media(max-width:800px){#slide-12 .role-puzzle-grid{grid-template-columns:1fr;margin-top:22px}#slide-12 .role-puzzle-grid .core-card,#slide-12 .role-puzzle-grid .core-card .flip-card-inner{min-height:175px}}
+
+
+/* V54 — Page 9 automatic cinematic sequence */
+#slide-8.auto-sequence .reflection-tap{display:none!important}
+
+</style>
+</head>
+<body>
+<div class="deck" id="deck">
+<section class="slide hero active" id="slide-1">
+<div class="logo-small">The</div><div class="logo-main">Behaviour<br/>Shift<span class="tm">™</span></div><div class="gold-rule"></div><div class="tagline">Change the response. Change the outcome.</div>
+<div class="small">Founding Collaborative Pilot — Session One</div>
+<div aria-label="Slide navigation" class="slide-nav"><a aria-label="Previous slide" class="disabled nav-btn" href="#slide-1">←</a><span class="slide-count">01 / 17</span><a aria-label="Next slide" class="nav-btn" href="#slide-2">→</a></div></section><section class="slide dark" id="slide-2">
+<input class="identity-flip-toggle" id="identity-flip" type="checkbox"/>
+<label aria-label="Tap to flip the Behaviour Shift founding page" class="identity-flip-card" for="identity-flip">
+<div class="identity-flip-inner">
+<div class="identity-flip-face identity-flip-front">
+<div class="identity-wrap">
+<div class="kicker">Why I Created Behaviour Shift</div>
+<h1 class="title">Change the Response.<br/><span class="gold">Change the Outcome.</span></h1>
+<p class="identity-lead"><strong>Behaviour Shift didn't begin with a business plan.</strong></p>
+<p class="identity-lead">It grew from lived experience and years working on the frontline of children's residential care, where one pattern appeared again and again.</p>
+<div class="identity-declaration">
+Children were often surrounded by adults who genuinely cared...
+<ul class="identity-bullets">
+<li>Parents carrying love, history and emotion.</li>
+<li>Professionals carrying responsibility, safeguarding and accountability.</li>
+<li>Teachers balancing the pressures of the classroom.</li>
+<li>Residential staff navigating the realities of twenty-four-hour care.</li>
+<li class="identity-best">Everyone wanted the best for the child.</li>
+</ul>
+</div>
+<div class="tap-cue">Tap to reveal the other side →</div>
+</div>
+</div>
+<div class="identity-flip-face identity-flip-back">
+<div class="identity-wrap">
+<div class="kicker">The Turning Point</div>
+<h1 class="title identity-back-title">Yet everyone often viewed the same situation through <span class="gold">different lenses.</span></h1>
+<div class="identity-declaration identity-consequence">
+When those perspectives became disconnected...
+<span>it was usually the child who carried the consequences.</span>
+</div>
+<div class="identity-card">
+<strong>That became the reason Behaviour Shift exists.</strong>
+<p>Not to tell parents they're wrong. Not to criticise professionals. Not to choose sides.</p>
+<p>But to help people build a shared understanding of behaviour, strengthen relationships and create better outcomes for children.</p>
+</div>
+<div class="identity-declaration">
+Before we ask...
+<strong>“How do we change this behaviour?”</strong>
+<br/><br/>
+Behaviour Shift asks...
+<strong>“What might this behaviour be trying to tell us?”</strong>
+</div>
+<div class="tap-cue">Tap to return ↺</div>
+</div>
+</div>
+</div>
+</label>
+<div class="speaker-note">Facilitator: keep this personal and brief. Explain that Behaviour Shift grew from lived experience and frontline practice, then let the philosophy speak for itself.</div><div aria-label="Slide navigation" class="slide-nav"><a aria-label="Previous slide" class="nav-btn" href="#slide-1">←</a><span class="slide-count">02 / 17</span><a aria-label="Next slide" class="nav-btn" href="#slide-3">→</a></div></section><section class="slide dark" id="slide-3">
+<div class="identity-wrap" style="display:flex;flex-direction:column;justify-content:center;align-items:center;height:100%;text-align:center;padding:0 40px 90px 40px;box-sizing:border-box;">
+<div class="kicker">Why I'm Here</div>
+<h1 class="title" style="margin-top:28px;max-width:900px;line-height:1.08;">
+    My experience.<br/>
+    My reasons.<br/>
+<span class="gold">Why Behaviour Shift matters to me.</span>
+</h1>
+<p class="identity-lead" style="max-width:680px;margin:42px auto 0 auto;font-size:1.25rem;line-height:1.4;">
+    No script. Just my story.
+  </p>
+</div>
+<div class="speaker-note">Facilitator: allow a genuine pause. Ask a follow-up such as “What makes people stop speaking honestly?” before revealing the principles.</div><div aria-label="Slide navigation" class="slide-nav"><a aria-label="Previous slide" class="nav-btn" href="#slide-2">←</a><span class="slide-count">03 / 17</span><a aria-label="Next slide" class="nav-btn" href="#slide-safe-room">→</a></div></section><section class="slide dark" id="slide-safe-room">
+<div class="kicker">Room Agreement</div>
+<h1 class="title">What would make this<br/><span class="gold">a safe room?</span></h1>
+<p class="subtitle">Before we talk about children, behaviour, families and professional pressure, we need to agree what makes honesty possible.</p>
+<div class="wall-exercise">
+<div class="shared-input-card">
+<div class="prompt-label">Shared wall</div>
+<form class="shared-input-row live-wall-form" data-wall-input="safe-room-message" data-wall-target="safe-room-responses" data-wall-details="safe-room-wall">
+<textarea class="shared-wall-input wall-message-input" id="safe-room-message" data-wall-target="safe-room-responses" data-wall-details="safe-room-wall" placeholder="Write one thing that would help this room feel safe..."></textarea>
+<button class="shared-wall-send wall-send-btn" type="submit" data-wall-input="safe-room-message" data-wall-target="safe-room-responses" data-wall-details="safe-room-wall">Send →</button>
+</form>
+</div>
+<details class="mini-wall" id="safe-room-wall">
+<summary>Reveal the shared wall</summary>
+<div class="mini-wall-panel">
+<div class="live-responses has-items" id="safe-room-responses"><h3>Room responses</h3>
+<div class="live-response seed">“No judgement when someone speaks honestly.”</div>
+<div class="live-response seed">“Listen first, even when we disagree.”</div>
+<div class="live-response seed">“Keep children at the centre, not blame.”</div>
+</div>
+<div class="room-expectations">
+<div class="room-expectation"><strong>Speak honestly</strong>Share what you can, without feeling forced to disclose more than is safe.</div>
+<div class="room-expectation"><strong>Listen fully</strong>Try to understand the pressure behind another person's view before responding.</div>
+<div class="room-expectation"><strong>Challenge with care</strong>Challenge ideas, not people. Disagreement can still be respectful.</div>
+<div class="room-expectation"><strong>Stories stay</strong>Learning can leave the room. Personal details and names stay protected.</div>
+<div class="room-expectation"><strong>Everyone has a say</strong>No single role owns the truth. Every perspective can add something important.</div>
+<div class="room-expectation"><strong>Child first</strong>The purpose is not blame. The purpose is better outcomes for children.</div>
+</div>
+</div>
+</details>
+</div>
+<div class="speaker-note">Facilitator: invite anonymous responses first, then reveal the Behaviour Shift expectations. Set the tone before moving into the wider purpose.</div>
+<div aria-label="Slide navigation" class="slide-nav"><a aria-label="Previous slide" class="nav-btn" href="#slide-3">←</a><span class="slide-count">04 / 17</span><a aria-label="Next slide" class="nav-btn" href="#slide-4">→</a></div></section><section class="slide dark" id="slide-4">
+<div class="kicker">Why Behaviour Shift Exists</div>
+<h1 class="title">Same goal.<br/>Different pressures.<br/><span class="gold">Too many gaps.</span></h1>
+<p class="subtitle">Tap each group to explore what they may be carrying into the room — and why the same situation can look completely different from each side.</p>
+<div aria-label="Tap a group to explore their pressures and perspective" class="pressure-explorer">
+<details class="pressure-expand families">
+<summary><strong>Families</strong><span>History, emotion and fear of being judged</span></summary>
+<div class="pressure-expanded-content"><p>Parents and relatives may bring years of history, love, fear, frustration and exhaustion into every conversation. They may feel that professionals only see their hardest moments, while missing the full story of the child and family.</p><p>They can also feel powerless when decisions are made around them, particularly when they do not fully understand the process, language or expectations being placed upon them.</p><p class="bubble-question">What might look like resistance when it is actually fear, shame or feeling unheard?</p></div>
+</details>
+<details class="pressure-expand professionals">
+<summary><strong>Professionals</strong><span>Risk, responsibility and difficult decisions</span></summary>
+<div class="pressure-expanded-content"><p>Social workers, residential staff, foster carers and support professionals carry legal duties, safeguarding responsibilities, organisational procedures and accountability for decisions that may have serious consequences.</p><p>They may be balancing immediate risk against long-term relationships, while working with incomplete information, limited time and pressure from several directions at once.</p><p class="bubble-question">What might look like coldness or control when it is actually responsibility, uncertainty or fear of getting it wrong?</p></div>
+</details>
+<details class="pressure-expand children">
+<summary><strong>Children</strong><span>Living inside the consequences of adult decisions</span></summary>
+<div class="pressure-expanded-content"><p>Children experience every disagreement, delay, handover and change of plan in real life. They may hear different messages from different adults and feel expected to manage emotions or systems they did not create.</p><p>When adults work separately, children can become the messenger, the evidence or the problem. Their behaviour may then communicate confusion, divided loyalty, fear, grief or a need to regain some control.</p><p class="bubble-question">What is the child carrying because the adults around them are not yet connected?</p></div>
+</details>
+</div>
+<div class="quote">Behaviour Shift is not about choosing a side. It is about helping every side see the whole child.</div>
+<div aria-label="Slide navigation" class="slide-nav"><a aria-label="Previous slide" class="nav-btn" href="#slide-safe-room">←</a><span class="slide-count">05 / 17</span><a aria-label="Next slide" class="nav-btn" href="#slide-5">→</a></div></section><section class="slide light" id="slide-5">
+<div class="kicker">The Behaviour Shift Core</div>
+<h1 class="title core-title">Change the Response.<br/><span class="gold">Change the Outcome.</span></h1>
+<p class="core-statement">Behaviour is communication.</p>
+<p class="subtitle core-subtitle">Behaviour Shift teaches adults to look beneath the behaviour, notice what their own response brings into the moment, and respond in a way that protects both the boundary and the relationship.</p>
+<div class="core-grid">
+<input class="core-flip-toggle" id="core-connect" type="checkbox"/>
+<label class="flip-card core-card" for="core-connect">
+<div class="flip-card-inner">
+<div class="flip-card-face flip-card-front"><strong>Connect</strong><span>Tap to flip</span></div>
+<div class="flip-card-face flip-card-back"><strong>Connection comes first</strong><p>Children are more likely to feel safe, regulated and ready to learn when they feel understood.</p></div>
+</div>
+</label>
+<input class="core-flip-toggle" id="core-reflect" type="checkbox"/>
+<label class="flip-card core-card" for="core-reflect">
+<div class="flip-card-inner">
+<div class="flip-card-face flip-card-front"><strong>Reflect</strong><span>Tap to flip</span></div>
+<div class="flip-card-face flip-card-back"><strong>Pause before reacting</strong><p>Consider what the behaviour may be communicating and how your response can protect the relationship.</p></div>
+</div>
+</label>
+<input class="core-flip-toggle" id="core-redirect" type="checkbox"/>
+<label class="flip-card core-card" for="core-redirect">
+<div class="flip-card-inner">
+<div class="flip-card-face flip-card-front"><strong>Redirect</strong><span>Tap to flip</span></div>
+<div class="flip-card-face flip-card-back"><strong>Guide, don’t punish</strong><p>Set clear boundaries while helping the child learn safer, more positive ways to respond.</p></div>
+</div>
+</label>
+</div>
+<p class="core-footer">Understand the need. Protect the relationship. Keep the boundary.</p>
+<div aria-label="Slide navigation" class="slide-nav"><a aria-label="Previous slide" class="nav-btn" href="#slide-4">←</a><span class="slide-count">06 / 17</span><a aria-label="Next slide" class="nav-btn" href="#slide-6">→</a></div>
+</section><section class="slide dark" id="slide-6">
+<div class="kicker">Session One</div>
+<h1 class="title">We are here for<br/><span class="gold">the same child.</span></h1>
+<p class="subtitle">A shared room for parents, grandparents, kinship carers, social workers, residential staff, foster carers and family support professionals.</p>
+<div aria-label="Tap a coloured group to learn about their perspective" class="role-explorer">
+<input id="r-parents" name="role-detail" type="radio"/><label class="role peach" for="r-parents"><span>Parents</span></label>
+<input id="r-kinship" name="role-detail" type="radio"/><label class="role kin" for="r-kinship"><span>Kinship &amp; Grandparents</span></label>
+<input id="r-social" name="role-detail" type="radio"/><label class="role blue" for="r-social"><span>Social Workers</span></label>
+<input id="r-residential" name="role-detail" type="radio"/><label class="role gold" for="r-residential"><span>Residential Care</span></label>
+<input id="r-foster" name="role-detail" type="radio"/><label class="role sage" for="r-foster"><span>Foster Carers</span></label>
+<input id="r-support" name="role-detail" type="radio"/><label class="role lav" for="r-support"><span>Family Support</span></label>
+<div aria-live="polite" class="role-info-panel">
+<div class="role-info-default">Tap one of the coloured groups above to reveal their perspective without leaving this page.</div>
+<div class="role-info info-parents"><strong>Parents</strong><p>Parents know their child’s history, personality, relationships and life outside professional involvement. They may also carry worry, guilt, judgement or fear of being misunderstood.</p><p class="bubble-question">What might parents need from the other adults in the room?</p></div>
+<div class="role-info info-kinship"><strong>Kinship carers &amp; grandparents</strong><p>They may step into a parenting role suddenly while managing family loyalties, disrupted relationships and responsibility they never expected. They can protect identity and belonging while needing support themselves.</p><p class="bubble-question">What pressures might be invisible to everyone else?</p></div>
+<div class="role-info info-social"><strong>Social workers</strong><p>Social workers hold safeguarding, legal duties, risk, family history and the wider plan at the same time. Their decisions can carry serious consequences, often under limited time and heavy caseload pressure.</p><p class="bubble-question">What information or responsibility might they be carrying that others cannot see?</p></div>
+<div class="role-info info-residential"><strong>Residential care staff</strong><p>Residential staff see the child’s daily patterns, routines, crises, relationships and recovery after difficult moments. They balance immediate safety with preserving trust and connection.</p><p class="bubble-question">What can their day-to-day experience add to the wider plan?</p></div>
+<div class="role-info info-foster"><strong>Foster carers</strong><p>Foster carers provide family life while working within professional plans, contact arrangements and uncertainty. They may be asked to build attachment while knowing change or transition could come quickly.</p><p class="bubble-question">What support helps foster carers care without feeling isolated?</p></div>
+<div class="role-info info-support"><strong>Family support professionals</strong><p>Family support teams often see practical barriers up close: routines, housing, attendance, finances, confidence and engagement. They help turn plans into realistic everyday change.</p><p class="bubble-question">What makes a plan genuinely workable for a family?</p></div>
+</div>
+</div>
+<div aria-label="Slide navigation" class="slide-nav"><a aria-label="Previous slide" class="nav-btn" href="#slide-5">←</a><span class="slide-count">07 / 17</span><a aria-label="Next slide" class="nav-btn" href="#slide-7">→</a></div></section><section class="slide dark" id="slide-7">
+<div class="kicker">Shared Purpose Exercise</div>
+<h1 class="title">Think of one child.<br/><span class="gold">What did every adult want?</span></h1>
+<div class="shared-input-card">
+<div class="prompt-label">Individual reflection</div>
+<form class="shared-input-row live-wall-form" data-wall-input="shared-wall-message" data-wall-target="live-responses" data-wall-details="slide-7-wall">
+<textarea class="shared-wall-input wall-message-input" id="shared-wall-message" data-wall-target="live-responses" data-wall-details="slide-7-wall" placeholder="Write one outcome you wanted for that child..."></textarea>
+<button class="shared-wall-send wall-send-btn" id="shared-wall-send" type="submit" data-wall-input="shared-wall-message" data-wall-target="live-responses" data-wall-details="slide-7-wall">Send →</button>
+</form>
+</div>
+<details class="shared-wall-prototype" id="slide-7-wall">
+<summary>Reveal the shared wall</summary>
+<div class="shared-wall-panel">
+<div class="wall-status"><strong>Shared Wall Prototype</strong><span class="beta-badge"><span class="beta-dot"></span>Beta mode</span></div>
+<p class="wall-note">For this pilot, the wall shows example responses from different people around the child. In the live version, anonymous responses from everyone in the room will appear here after the facilitator reveals them.</p>
+<div class="live-responses has-items" id="live-responses"><h3>Room responses</h3>
+<div class="live-response seed">“I wanted them to feel safe enough to come home.”</div>
+<div class="live-response seed">“I wanted the adults to work from the same plan.”</div>
+<div class="live-response seed">“I wanted them to know nobody had given up.”</div>
+</div>
+<div class="wall-columns">
+<div class="wall-column parents"><h3>Parents &amp; Family</h3>
+<div class="wall-response"><span>“I wanted them to feel safe enough to come home.”</span></div>
+<div class="wall-response"><span>“I wanted us to stop arguing and start understanding each other.”</span></div>
+<div class="wall-response"><span>“I wanted them to know I had not given up on them.”</span></div>
+</div>
+<div class="wall-column carers"><h3>Carers &amp; Residential Staff</h3>
+<div class="wall-response"><span>“I wanted them to trust the adults looking after them.”</span></div>
+<div class="wall-response"><span>“I wanted them to have stability, even after a difficult day.”</span></div>
+<div class="wall-response"><span>“I wanted them to learn safer ways to cope without losing the relationship.”</span></div>
+</div>
+<div class="wall-column social"><h3>Social Workers &amp; Professionals</h3>
+<div class="wall-response"><span>“I wanted the plan around them to be safe, realistic and joined up.”</span></div>
+<div class="wall-response"><span>“I wanted the adults to share information before risk escalated.”</span></div>
+<div class="wall-response"><span>“I wanted their voice to shape the decisions being made.”</span></div>
+</div>
+</div>
+<div class="wall-footer">Different roles. Different pressures. A shared hope for the same child.</div>
+</div>
+</details>
+<div aria-label="Slide navigation" class="slide-nav"><a aria-label="Previous slide" class="nav-btn" href="#slide-6">←</a><span class="slide-count">08 / 17</span><a aria-label="Next slide" class="nav-btn" href="#slide-8">→</a></div></section><section class="slide dark" id="slide-8">
+<div aria-label="Reflection: different perspectives, the same hope" class="native-reflection">
+<input checked="" class="reflection-state" id="reflection-step-1" name="reflection-step" type="radio"/>
+<input class="reflection-state" id="reflection-step-2" name="reflection-step" type="radio"/>
+<input class="reflection-state" id="reflection-step-3" name="reflection-step" type="radio"/>
+<input class="reflection-state" id="reflection-step-4" name="reflection-step" type="radio"/>
+<input class="reflection-state" id="reflection-step-5" name="reflection-step" type="radio"/>
+<div aria-hidden="true" class="native-particles">
+<i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i>
+<i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i>
+</div>
+<div class="reflection-scene scene-1">
+<h2>You were all asked the same question.</h2>
+<div class="gold-rule" aria-hidden="true"></div>
+</div>
+<div class="reflection-scene scene-2 differences">
+<p>Your words were different.</p>
+<p>Your experiences were different.</p>
+<p>Your frustrations were different.</p>
+</div>
+<div class="reflection-scene scene-3">
+<h2>But one message from you all stayed the same.</h2>
+</div>
+<div class="reflection-scene scene-4">
+<p class="hope">“I just want what’s best for them.”</p>
+<p class="same-hope">Different perspectives. One shared message.</p>
+</div>
+<div class="reflection-scene scene-5">
+<p class="closing">Behaviour Shift isn't about getting everyone to think the same.<br/><br/><strong>It's about helping everyone move in the same direction.</strong></p>
+</div>
+<label class="reflection-tap tap-1" for="reflection-step-2"><span>Tap anywhere to continue</span></label>
+<label class="reflection-tap tap-2" for="reflection-step-3"><span>Tap anywhere to continue</span></label>
+<label class="reflection-tap tap-3" for="reflection-step-4"><span>Tap anywhere to continue</span></label>
+<label class="reflection-tap tap-4" for="reflection-step-5"><span>Tap anywhere to continue</span></label>
+<label class="reflection-tap tap-5" for="reflection-step-1"><span>Tap to replay</span></label>
+</div>
+<div aria-label="Slide navigation" class="slide-nav"><a aria-label="Previous slide" class="nav-btn" href="#slide-7">←</a><span class="slide-count">09 / 17</span><a aria-label="Next slide" class="nav-btn" href="#slide-9">→</a></div>
+</section><section class="slide dark" id="slide-9">
+<div class="kicker">Interactive Case Study — Part One</div>
+<h1 class="title">The child did not return home<br/><span class="gold">at the agreed time.</span></h1>
+<div class="scenario-banner">They are now late and their whereabouts are unknown.</div>
+<div class="wall-exercise">
+<div class="shared-input-card">
+<div class="prompt-label">What would you do first?</div>
+<form class="shared-input-row live-wall-form" data-wall-input="part-one-response" data-wall-target="case-one-responses" data-wall-details="case-one-wall">
+<textarea class="shared-wall-input wall-message-input" data-persist="case-part-one" id="part-one-response" data-wall-target="case-one-responses" data-wall-details="case-one-wall" placeholder="Write your immediate first action before seeing the other perspectives..."></textarea>
+<button class="shared-wall-send wall-send-btn" type="submit" data-wall-input="part-one-response" data-wall-target="case-one-responses" data-wall-details="case-one-wall">Send →</button>
+</form>
+</div>
+<details class="mini-wall" id="case-one-wall">
+<summary>Reveal the case wall</summary>
+<div class="mini-wall-panel">
+<div class="live-responses has-items" id="case-one-responses"><h3>Room responses</h3>
+<div class="live-response seed">“Check immediate safety and try to contact them calmly.”</div>
+<div class="live-response seed">“Inform the right people and follow the missing procedure.”</div>
+</div>
+
+</div>
+</details>
+</div>
+<p class="subtitle">Now explore how different people may view the same situation. Tap each card to reveal the perspective.</p>
+<div class="case-options">
+<details class="reveal-card"><summary><strong>Parent or family view</strong><span>Tap to reveal</span></summary><div class="reveal-card-body"><strong>Parent or family view</strong>Worry, anger, fear, broken trust, and the urgent need to know the child is safe.</div></details>
+<details class="reveal-card"><summary><strong>Residential or foster care view</strong><span>Tap to reveal</span></summary><div class="reveal-card-body"><strong>Residential or foster care view</strong>Immediate safeguarding action, missing-from-care procedures, known risks, previous patterns and who must be informed.</div></details>
+<details class="reveal-card"><summary><strong>Social work view</strong><span>Tap to reveal</span></summary><div class="reveal-card-body"><strong>Social work view</strong>The wider care plan, contextual safeguarding, exploitation risk, family dynamics and whether risk is escalating.</div></details>
+<details class="reveal-card"><summary><strong>Child-centred view</strong><span>Tap to reveal</span></summary><div class="reveal-card-body"><strong>Child-centred view</strong>What may have made returning feel difficult, unsafe, embarrassing or less important than staying away?</div></details>
+</div>
+<p class="discussion-cue">Discuss: Where do the responses agree? Where do they differ? Which differences come from responsibility, experience or fear?</p>
+<div aria-label="Slide navigation" class="slide-nav"><a aria-label="Previous slide" class="nav-btn" href="#slide-8">←</a><span class="slide-count">10 / 17</span><a aria-label="Next slide" class="nav-btn" href="#slide-10">→</a></div>
+</section><section class="slide dark" id="slide-10">
+<div class="kicker">Interactive Case Study — Part Two</div>
+<h1 class="title">The child has returned.<br/><span class="gold">They are under the influence.</span></h1>
+<div class="scenario-banner">You now have new information. Does it change your interpretation, priorities or response?</div>
+<div class="wall-exercise">
+<div class="shared-input-card">
+<div class="prompt-label">What would you do first now?</div>
+<form class="shared-input-row live-wall-form" data-wall-input="part-two-response" data-wall-target="case-two-responses" data-wall-details="case-two-wall">
+<textarea class="shared-wall-input wall-message-input" data-persist="case-part-two" id="part-two-response" data-wall-target="case-two-responses" data-wall-details="case-two-wall" placeholder="Write your immediate first action before revealing the guidance below..."></textarea>
+<button class="shared-wall-send wall-send-btn" type="submit" data-wall-input="part-two-response" data-wall-target="case-two-responses" data-wall-details="case-two-wall">Send →</button>
+</form>
+</div>
+<details class="mini-wall" id="case-two-wall">
+<summary>Reveal the case wall</summary>
+<div class="mini-wall-panel">
+<div class="live-responses has-items" id="case-two-responses"><h3>Room responses</h3>
+<div class="live-response seed">“Check medical safety before consequences or questions.”</div>
+<div class="live-response seed">“Keep the relationship safe so they return next time.”</div>
+</div>
+
+</div>
+</details>
+</div>
+<p class="subtitle">Tap each card to reveal the different priorities that may need to be considered.</p>
+<div class="case-options">
+<details class="reveal-card"><summary><strong>Immediate safety</strong><span>Tap to reveal</span></summary><div class="reveal-card-body"><strong>Immediate safety</strong>Consider medical risk, level of consciousness, substances involved, injuries, who they were with and whether emergency help is needed.</div></details>
+<details class="reveal-card"><summary><strong>Relationship and regulation</strong><span>Tap to reveal</span></summary><div class="reveal-card-body"><strong>Relationship and regulation</strong>Is this the right moment for consequences or questioning, or is the first task to help the child become safe, calm and able to engage?</div></details>
+<details class="reveal-card"><summary><strong>Safeguarding and information</strong><span>Tap to reveal</span></summary><div class="reveal-card-body"><strong>Safeguarding and information</strong>What must be recorded, shared or escalated? Could this indicate exploitation, coercion, peer pressure or increasing vulnerability?</div></details>
+<details class="reveal-card"><summary><strong>The response afterwards</strong><span>Tap to reveal</span></summary><div class="reveal-card-body"><strong>The response afterwards</strong>How will adults revisit boundaries, repair trust and understand what happened without making returning home feel unsafe next time?</div></details>
+</div>
+<p class="discussion-cue">Compare this answer with your first one. What changed when the circumstances changed—and what remained important?</p>
+<div aria-label="Slide navigation" class="slide-nav"><a aria-label="Previous slide" class="nav-btn" href="#slide-9">←</a><span class="slide-count">11 / 17</span><a aria-label="Next slide" class="nav-btn" href="#slide-11">→</a></div>
+</section><section class="slide light" id="slide-11">
+<div class="kicker">What Changed?</div>
+<h1 class="title">The behaviour stayed the same.<br/><span class="gold">Our understanding changed.</span></h1>
+<div class="core-grid what-changed-grid">
+<input class="core-flip-toggle" id="changed-before" type="checkbox"/>
+<label class="flip-card core-card" for="changed-before">
+<div class="flip-card-inner">
+<div class="flip-card-face flip-card-front"><strong>Before</strong><span>“How do we stop this?”<br/>Tap to flip</span></div>
+<div class="flip-card-face flip-card-back"><strong>Behaviour seen at surface level</strong><p>The focus can become control, urgency, consequences and immediate compliance. That may be necessary in a crisis, but if it is the only lens, adults can miss the need, fear, shame, history or communication underneath.</p></div>
+</div>
+</label>
+<input class="core-flip-toggle" id="changed-after" type="checkbox"/>
+<label class="flip-card core-card" for="changed-after">
+<div class="flip-card-inner">
+<div class="flip-card-face flip-card-front"><strong>After</strong><span>“What is this telling us, and what response gives us the best chance of change?”<br/>Tap to flip</span></div>
+<div class="flip-card-face flip-card-back"><strong>Behaviour understood as communication</strong><p>We still hold boundaries, but the response is shaped by curiosity: what is the child communicating, what are they needing, and which adult response gives the best chance of safety, repair and lasting change?</p></div>
+</div>
+</label>
+</div>
+<div class="quote">Understanding does not remove boundaries. It helps us use boundaries more effectively.</div>
+<div aria-label="Slide navigation" class="slide-nav"><a aria-label="Previous slide" class="nav-btn" href="#slide-10">←</a><span class="slide-count">12 / 17</span><a aria-label="Next slide" class="nav-btn" href="#slide-12">→</a></div></section><section class="slide dark" id="slide-12">
+<div class="kicker">Different Pieces of the Same Puzzle</div>
+<h1 class="title">What does your role see<br/><span class="gold">that others may miss?</span></h1>
+<div class="core-grid role-puzzle-grid">
+<input class="core-flip-toggle" id="puzzle-parents" type="checkbox"/>
+<label class="flip-card core-card" for="puzzle-parents">
+<div class="flip-card-inner">
+<div class="flip-card-face flip-card-front"><strong>Parents &amp; Family</strong><span>History, identity, attachment and who the child is beyond the system.<br/>Tap to flip</span></div>
+<div class="flip-card-face flip-card-back"><strong>What this role may see</strong><p>Families often hold the longest story: early childhood, family patterns, grief, loyalty, routines, fears and moments of strength that may never appear in a report. They may see the child before the crisis, after professionals leave, and in the small everyday moments where trust is either built or lost.</p></div>
+</div>
+</label>
+<input class="core-flip-toggle" id="puzzle-social" type="checkbox"/>
+<label class="flip-card core-card" for="puzzle-social">
+<div class="flip-card-inner">
+<div class="flip-card-face flip-card-front"><strong>Social Workers</strong><span>Risk, legal duties, family systems and the wider plan.<br/>Tap to flip</span></div>
+<div class="flip-card-face flip-card-back"><strong>What this role may see</strong><p>Social workers often hold the wider picture: safeguarding thresholds, legal duties, family history, multi-agency pressure and the consequences of decisions. They may be balancing what feels relationally right with what must be evidenced, recorded and acted upon to keep the child safe.</p></div>
+</div>
+</label>
+<input class="core-flip-toggle" id="puzzle-residential" type="checkbox"/>
+<label class="flip-card core-card" for="puzzle-residential">
+<div class="flip-card-inner">
+<div class="flip-card-face flip-card-front"><strong>Residential &amp; Foster Care</strong><span>Daily patterns, triggers, routines and what happens between meetings.<br/>Tap to flip</span></div>
+<div class="flip-card-face flip-card-back"><strong>What this role may see</strong><p>Carers often see the behaviour in real time: mornings, bedtimes, refusals, missing episodes, repair attempts and the emotional comedown after meetings or family contact. They may notice patterns that only become visible through daily care, consistency and repeated interaction.</p></div>
+</div>
+</label>
+<input class="core-flip-toggle" id="puzzle-kinship" type="checkbox"/>
+<label class="flip-card core-card" for="puzzle-kinship">
+<div class="flip-card-inner">
+<div class="flip-card-face flip-card-front"><strong>Kinship Carers</strong><span>Family loyalties, sudden responsibility and preserving belonging.<br/>Tap to flip</span></div>
+<div class="flip-card-face flip-card-back"><strong>What this role may see</strong><p>Kinship carers can be carrying love, responsibility and family complexity at the same time. They may be trying to protect the child while also managing loyalty, conflict, guilt, sudden lifestyle change and the emotional weight of stepping into a role they did not plan for.</p></div>
+</div>
+</label>
+<input class="core-flip-toggle" id="puzzle-support" type="checkbox"/>
+<label class="flip-card core-card" for="puzzle-support">
+<div class="flip-card-inner">
+<div class="flip-card-face flip-card-front"><strong>Support Services</strong><span>Practical barriers, engagement and the changes families can sustain.<br/>Tap to flip</span></div>
+<div class="flip-card-face flip-card-back"><strong>What this role may see</strong><p>Support services often see what gets in the way of change: housing, money, transport, confidence, isolation, language, appointments, routines and trust. They may understand why a plan that looks simple on paper is difficult to maintain in real life.</p></div>
+</div>
+</label>
+<input class="core-flip-toggle" id="puzzle-young-person" type="checkbox"/>
+<label class="flip-card core-card" for="puzzle-young-person">
+<div class="flip-card-inner">
+<div class="flip-card-face flip-card-front"><strong>The Young Person</strong><span>The one perspective no plan should be built without.<br/>Tap to flip</span></div>
+<div class="flip-card-face flip-card-back"><strong>What this role may see</strong><p>The young person holds the lived experience of every decision made around them. Their behaviour may be communicating fear, shame, rejection, control, loss or hope. If their voice is missing, adults can build a plan around the child without truly building it with them.</p></div>
+</div>
+</label>
+</div>
+<div class="speaker-note">Discussion: ask one representative from each group to name something they wish others understood about their role.</div>
+<div aria-label="Slide navigation" class="slide-nav"><a aria-label="Previous slide" class="nav-btn" href="#slide-11">←</a><span class="slide-count">13 / 17</span><a aria-label="Next slide" class="nav-btn" href="#slide-13">→</a></div></section><section class="slide dark" id="slide-13">
+<div class="kicker">What Behaviour Shift Will Do</div>
+<h1 class="title">Create a common language.<br/><span class="gold">Build better responses.</span></h1>
+<div class="grid three"><div class="card"><strong>Understand</strong>Look beneath behaviour without excusing harm.</div><div class="card"><strong>Connect</strong>Protect relationships while maintaining safety.</div><div class="card"><strong>Communicate</strong>Reduce blame and make difficult conversations more productive.</div><div class="card"><strong>Collaborate</strong>Bring different perspectives into one workable plan.</div><div class="card"><strong>Reflect</strong>Help adults notice their own triggers, assumptions and impact.</div><div class="card"><strong>Change</strong>Turn insight into practical responses that can be repeated.</div></div>
+<div aria-label="Slide navigation" class="slide-nav"><a aria-label="Previous slide" class="nav-btn" href="#slide-12">←</a><span class="slide-count">14 / 17</span><a aria-label="Next slide" class="nav-btn" href="#slide-14">→</a></div></section><section class="slide dark" id="slide-14">
+<div class="kicker">What This Is Not</div>
+<h1 class="title">Not blame.<br/>Not sides.<br/><span class="gold">Not another lecture.</span></h1>
+<div class="grid two"><div class="card"><strong>It is not</strong>A space to criticise families, attack professionals or decide who is “the problem”.</div><div class="card"><strong>It is</strong>A space to understand pressure, challenge assumptions and practise better ways forward.</div></div>
+<div aria-label="Slide navigation" class="slide-nav"><a aria-label="Previous slide" class="nav-btn" href="#slide-13">←</a><span class="slide-count">15 / 17</span><a aria-label="Next slide" class="nav-btn" href="#slide-15">→</a></div></section><section class="slide dark" id="slide-15">
+<div class="kicker">Your Voice Shapes the Pilot</div>
+<h1 class="title">You are not just attending.<br/><span class="gold">You are helping build it.</span></h1>
+<div class="prompt"><div class="prompt-label">Closing reflection</div><p>What would make Behaviour Shift genuinely useful in your role, your family or the lives of the children you support?</p></div>
+<div class="chips"><span class="chip">What felt different?</span><span class="chip">What challenged you?</span><span class="chip">What should we keep?</span><span class="chip">What should we change?</span></div>
+<div aria-label="Slide navigation" class="slide-nav"><a aria-label="Previous slide" class="nav-btn" href="#slide-14">←</a><span class="slide-count">16 / 17</span><a aria-label="Next slide" class="nav-btn" href="#slide-16">→</a></div></section><section class="slide hero" id="slide-16">
+<div class="kicker">The Behaviour Shift</div>
+<div class="final-lockup">Everybody in this room carries a different piece of the same puzzle.</div>
+<div class="gold-rule"></div>
+<div class="quote">When adults understand each other, children no longer have to carry the gaps between us.</div>
+<div class="tagline" style="margin-top:30px">Change the response. Change the outcome.</div>
+<div aria-label="Slide navigation" class="slide-nav"><a aria-label="Previous slide" class="nav-btn" href="#slide-15">←</a><span class="slide-count">17 / 17</span><a aria-label="Next slide" class="disabled nav-btn" href="#slide-16">→</a></div></section></div>
+<script>
+const slides=[...document.querySelectorAll('.slide')];
+function activateFromHash(){const id=location.hash||'#slide-1';slides.forEach(s=>s.classList.toggle('active','#'+s.id===id));}
+window.addEventListener('hashchange',activateFromHash);activateFromHash();
+document.addEventListener('keydown',e=>{const current=Math.max(0,slides.findIndex(s=>s.classList.contains('active')));if(['ArrowRight','PageDown',' '].includes(e.key)){e.preventDefault();location.hash='#slide-'+Math.min(slides.length,current+2)}if(['ArrowLeft','PageUp'].includes(e.key)){e.preventDefault();location.hash='#slide-'+Math.max(1,current)}if(e.key==='Home')location.hash='#slide-1';if(e.key==='End')location.hash='#slide-'+slides.length});
+document.querySelectorAll('.reveal').forEach(b=>b.addEventListener('click',()=>b.classList.toggle('open')));
+const stickyButton=document.querySelector('[data-action="show-stickies"]');if(stickyButton)stickyButton.addEventListener('click',()=>{document.querySelectorAll('.sticky').forEach((s,i)=>setTimeout(()=>s.classList.add('show'),i*110));stickyButton.textContent='Shared purpose revealed'});
+let touchX=0;document.addEventListener('touchstart',e=>touchX=e.changedTouches[0].screenX,{passive:true});document.addEventListener('touchend',e=>{const dx=e.changedTouches[0].screenX-touchX;if(Math.abs(dx)>55){const current=Math.max(0,slides.findIndex(s=>s.classList.contains('active')));location.hash='#slide-'+Math.max(1,Math.min(slides.length,current+1+(dx<0?1:-1))) }},{passive:true});
+
+
+// Page 2 role pills: tap once to show and dim only the selected pill; tap again to close and restore it.
+document.querySelectorAll('.role-explorer label.role').forEach(label=>{
+  label.addEventListener('click',event=>{
+    event.preventDefault();
+    const input=document.getElementById(label.getAttribute('for'));
+    if(!input)return;
+    const wasChecked=input.checked;
+    document.querySelectorAll('.role-explorer input[name="role-detail"]').forEach(item=>item.checked=false);
+    input.checked=!wasChecked;
+  });
+});
+
+
+// Page 3 pressure cards: tap once to show and dim only selected; tap again to close.
+
+
+// Preserve typed case-study answers while the presentation remains open.
+const typedAnswers={};
+
+
+document.querySelectorAll('textarea[data-persist]').forEach(box=>{
+  const key=box.dataset.persist;
+  box.addEventListener('input',()=>typedAnswers[key]=box.value);
+  box.addEventListener('focus',()=>{if(typedAnswers[key]!==undefined)box.value=typedAnswers[key]});
+});
+
+
+
+
+
+// Page 3: keep only one perspective expanded at a time.
+document.querySelectorAll('#slide-4 .pressure-expand').forEach(panel => {
+  panel.addEventListener('toggle', () => {
+    if (!panel.open) return;
+    document.querySelectorAll('#slide-4 .pressure-expand').forEach(other => {
+      if (other !== panel) other.removeAttribute('open');
+    });
+  });
+});
+
+// V49: rebuilt shared-wall feed. Mock responses stay visible; typed responses appear at the top of the wall.
+function cleanWallText(value){
+  return String(value || '').replace(/\s+/g,' ').trim();
+}
+
+function createUserWallItem(text){
+  const item = document.createElement('div');
+  item.className = 'live-response user-response';
+  item.textContent = '“' + text + '”';
+  return item;
+}
+
+function getWallParts(trigger){
+  const inputId = trigger?.dataset?.wallInput;
+  const input = inputId ? document.getElementById(inputId) : null;
+  const targetId = trigger?.dataset?.wallTarget || input?.dataset?.wallTarget;
+  const detailsId = trigger?.dataset?.wallDetails || input?.dataset?.wallDetails;
+  return {
+    input,
+    target: targetId ? document.getElementById(targetId) : null,
+    details: detailsId ? document.getElementById(detailsId) : null,
+    button: inputId ? document.querySelector('.wall-send-btn[data-wall-input="' + CSS.escape(inputId) + '"]') : null
+  };
+}
+
+function pushToWall(target, text){
+  if(!target || !text) return false;
+  target.classList.add('has-items');
+  const item = createUserWallItem(text);
+  const heading = target.querySelector('h3');
+  if(heading){
+    heading.insertAdjacentElement('afterend', item);
+  } else {
+    target.prepend(item);
+  }
+  return true;
+}
+
+function flashSent(button){
+  if(!button) return;
+  const original = button.dataset.originalText || button.textContent || 'Send →';
+  button.dataset.originalText = original;
+  button.textContent = '✓ Sent';
+  button.classList.add('sent');
+  setTimeout(() => {
+    button.textContent = original;
+    button.classList.remove('sent');
+  }, 1200);
+}
+
+function submitWallMessage(trigger){
+  const {input, target, details, button} = getWallParts(trigger);
+  if(!input){ return false; }
+  const text = cleanWallText(input.value);
+  if(!text){ input.focus(); return false; }
+
+  if(details){ details.open = true; }
+  const success = pushToWall(target, text);
+  if(!success){ return false; }
+
+  input.value = '';
+  if(input.dataset.persist){ typedAnswers[input.dataset.persist] = ''; }
+  flashSent(button || trigger);
+
+  const newest = target ? target.querySelector('.user-response') : null;
+  if(newest && window.innerWidth <= 900){
+    setTimeout(() => newest.scrollIntoView({behavior:'smooth', block:'center'}), 80);
+  }
+  return false;
+}
+
+// Form submit works on iPhone, Safari, Chrome, desktop and keyboard enter patterns.
+document.addEventListener('submit', function(event){
+  const form = event.target.closest('.live-wall-form');
+  if(!form) return;
+  event.preventDefault();
+  event.stopPropagation();
+  submitWallMessage(form);
+}, true);
+
+// Click delegation is a fallback for browsers that do not submit the form as expected.
+document.addEventListener('click', function(event){
+  const button = event.target.closest('.wall-send-btn');
+  if(!button) return;
+  event.preventDefault();
+  event.stopPropagation();
+  submitWallMessage(button);
+}, true);
+
+// Keyboard shortcut for textarea users: Cmd/Ctrl + Enter sends.
+document.addEventListener('keydown', function(event){
+  const input = event.target.closest('.wall-message-input');
+  if(!input) return;
+  if((event.metaKey || event.ctrlKey) && event.key === 'Enter'){
+    event.preventDefault();
+    const form = input.closest('.live-wall-form');
+    submitWallMessage(form || input);
+  }
+}, true);
+
+
+// V54 — Page 9: automatically play the five-stage reflection whenever the slide opens.
+const pageNine = document.getElementById('slide-8');
+const pageNineSteps = [1,2,3,4,5].map(number => document.getElementById('reflection-step-' + number));
+let pageNineTimers = [];
+
+function stopPageNineSequence(reset = true){
+  pageNineTimers.forEach(timer => clearTimeout(timer));
+  pageNineTimers = [];
+  if(reset && pageNineSteps[0]) pageNineSteps[0].checked = true;
+  if(pageNine) pageNine.classList.remove('auto-sequence');
+}
+
+function playPageNineSequence(){
+  stopPageNineSequence(true);
+  if(!pageNine || !pageNine.classList.contains('active')) return;
+  pageNine.classList.add('auto-sequence');
+  const timings = [0, 3200, 6400, 9600, 12800];
+  pageNineSteps.forEach((step, index) => {
+    if(!step) return;
+    pageNineTimers.push(setTimeout(() => {
+      if(pageNine.classList.contains('active')) step.checked = true;
+    }, timings[index]));
+  });
+}
+
+function syncPageNineSequence(){
+  if(pageNine && pageNine.classList.contains('active')) playPageNineSequence();
+  else stopPageNineSequence(true);
+}
+
+window.addEventListener('hashchange', () => setTimeout(syncPageNineSequence, 0));
+setTimeout(syncPageNineSequence, 0);
+
+window.submitWallMessage = submitWallMessage;
+
+</script>
+</body>
+</html>
