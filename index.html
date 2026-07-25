@@ -1010,7 +1010,7 @@ function playPageNineSequence(){
   stopPageNineSequence(true);
   if(!pageNine || !pageNine.classList.contains('active')) return;
   pageNine.classList.add('auto-sequence');
-  const timings = [0, 3200, 6400, 9600, 12800];
+  const timings = [0, 6000, 12000, 18000, 28000];
   pageNineSteps.forEach((step, index) => {
     if(!step) return;
     pageNineTimers.push(setTimeout(() => {
