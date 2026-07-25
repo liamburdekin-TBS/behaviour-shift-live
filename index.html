@@ -421,6 +421,30 @@
 .live-response.user-response{background:rgba(215,168,74,.13);border-left-color:var(--gold);box-shadow:0 0 0 1px rgba(215,168,74,.12) inset}
 .live-response.user-response::before{content:'You added';display:block;color:var(--gold);font-size:10px;letter-spacing:2px;text-transform:uppercase;font-weight:900;margin-bottom:5px}
 
+
+
+/* V50 — Page 12: flip-card behaviour matching page 6 */
+#slide-11 .what-changed-grid{grid-template-columns:repeat(2,minmax(0,1fr));max-width:980px}
+#slide-11 .core-card,#slide-11 .core-card .flip-card-inner{min-height:235px}
+#slide-11 .flip-card-front span{font-size:clamp(14px,1.55vw,19px);line-height:1.45;max-width:360px}
+#slide-11 .flip-card-back p{font-size:clamp(13px,1.28vw,16px);line-height:1.48}
+@media(max-width:800px){#slide-11 .what-changed-grid{grid-template-columns:1fr}#slide-11 .core-card,#slide-11 .core-card .flip-card-inner{min-height:200px}#slide-11 .quote{font-size:22px}}
+
+
+
+/* V51 — Page 13 flip cards only; original colour layout preserved */
+#slide-12 .role-puzzle-grid{grid-template-columns:repeat(3,minmax(0,1fr));gap:14px;margin-top:28px}
+#slide-12 .role-puzzle-grid .core-card,#slide-12 .role-puzzle-grid .core-card .flip-card-inner{min-height:190px}
+#slide-12 .role-puzzle-grid .flip-card-face{background:rgba(255,255,255,.045);border-color:rgba(215,168,74,.34);color:var(--cream)}
+#slide-12 .role-puzzle-grid .flip-card-front span{color:var(--soft);line-height:1.4}
+#slide-12 .role-puzzle-grid .flip-card-back p{font-size:14px;line-height:1.42;color:var(--soft)}
+#slide-12 .role-puzzle-grid .flip-card:hover .flip-card-face{border-color:var(--gold)}
+@media(max-width:800px){#slide-12 .role-puzzle-grid{grid-template-columns:1fr;margin-top:22px}#slide-12 .role-puzzle-grid .core-card,#slide-12 .role-puzzle-grid .core-card .flip-card-inner{min-height:175px}}
+
+
+/* V54 — Page 9 automatic cinematic sequence */
+#slide-8.auto-sequence .reflection-tap{display:none!important}
+
 </style>
 </head>
 <body>
@@ -642,20 +666,20 @@ Behaviour Shift asks...
 <i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i>
 </div>
 <div class="reflection-scene scene-1">
-<h2>We asked three different groups...</h2>
-<div class="groups"><span>Parents</span><span>Carers</span><span>Social Workers</span></div>
+<h2>You were all asked the same question.</h2>
+<div class="gold-rule" aria-hidden="true"></div>
 </div>
 <div class="reflection-scene scene-2 differences">
-<p>Their words were different.</p>
-<p>Their experiences were different.</p>
-<p>Their frustrations were different.</p>
+<p>Your words were different.</p>
+<p>Your experiences were different.</p>
+<p>Your frustrations were different.</p>
 </div>
 <div class="reflection-scene scene-3">
-<h2>But one thing kept appearing...</h2>
+<h2>But one message from you all stayed the same.</h2>
 </div>
 <div class="reflection-scene scene-4">
-<p class="hope">“I just want this child to be okay.”</p>
-<p class="same-hope">Different perspectives. The same hope.</p>
+<p class="hope">“I just want what’s best for them.”</p>
+<p class="same-hope">Different perspectives. One shared message.</p>
 </div>
 <div class="reflection-scene scene-5">
 <p class="closing">Behaviour Shift isn't about getting everyone to think the same.<br/><br/><strong>It's about helping everyone move in the same direction.</strong></p>
@@ -734,12 +758,70 @@ Behaviour Shift asks...
 </section><section class="slide light" id="slide-11">
 <div class="kicker">What Changed?</div>
 <h1 class="title">The behaviour stayed the same.<br/><span class="gold">Our understanding changed.</span></h1>
-<div class="grid two"><div class="card"><strong>Before</strong>“How do we stop this?”</div><div class="card"><strong>After</strong>“What is this telling us, and what response gives us the best chance of change?”</div></div>
+<div class="core-grid what-changed-grid">
+<input class="core-flip-toggle" id="changed-before" type="checkbox"/>
+<label class="flip-card core-card" for="changed-before">
+<div class="flip-card-inner">
+<div class="flip-card-face flip-card-front"><strong>Before</strong><span>“How do we stop this?”<br/>Tap to flip</span></div>
+<div class="flip-card-face flip-card-back"><strong>Behaviour seen at surface level</strong><p>The focus can become control, urgency, consequences and immediate compliance. That may be necessary in a crisis, but if it is the only lens, adults can miss the need, fear, shame, history or communication underneath.</p></div>
+</div>
+</label>
+<input class="core-flip-toggle" id="changed-after" type="checkbox"/>
+<label class="flip-card core-card" for="changed-after">
+<div class="flip-card-inner">
+<div class="flip-card-face flip-card-front"><strong>After</strong><span>“What is this telling us, and what response gives us the best chance of change?”<br/>Tap to flip</span></div>
+<div class="flip-card-face flip-card-back"><strong>Behaviour understood as communication</strong><p>We still hold boundaries, but the response is shaped by curiosity: what is the child communicating, what are they needing, and which adult response gives the best chance of safety, repair and lasting change?</p></div>
+</div>
+</label>
+</div>
 <div class="quote">Understanding does not remove boundaries. It helps us use boundaries more effectively.</div>
 <div aria-label="Slide navigation" class="slide-nav"><a aria-label="Previous slide" class="nav-btn" href="#slide-10">←</a><span class="slide-count">12 / 17</span><a aria-label="Next slide" class="nav-btn" href="#slide-12">→</a></div></section><section class="slide dark" id="slide-12">
 <div class="kicker">Different Pieces of the Same Puzzle</div>
 <h1 class="title">What does your role see<br/><span class="gold">that others may miss?</span></h1>
-<div class="grid three"><div class="card"><strong>Parents &amp; Family</strong>History, identity, attachment and who the child is beyond the system.</div><div class="card"><strong>Social Workers</strong>Risk, legal duties, family systems and the wider plan.</div><div class="card"><strong>Residential &amp; Foster Care</strong>Daily patterns, triggers, routines and what happens between meetings.</div><div class="card"><strong>Kinship Carers</strong>Family loyalties, sudden responsibility and preserving belonging.</div><div class="card"><strong>Support Services</strong>Practical barriers, engagement and the changes families can sustain.</div><div class="card"><strong>The Young Person</strong>The one perspective no plan should be built without.</div></div>
+<div class="core-grid role-puzzle-grid">
+<input class="core-flip-toggle" id="puzzle-parents" type="checkbox"/>
+<label class="flip-card core-card" for="puzzle-parents">
+<div class="flip-card-inner">
+<div class="flip-card-face flip-card-front"><strong>Parents &amp; Family</strong><span>History, identity, attachment and who the child is beyond the system.<br/>Tap to flip</span></div>
+<div class="flip-card-face flip-card-back"><strong>What this role may see</strong><p>Families often hold the longest story: early childhood, family patterns, grief, loyalty, routines, fears and moments of strength that may never appear in a report. They may see the child before the crisis, after professionals leave, and in the small everyday moments where trust is either built or lost.</p></div>
+</div>
+</label>
+<input class="core-flip-toggle" id="puzzle-social" type="checkbox"/>
+<label class="flip-card core-card" for="puzzle-social">
+<div class="flip-card-inner">
+<div class="flip-card-face flip-card-front"><strong>Social Workers</strong><span>Risk, legal duties, family systems and the wider plan.<br/>Tap to flip</span></div>
+<div class="flip-card-face flip-card-back"><strong>What this role may see</strong><p>Social workers often hold the wider picture: safeguarding thresholds, legal duties, family history, multi-agency pressure and the consequences of decisions. They may be balancing what feels relationally right with what must be evidenced, recorded and acted upon to keep the child safe.</p></div>
+</div>
+</label>
+<input class="core-flip-toggle" id="puzzle-residential" type="checkbox"/>
+<label class="flip-card core-card" for="puzzle-residential">
+<div class="flip-card-inner">
+<div class="flip-card-face flip-card-front"><strong>Residential &amp; Foster Care</strong><span>Daily patterns, triggers, routines and what happens between meetings.<br/>Tap to flip</span></div>
+<div class="flip-card-face flip-card-back"><strong>What this role may see</strong><p>Carers often see the behaviour in real time: mornings, bedtimes, refusals, missing episodes, repair attempts and the emotional comedown after meetings or family contact. They may notice patterns that only become visible through daily care, consistency and repeated interaction.</p></div>
+</div>
+</label>
+<input class="core-flip-toggle" id="puzzle-kinship" type="checkbox"/>
+<label class="flip-card core-card" for="puzzle-kinship">
+<div class="flip-card-inner">
+<div class="flip-card-face flip-card-front"><strong>Kinship Carers</strong><span>Family loyalties, sudden responsibility and preserving belonging.<br/>Tap to flip</span></div>
+<div class="flip-card-face flip-card-back"><strong>What this role may see</strong><p>Kinship carers can be carrying love, responsibility and family complexity at the same time. They may be trying to protect the child while also managing loyalty, conflict, guilt, sudden lifestyle change and the emotional weight of stepping into a role they did not plan for.</p></div>
+</div>
+</label>
+<input class="core-flip-toggle" id="puzzle-support" type="checkbox"/>
+<label class="flip-card core-card" for="puzzle-support">
+<div class="flip-card-inner">
+<div class="flip-card-face flip-card-front"><strong>Support Services</strong><span>Practical barriers, engagement and the changes families can sustain.<br/>Tap to flip</span></div>
+<div class="flip-card-face flip-card-back"><strong>What this role may see</strong><p>Support services often see what gets in the way of change: housing, money, transport, confidence, isolation, language, appointments, routines and trust. They may understand why a plan that looks simple on paper is difficult to maintain in real life.</p></div>
+</div>
+</label>
+<input class="core-flip-toggle" id="puzzle-young-person" type="checkbox"/>
+<label class="flip-card core-card" for="puzzle-young-person">
+<div class="flip-card-inner">
+<div class="flip-card-face flip-card-front"><strong>The Young Person</strong><span>The one perspective no plan should be built without.<br/>Tap to flip</span></div>
+<div class="flip-card-face flip-card-back"><strong>What this role may see</strong><p>The young person holds the lived experience of every decision made around them. Their behaviour may be communicating fear, shame, rejection, control, loss or hope. If their voice is missing, adults can build a plan around the child without truly building it with them.</p></div>
+</div>
+</label>
+</div>
 <div class="speaker-note">Discussion: ask one representative from each group to name something they wish others understood about their role.</div>
 <div aria-label="Slide navigation" class="slide-nav"><a aria-label="Previous slide" class="nav-btn" href="#slide-11">←</a><span class="slide-count">13 / 17</span><a aria-label="Next slide" class="nav-btn" href="#slide-13">→</a></div></section><section class="slide dark" id="slide-13">
 <div class="kicker">What Behaviour Shift Will Do</div>
@@ -910,6 +992,40 @@ document.addEventListener('keydown', function(event){
     submitWallMessage(form || input);
   }
 }, true);
+
+
+// V54 — Page 9: automatically play the five-stage reflection whenever the slide opens.
+const pageNine = document.getElementById('slide-8');
+const pageNineSteps = [1,2,3,4,5].map(number => document.getElementById('reflection-step-' + number));
+let pageNineTimers = [];
+
+function stopPageNineSequence(reset = true){
+  pageNineTimers.forEach(timer => clearTimeout(timer));
+  pageNineTimers = [];
+  if(reset && pageNineSteps[0]) pageNineSteps[0].checked = true;
+  if(pageNine) pageNine.classList.remove('auto-sequence');
+}
+
+function playPageNineSequence(){
+  stopPageNineSequence(true);
+  if(!pageNine || !pageNine.classList.contains('active')) return;
+  pageNine.classList.add('auto-sequence');
+  const timings = [0, 3200, 6400, 9600, 12800];
+  pageNineSteps.forEach((step, index) => {
+    if(!step) return;
+    pageNineTimers.push(setTimeout(() => {
+      if(pageNine.classList.contains('active')) step.checked = true;
+    }, timings[index]));
+  });
+}
+
+function syncPageNineSequence(){
+  if(pageNine && pageNine.classList.contains('active')) playPageNineSequence();
+  else stopPageNineSequence(true);
+}
+
+window.addEventListener('hashchange', () => setTimeout(syncPageNineSequence, 0));
+setTimeout(syncPageNineSequence, 0);
 
 window.submitWallMessage = submitWallMessage;
 
