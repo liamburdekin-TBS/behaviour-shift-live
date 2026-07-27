@@ -582,6 +582,67 @@ body{position:fixed;inset:0;width:100%;height:var(--app-height,100%);overflow:hi
 #slide-live-system .identity-flip-back {
   transform: rotateY(180deg);
 }
+
+
+/* V55 — Page 3 typography polish and new Behaviour Shift Live flip reveal */
+#slide-2 .identity-flip-front .kicker{letter-spacing:4.4px;color:rgba(215,168,74,.94)}
+#slide-2 .identity-flip-front .title{letter-spacing:-2.2px;text-wrap:balance}
+#slide-2 .identity-flip-front .identity-lead{max-width:930px;color:rgba(247,240,230,.76)}
+#slide-2 .identity-flip-front .identity-lead strong{font-weight:800;letter-spacing:-.2px}
+#slide-2 .identity-flip-front .identity-declaration{border-left-color:rgba(215,168,74,.88);background:linear-gradient(90deg,rgba(215,168,74,.105),rgba(215,168,74,.025));box-shadow:inset 0 1px 0 rgba(255,255,255,.025)}
+#slide-2 .identity-flip-front .identity-bullets li::marker{color:var(--gold)}
+#slide-2 .identity-flip-front .identity-bullets li.identity-best{margin-top:8px;color:var(--gold)}
+#slide-2 .identity-flip-front .tap-cue{color:rgba(215,168,74,.96)}
+
+#slide-live-reveal{overflow:hidden;justify-content:center;perspective:1600px;padding-top:54px;padding-bottom:86px}
+#slide-live-reveal .identity-flip-toggle{position:absolute;opacity:0;width:1px;height:1px;pointer-events:none}
+#slide-live-reveal .identity-flip-card{display:block;width:min(100%,1120px);height:min(690px,calc(100dvh - 164px));min-height:520px;margin:auto;cursor:pointer;perspective:1600px;color:inherit}
+@supports (height:100svh){#slide-live-reveal .identity-flip-card{height:min(690px,calc(100svh - 164px))}}
+#slide-live-reveal .identity-flip-inner{position:relative;width:100%;height:100%;transition:transform .72s cubic-bezier(.2,.7,.2,1);transform-style:preserve-3d}
+#slide-live-reveal .identity-flip-toggle:checked + .identity-flip-card .identity-flip-inner{transform:rotateY(180deg)}
+#slide-live-reveal .identity-flip-face{position:absolute;inset:0;border:1px solid rgba(215,168,74,.35);border-radius:32px;background:linear-gradient(145deg,rgba(255,255,255,.075),rgba(255,255,255,.026));box-shadow:0 28px 80px rgba(0,0,0,.28);backface-visibility:hidden;-webkit-backface-visibility:hidden;overflow-y:auto;padding:28px 30px 24px;display:flex;align-items:center;scrollbar-width:none}
+#slide-live-reveal .identity-flip-face::-webkit-scrollbar{display:none}
+#slide-live-reveal .identity-flip-back{transform:rotateY(180deg);overflow:hidden}
+#slide-live-reveal .identity-wrap{width:100%;margin:0 auto}
+#slide-live-reveal .identity-back-title{font-size:clamp(34px,5.4vw,72px);line-height:1.02;max-width:1050px}
+#slide-live-reveal .tap-cue{margin-top:18px;color:var(--gold);text-transform:uppercase;letter-spacing:2px;font-size:11px;font-weight:900;text-align:right}
+#slide-live-reveal .live-reveal-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px;margin-top:16px}
+#slide-live-reveal .live-reveal-item{padding:13px 15px;border:1px solid rgba(247,240,230,.13);border-radius:17px;background:rgba(247,240,230,.045);color:var(--soft);font-size:14px;line-height:1.35}
+#slide-live-reveal .live-reveal-item strong{display:block;color:var(--gold);font-size:11px;letter-spacing:1.5px;text-transform:uppercase;margin-bottom:4px}
+#slide-live-reveal .live-reveal-finale{margin-top:14px;padding:14px 16px;border-left:3px solid var(--gold);border-radius:0 17px 17px 0;background:rgba(215,168,74,.075);font-size:clamp(16px,1.8vw,22px);line-height:1.3}
+#slide-live-reveal .slide-nav{position:absolute;left:22px;right:22px;bottom:calc(12px + env(safe-area-inset-bottom));margin-top:0;padding:10px 0 0;z-index:8}
+#slide-live-reveal .speaker-note{z-index:7;pointer-events:none}
+@media(max-width:800px){
+ #slide-2 .identity-flip-front .title{letter-spacing:-1.1px}
+ #slide-2 .identity-flip-front .identity-bullets li.identity-best{margin-top:5px}
+ #slide-live-reveal{padding:calc(48px + env(safe-area-inset-top)) 16px calc(82px + env(safe-area-inset-bottom));justify-content:center}
+ #slide-live-reveal .identity-flip-card{height:calc(100dvh - 152px - env(safe-area-inset-top) - env(safe-area-inset-bottom));min-height:460px}
+ @supports (height:100svh){#slide-live-reveal .identity-flip-card{height:calc(100svh - 152px - env(safe-area-inset-top) - env(safe-area-inset-bottom))}}
+ #slide-live-reveal .identity-flip-face{border-radius:26px;padding:20px 18px 18px;align-items:flex-start}
+ #slide-live-reveal .title,#slide-live-reveal .identity-back-title{font-size:clamp(29px,8.2vw,42px);line-height:1.02}
+ #slide-live-reveal .identity-lead{font-size:15px;line-height:1.28;margin-top:10px}
+ #slide-live-reveal .identity-declaration{font-size:15px;line-height:1.23;margin-top:12px;padding:13px 14px}
+ #slide-live-reveal .identity-card{margin-top:11px;padding:13px 14px}
+ #slide-live-reveal .identity-card strong{font-size:16px;margin-bottom:5px}
+ #slide-live-reveal .identity-card p{font-size:12.3px;line-height:1.28}
+ #slide-live-reveal .live-reveal-grid{grid-template-columns:1fr;gap:7px;margin-top:10px}
+ #slide-live-reveal .live-reveal-item{padding:9px 11px;border-radius:13px;font-size:11.5px;line-height:1.22}
+ #slide-live-reveal .live-reveal-item strong{font-size:9.5px;margin-bottom:2px}
+ #slide-live-reveal .live-reveal-finale{margin-top:9px;padding:10px 11px;font-size:13px;line-height:1.2}
+ #slide-live-reveal .tap-cue{font-size:9px;margin-top:8px;text-align:left}
+ #slide-live-reveal .speaker-note{display:none}
+}
+@media(max-width:390px){
+ #slide-live-reveal .identity-flip-face{padding:16px 14px 14px}
+ #slide-live-reveal .title,#slide-live-reveal .identity-back-title{font-size:26px}
+ #slide-live-reveal .identity-lead{font-size:13.5px}
+ #slide-live-reveal .identity-declaration{font-size:13.3px;padding:10px 11px}
+ #slide-live-reveal .identity-card{padding:10px 11px}
+ #slide-live-reveal .identity-card p{font-size:11.2px}
+ #slide-live-reveal .live-reveal-item{font-size:10.7px;padding:8px 10px}
+ #slide-live-reveal .live-reveal-finale{font-size:12px}
+}
+
 </style>
 </head>
 <body>
@@ -589,7 +650,7 @@ body{position:fixed;inset:0;width:100%;height:var(--app-height,100%);overflow:hi
 <section class="slide hero active" id="slide-1">
 <div class="logo-small">The</div><div class="logo-main">Behaviour<br/>Shift<span class="tm">™</span></div><div class="gold-rule"></div><div class="tagline">Change the response. Change the outcome.</div>
 <div class="small">Founding Collaborative Pilot — Session One</div>
-<div aria-label="Slide navigation" class="slide-nav"><a aria-label="Previous slide — swipe down" class="nav-btn disabled" href="#slide-1">↑</a><span class="slide-count">01 / 20</span><a aria-label="Next slide — swipe up" class="nav-btn" href="#slide-invitation">↓</a></div></section><section class="slide dark" id="slide-invitation">
+<div aria-label="Slide navigation" class="slide-nav"><a aria-label="Previous slide — swipe down" class="nav-btn disabled" href="#slide-1">↑</a><span class="slide-count">01 / 21</span><a aria-label="Next slide — swipe up" class="nav-btn" href="#slide-invitation">↓</a></div></section><section class="slide dark" id="slide-invitation">
 <div class="kicker">Founding Collaborative Trial</div>
 <h1 class="title">You have been invited<br/><span class="gold">to help trial</span></h1>
 <div class="gold-rule"></div>
@@ -610,7 +671,7 @@ body{position:fixed;inset:0;width:100%;height:var(--app-height,100%);overflow:hi
 </div>
 <div aria-label="Slide navigation" class="slide-nav">
 <a aria-label="Previous slide — swipe down" class="nav-btn" href="#slide-1">↑</a>
-<span class="slide-count">02 / 20</span>
+<span class="slide-count">02 / 21</span>
 <a aria-label="Next slide — swipe up" class="nav-btn" href="#slide-2">↓</a>
 </div>
 </section><section class="slide dark" id="slide-2">
@@ -661,7 +722,47 @@ Behaviour Shift asks...
 </div>
 </div>
 </label>
-<div class="speaker-note">Facilitator: keep this personal and brief. Explain that Behaviour Shift grew from lived experience and frontline practice, then let the philosophy speak for itself.</div><div aria-label="Slide navigation" class="slide-nav"><a aria-label="Previous slide — swipe down" class="nav-btn" href="#slide-invitation">↑</a><span class="slide-count">03 / 20</span><a aria-label="Next slide — swipe up" class="nav-btn" href="#slide-live-system">↓</a></div></section><section class="slide dark" id="slide-live-system">
+<div class="speaker-note">Facilitator: keep this personal and brief. Explain that Behaviour Shift grew from lived experience and frontline practice, then let the philosophy speak for itself.</div><div aria-label="Slide navigation" class="slide-nav"><a aria-label="Previous slide — swipe down" class="nav-btn" href="#slide-invitation">↑</a><span class="slide-count">03 / 21</span><a aria-label="Next slide — swipe up" class="nav-btn" href="#slide-live-reveal">↓</a></div></section><section class="slide dark" id="slide-live-reveal">
+<input class="identity-flip-toggle" id="live-reveal-flip" type="checkbox"/>
+<label aria-label="Tap to unlock the Behaviour Shift Live experience" class="identity-flip-card" for="live-reveal-flip">
+<div class="identity-flip-inner">
+<div class="identity-flip-face identity-flip-front">
+<div class="identity-wrap">
+<div class="kicker">Introducing Behaviour Shift Live</div>
+<h1 class="title">The session becomes<br/><span class="gold">a shared experience.</span></h1>
+<p class="identity-lead"><strong>Behaviour Shift Live is the future interactive learning platform behind Behaviour Shift.</strong></p>
+<p class="identity-lead">It is being designed to bring the presentation, the room and every participant into one connected live experience.</p>
+<div class="identity-declaration">You are not simply attending this session.<br/><strong>You are helping us trial the prototype that will shape what comes next.</strong></div>
+<div class="identity-card">
+<strong>A founding look at the future.</strong>
+<p>Your participation today will help us understand how the platform should feel, how people want to contribute and how shared learning can become more honest, inclusive and useful.</p>
+</div>
+<div class="tap-cue">Tap to unlock the experience →</div>
+</div>
+</div>
+<div class="identity-flip-face identity-flip-back">
+<div class="identity-wrap">
+<div class="kicker">One Room. One Live Learning Space.</div>
+<h1 class="title identity-back-title">Everyone can take part.<br/><span class="gold">Nobody has to be put on the spot.</span></h1>
+<div class="live-reveal-grid">
+<div class="live-reveal-item"><strong>Join instantly</strong>Enter through a QR code or room code from any phone, tablet or laptop.</div>
+<div class="live-reveal-item"><strong>Follow live</strong>Move through the Behaviour Shift presentation together as the facilitator leads the room.</div>
+<div class="live-reveal-item"><strong>Respond anonymously</strong>Share honest thoughts, questions and reflections without names being displayed.</div>
+<div class="live-reveal-item"><strong>Take part</strong>Complete interactive workshop activities at the moments they matter most.</div>
+<div class="live-reveal-item"><strong>Reveal safely</strong>The facilitator reviews, moderates and shares responses through a live response wall.</div>
+<div class="live-reveal-item"><strong>Learn together</strong>Explore patterns, different perspectives and shared understanding across the whole room.</div>
+<div class="live-reveal-item"><strong>Keep the learning</strong>Receive useful resources and reflections after the session has finished.</div>
+</div>
+<div class="live-reveal-finale">Not technology for technology's sake. <strong class="gold">A better way to connect the room, hear every voice and build change together.</strong></div>
+<div class="tap-cue">Tap to return ↺</div>
+</div>
+</div>
+</div>
+</label>
+<div class="speaker-note">Facilitator: reveal this as the future experience, not a technical demonstration. Explain that the group is helping trial how Behaviour Shift Live should feel before the full platform is built.</div>
+<div aria-label="Slide navigation" class="slide-nav"><a aria-label="Previous slide — swipe down" class="nav-btn" href="#slide-2">↑</a><span class="slide-count">04 / 21</span><a aria-label="Next slide — swipe up" class="nav-btn" href="#slide-live-system">↓</a></div>
+</section>
+<section class="slide dark" id="slide-live-system">
 <input class="identity-flip-toggle" id="live-system-flip" type="checkbox"/>
 <label aria-label="Tap to flip the Behaviour Shift Live learning system page" class="identity-flip-card" for="live-system-flip">
 <div class="identity-flip-inner">
@@ -711,7 +812,7 @@ Behaviour Shift asks...
 <div class="speaker-note">
     Facilitator: explain that Behaviour Shift Live is not the finished service. This cohort is helping trial how the slides, anonymous participation, moderated response wall and shared learning experience will eventually work together.
   </div>
-<div aria-label="Slide navigation" class="slide-nav"><a aria-label="Previous slide — swipe down" class="nav-btn" href="#slide-2">↑</a><span class="slide-count">04 / 20</span><a aria-label="Next slide — swipe up" class="nav-btn" href="#slide-3">↓</a></div></section><section class="slide dark" id="slide-3">
+<div aria-label="Slide navigation" class="slide-nav"><a aria-label="Previous slide — swipe down" class="nav-btn" href="#slide-live-reveal">↑</a><span class="slide-count">05 / 21</span><a aria-label="Next slide — swipe up" class="nav-btn" href="#slide-3">↓</a></div></section><section class="slide dark" id="slide-3">
 <div class="identity-wrap" style="display:flex;flex-direction:column;justify-content:center;align-items:center;height:100%;text-align:center;padding:0 40px 90px 40px;box-sizing:border-box;">
 <div class="kicker">Why I'm Here</div>
 <h1 class="title" style="margin-top:28px;max-width:900px;line-height:1.08;">
@@ -723,7 +824,7 @@ Behaviour Shift asks...
     No script. Just my story.
   </p>
 </div>
-<div class="speaker-note">Facilitator: allow a genuine pause. Ask a follow-up such as “What makes people stop speaking honestly?” before revealing the principles.</div><div aria-label="Slide navigation" class="slide-nav"><a aria-label="Previous slide — swipe down" class="nav-btn" href="#slide-live-system">↑</a><span class="slide-count">05 / 20</span><a aria-label="Next slide — swipe up" class="nav-btn" href="#slide-safe-room">↓</a></div></section><section class="slide dark" id="slide-safe-room">
+<div class="speaker-note">Facilitator: allow a genuine pause. Ask a follow-up such as “What makes people stop speaking honestly?” before revealing the principles.</div><div aria-label="Slide navigation" class="slide-nav"><a aria-label="Previous slide — swipe down" class="nav-btn" href="#slide-live-system">↑</a><span class="slide-count">06 / 21</span><a aria-label="Next slide — swipe up" class="nav-btn" href="#slide-safe-room">↓</a></div></section><section class="slide dark" id="slide-safe-room">
 <div class="kicker">Room Agreement</div>
 <h1 class="title">What would make this<br/><span class="gold">a safe room?</span></h1>
 <p class="subtitle">Before we talk about children, behaviour, families and professional pressure, we need to agree what makes honesty possible.</p>
@@ -755,7 +856,7 @@ Behaviour Shift asks...
 </details>
 </div>
 <div class="speaker-note">Facilitator: invite anonymous responses first, then reveal the Behaviour Shift expectations. Set the tone before moving into the wider purpose.</div>
-<div aria-label="Slide navigation" class="slide-nav"><a aria-label="Previous slide — swipe down" class="nav-btn" href="#slide-3">↑</a><span class="slide-count">06 / 20</span><a aria-label="Next slide — swipe up" class="nav-btn" href="#slide-4">↓</a></div></section><section class="slide dark" id="slide-4">
+<div aria-label="Slide navigation" class="slide-nav"><a aria-label="Previous slide — swipe down" class="nav-btn" href="#slide-3">↑</a><span class="slide-count">07 / 21</span><a aria-label="Next slide — swipe up" class="nav-btn" href="#slide-4">↓</a></div></section><section class="slide dark" id="slide-4">
 <div class="kicker">Why Behaviour Shift Exists</div>
 <h1 class="title">Same goal.<br/>Different pressures.<br/><span class="gold">Too many gaps.</span></h1>
 <p class="subtitle">Tap each group to explore what they may be carrying into the room — and why the same situation can look completely different from each side.</p>
@@ -774,7 +875,7 @@ Behaviour Shift asks...
 </details>
 </div>
 <div class="quote">Behaviour Shift is not about choosing a side. It is about helping every side see the whole child.</div>
-<div aria-label="Slide navigation" class="slide-nav"><a aria-label="Previous slide — swipe down" class="nav-btn" href="#slide-safe-room">↑</a><span class="slide-count">07 / 20</span><a aria-label="Next slide — swipe up" class="nav-btn" href="#slide-5">↓</a></div></section><section class="slide light" id="slide-5">
+<div aria-label="Slide navigation" class="slide-nav"><a aria-label="Previous slide — swipe down" class="nav-btn" href="#slide-safe-room">↑</a><span class="slide-count">08 / 21</span><a aria-label="Next slide — swipe up" class="nav-btn" href="#slide-5">↓</a></div></section><section class="slide light" id="slide-5">
 <div class="kicker">The Behaviour Shift Core</div>
 <h1 class="title core-title">Change the Response.<br/><span class="gold">Change the Outcome.</span></h1>
 <p class="core-statement">Behaviour is communication.</p>
@@ -803,7 +904,7 @@ Behaviour Shift asks...
 </label>
 </div>
 <p class="core-footer">Understand the need. Protect the relationship. Keep the boundary.</p>
-<div aria-label="Slide navigation" class="slide-nav"><a aria-label="Previous slide — swipe down" class="nav-btn" href="#slide-4">↑</a><span class="slide-count">08 / 20</span><a aria-label="Next slide — swipe up" class="nav-btn" href="#slide-6">↓</a></div>
+<div aria-label="Slide navigation" class="slide-nav"><a aria-label="Previous slide — swipe down" class="nav-btn" href="#slide-4">↑</a><span class="slide-count">09 / 21</span><a aria-label="Next slide — swipe up" class="nav-btn" href="#slide-6">↓</a></div>
 </section><section class="slide dark" id="slide-6">
 <div class="kicker">Session One</div>
 <h1 class="title">We are here for<br/><span class="gold">the same child.</span></h1>
@@ -825,7 +926,7 @@ Behaviour Shift asks...
 <div class="role-info info-support"><strong>Family support professionals</strong><p>Family support teams often see practical barriers up close: routines, housing, attendance, finances, confidence and engagement. They help turn plans into realistic everyday change.</p><p class="bubble-question">What makes a plan genuinely workable for a family?</p></div>
 </div>
 </div>
-<div aria-label="Slide navigation" class="slide-nav"><a aria-label="Previous slide — swipe down" class="nav-btn" href="#slide-5">↑</a><span class="slide-count">09 / 20</span><a aria-label="Next slide — swipe up" class="nav-btn" href="#slide-7">↓</a></div></section><section class="slide dark" id="slide-7">
+<div aria-label="Slide navigation" class="slide-nav"><a aria-label="Previous slide — swipe down" class="nav-btn" href="#slide-5">↑</a><span class="slide-count">10 / 21</span><a aria-label="Next slide — swipe up" class="nav-btn" href="#slide-7">↓</a></div></section><section class="slide dark" id="slide-7">
 <div class="kicker">Shared Purpose Exercise</div>
 <h1 class="title">Think of one child.<br/><span class="gold">What did every adult want?</span></h1>
 <div class="shared-input-card">
@@ -865,7 +966,7 @@ Behaviour Shift asks...
 <div class="wall-footer">Different roles. Different pressures. A shared hope for the same child.</div>
 </div>
 </details>
-<div aria-label="Slide navigation" class="slide-nav"><a aria-label="Previous slide — swipe down" class="nav-btn" href="#slide-6">↑</a><span class="slide-count">10 / 20</span><a aria-label="Next slide — swipe up" class="nav-btn" href="#slide-8">↓</a></div></section><section class="slide dark" id="slide-8">
+<div aria-label="Slide navigation" class="slide-nav"><a aria-label="Previous slide — swipe down" class="nav-btn" href="#slide-6">↑</a><span class="slide-count">11 / 21</span><a aria-label="Next slide — swipe up" class="nav-btn" href="#slide-8">↓</a></div></section><section class="slide dark" id="slide-8">
 <div aria-label="Reflection: different perspectives, the same hope" class="native-reflection">
 <input checked="" class="reflection-state" id="reflection-step-1" name="reflection-step" type="radio"/>
 <input class="reflection-state" id="reflection-step-2" name="reflection-step" type="radio"/>
@@ -901,7 +1002,7 @@ Behaviour Shift asks...
 <label class="reflection-tap tap-4" for="reflection-step-5"><span>Tap anywhere to continue</span></label>
 <label class="reflection-tap tap-5" for="reflection-step-1"><span>Tap to replay</span></label>
 </div>
-<div aria-label="Slide navigation" class="slide-nav"><a aria-label="Previous slide — swipe down" class="nav-btn" href="#slide-7">↑</a><span class="slide-count">11 / 20</span><a aria-label="Next slide — swipe up" class="nav-btn" href="#slide-9">↓</a></div>
+<div aria-label="Slide navigation" class="slide-nav"><a aria-label="Previous slide — swipe down" class="nav-btn" href="#slide-7">↑</a><span class="slide-count">12 / 21</span><a aria-label="Next slide — swipe up" class="nav-btn" href="#slide-9">↓</a></div>
 </section><section class="slide dark" id="slide-9">
 <div class="kicker">Interactive Case Study — Part One</div>
 <h1 class="title">The child did not return home<br/><span class="gold">at the agreed time.</span></h1>
@@ -932,7 +1033,7 @@ Behaviour Shift asks...
 <details class="reveal-card"><summary><strong>Child-centred view</strong><span>Tap to reveal</span></summary><div class="reveal-card-body"><strong>Child-centred view</strong>What may have made returning feel difficult, unsafe, embarrassing or less important than staying away?</div></details>
 </div>
 <p class="discussion-cue">Discuss: Where do the responses agree? Where do they differ? Which differences come from responsibility, experience or fear?</p>
-<div aria-label="Slide navigation" class="slide-nav"><a aria-label="Previous slide — swipe down" class="nav-btn" href="#slide-8">↑</a><span class="slide-count">12 / 20</span><a aria-label="Next slide — swipe up" class="nav-btn" href="#slide-10">↓</a></div>
+<div aria-label="Slide navigation" class="slide-nav"><a aria-label="Previous slide — swipe down" class="nav-btn" href="#slide-8">↑</a><span class="slide-count">13 / 21</span><a aria-label="Next slide — swipe up" class="nav-btn" href="#slide-10">↓</a></div>
 </section><section class="slide dark" id="slide-10">
 <div class="kicker">Interactive Case Study — Part Two</div>
 <h1 class="title">The child has returned.<br/><span class="gold">They are under the influence.</span></h1>
@@ -963,7 +1064,7 @@ Behaviour Shift asks...
 <details class="reveal-card"><summary><strong>The response afterwards</strong><span>Tap to reveal</span></summary><div class="reveal-card-body"><strong>The response afterwards</strong>How will adults revisit boundaries, repair trust and understand what happened without making returning home feel unsafe next time?</div></details>
 </div>
 <p class="discussion-cue">Compare this answer with your first one. What changed when the circumstances changed—and what remained important?</p>
-<div aria-label="Slide navigation" class="slide-nav"><a aria-label="Previous slide — swipe down" class="nav-btn" href="#slide-9">↑</a><span class="slide-count">13 / 20</span><a aria-label="Next slide — swipe up" class="nav-btn" href="#slide-11">↓</a></div>
+<div aria-label="Slide navigation" class="slide-nav"><a aria-label="Previous slide — swipe down" class="nav-btn" href="#slide-9">↑</a><span class="slide-count">14 / 21</span><a aria-label="Next slide — swipe up" class="nav-btn" href="#slide-11">↓</a></div>
 </section><section class="slide light" id="slide-11">
 <div class="kicker">What Changed?</div>
 <h1 class="title">The behaviour stayed the same.<br/><span class="gold">Our understanding changed.</span></h1>
@@ -984,7 +1085,7 @@ Behaviour Shift asks...
 </label>
 </div>
 <div class="quote">Understanding does not remove boundaries. It helps us use boundaries more effectively.</div>
-<div aria-label="Slide navigation" class="slide-nav"><a aria-label="Previous slide — swipe down" class="nav-btn" href="#slide-10">↑</a><span class="slide-count">14 / 20</span><a aria-label="Next slide — swipe up" class="nav-btn" href="#slide-12">↓</a></div></section><section class="slide dark" id="slide-12">
+<div aria-label="Slide navigation" class="slide-nav"><a aria-label="Previous slide — swipe down" class="nav-btn" href="#slide-10">↑</a><span class="slide-count">15 / 21</span><a aria-label="Next slide — swipe up" class="nav-btn" href="#slide-12">↓</a></div></section><section class="slide dark" id="slide-12">
 <div class="kicker">Different Pieces of the Same Puzzle</div>
 <h1 class="title">What does your role see<br/><span class="gold">that others may miss?</span></h1>
 <div class="core-grid role-puzzle-grid">
@@ -1032,26 +1133,26 @@ Behaviour Shift asks...
 </label>
 </div>
 <div class="speaker-note">Discussion: ask one representative from each group to name something they wish others understood about their role.</div>
-<div aria-label="Slide navigation" class="slide-nav"><a aria-label="Previous slide — swipe down" class="nav-btn" href="#slide-11">↑</a><span class="slide-count">15 / 20</span><a aria-label="Next slide — swipe up" class="nav-btn" href="#slide-13">↓</a></div></section><section class="slide dark" id="slide-13">
+<div aria-label="Slide navigation" class="slide-nav"><a aria-label="Previous slide — swipe down" class="nav-btn" href="#slide-11">↑</a><span class="slide-count">16 / 21</span><a aria-label="Next slide — swipe up" class="nav-btn" href="#slide-13">↓</a></div></section><section class="slide dark" id="slide-13">
 <div class="kicker">What Behaviour Shift Will Do</div>
 <h1 class="title">Create a common language.<br/><span class="gold">Build better responses.</span></h1>
 <div class="grid three"><div class="card"><strong>Understand</strong>Look beneath behaviour without excusing harm.</div><div class="card"><strong>Connect</strong>Protect relationships while maintaining safety.</div><div class="card"><strong>Communicate</strong>Reduce blame and make difficult conversations more productive.</div><div class="card"><strong>Collaborate</strong>Bring different perspectives into one workable plan.</div><div class="card"><strong>Reflect</strong>Help adults notice their own triggers, assumptions and impact.</div><div class="card"><strong>Change</strong>Turn insight into practical responses that can be repeated.</div></div>
-<div aria-label="Slide navigation" class="slide-nav"><a aria-label="Previous slide — swipe down" class="nav-btn" href="#slide-12">↑</a><span class="slide-count">16 / 20</span><a aria-label="Next slide — swipe up" class="nav-btn" href="#slide-14">↓</a></div></section><section class="slide dark" id="slide-14">
+<div aria-label="Slide navigation" class="slide-nav"><a aria-label="Previous slide — swipe down" class="nav-btn" href="#slide-12">↑</a><span class="slide-count">17 / 21</span><a aria-label="Next slide — swipe up" class="nav-btn" href="#slide-14">↓</a></div></section><section class="slide dark" id="slide-14">
 <div class="kicker">What This Is Not</div>
 <h1 class="title">Not blame.<br/>Not sides.<br/><span class="gold">Not another lecture.</span></h1>
 <div class="grid two"><div class="card"><strong>It is not</strong>A space to criticise families, attack professionals or decide who is “the problem”.</div><div class="card"><strong>It is</strong>A space to understand pressure, challenge assumptions and practise better ways forward.</div></div>
-<div aria-label="Slide navigation" class="slide-nav"><a aria-label="Previous slide — swipe down" class="nav-btn" href="#slide-13">↑</a><span class="slide-count">17 / 20</span><a aria-label="Next slide — swipe up" class="nav-btn" href="#slide-15">↓</a></div></section><section class="slide dark" id="slide-15">
+<div aria-label="Slide navigation" class="slide-nav"><a aria-label="Previous slide — swipe down" class="nav-btn" href="#slide-13">↑</a><span class="slide-count">18 / 21</span><a aria-label="Next slide — swipe up" class="nav-btn" href="#slide-15">↓</a></div></section><section class="slide dark" id="slide-15">
 <div class="kicker">Your Voice Shapes the Pilot</div>
 <h1 class="title">You are not just attending.<br/><span class="gold">You are helping build it.</span></h1>
 <div class="prompt"><div class="prompt-label">Closing reflection</div><p>What would make Behaviour Shift genuinely useful in your role, your family or the lives of the children you support?</p></div>
 <div class="chips"><span class="chip">What felt different?</span><span class="chip">What challenged you?</span><span class="chip">What should we keep?</span><span class="chip">What should we change?</span></div>
-<div aria-label="Slide navigation" class="slide-nav"><a aria-label="Previous slide — swipe down" class="nav-btn" href="#slide-14">↑</a><span class="slide-count">18 / 20</span><a aria-label="Next slide — swipe up" class="nav-btn" href="#slide-16">↓</a></div></section><section class="slide hero" id="slide-16">
+<div aria-label="Slide navigation" class="slide-nav"><a aria-label="Previous slide — swipe down" class="nav-btn" href="#slide-14">↑</a><span class="slide-count">19 / 21</span><a aria-label="Next slide — swipe up" class="nav-btn" href="#slide-16">↓</a></div></section><section class="slide hero" id="slide-16">
 <div class="kicker">The Behaviour Shift</div>
 <div class="final-lockup">Everybody in this room carries a different piece of the same puzzle.</div>
 <div class="gold-rule"></div>
 <div class="quote">When adults understand each other, children no longer have to carry the gaps between us.</div>
 <div class="tagline" style="margin-top:30px">Change the response. Change the outcome.</div>
-<div aria-label="Slide navigation" class="slide-nav"><a aria-label="Previous slide — swipe down" class="nav-btn" href="#slide-15">↑</a><span class="slide-count">19 / 20</span><a aria-label="Next slide — swipe up" class="nav-btn" href="#slide-thank-you">↓</a></div></section><section class="slide hero" id="slide-thank-you">
+<div aria-label="Slide navigation" class="slide-nav"><a aria-label="Previous slide — swipe down" class="nav-btn" href="#slide-15">↑</a><span class="slide-count">20 / 21</span><a aria-label="Next slide — swipe up" class="nav-btn" href="#slide-thank-you">↓</a></div></section><section class="slide hero" id="slide-thank-you">
 <div class="kicker">Thank You</div>
 <h1 class="title">Thank you for helping shape<br/><span class="gold">what comes next.</span></h1>
 <div class="gold-rule"></div>
@@ -1075,7 +1176,7 @@ Behaviour Shift asks...
 <div class="tagline" style="margin-top:30px">Change the response. Change the outcome.</div>
 <div aria-label="Slide navigation" class="slide-nav">
 <a aria-label="Previous slide — swipe down" class="nav-btn" href="#slide-16">↑</a>
-<span class="slide-count">20 / 20</span>
+<span class="slide-count">21 / 21</span>
 <a aria-label="Next slide — swipe up" class="nav-btn disabled" href="#slide-thank-you">↓</a>
 </div>
 </section></div>
