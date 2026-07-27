@@ -1000,6 +1000,36 @@ body{position:fixed;inset:0;width:100%;height:var(--app-height,100%);overflow:hi
   #slide-live-reveal .live-reveal-item{font-size:10.3px !important;padding:7px 8px !important}
 }
 
+
+
+/* V66 — Pages 17–19 interactive closing sequence */
+.closing-title{font-size:clamp(34px,6.2vw,78px);max-width:1120px}
+.closing-intro{margin-top:14px;max-width:900px;color:var(--soft);font-size:clamp(15px,1.7vw,21px);line-height:1.45}
+.closing-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px;margin-top:24px;max-width:1180px}
+.closing-grid .core-card,.closing-grid .flip-card-inner{min-height:188px}
+.closing-grid .flip-card-face{padding:18px}
+.closing-grid .flip-card-front strong{font-size:clamp(17px,1.8vw,23px)}
+.closing-grid .flip-card-back p{font-size:13.5px;line-height:1.42}
+.closing-grid .reflection-question{display:block;margin-top:10px;padding-top:9px;border-top:1px solid rgba(247,240,230,.14);color:var(--gold);font-size:12px;font-weight:850;line-height:1.35}
+#slide-14 .closing-grid .flip-card-back strong{color:var(--gold)}
+#slide-15 .shape-grid{grid-template-columns:repeat(3,minmax(0,1fr));max-width:1080px}
+#slide-15 .shape-grid .core-card,#slide-15 .shape-grid .flip-card-inner{min-height:170px}
+#slide-15 .pilot-response{margin-top:18px;max-width:1080px}
+#slide-15 .pilot-response .shared-input-card{padding:16px}
+#slide-15 .pilot-response .shared-wall-input{min-height:66px}
+#slide-15 .pilot-closing{margin-top:14px;color:var(--gold);font-size:clamp(15px,1.7vw,21px);font-weight:850;line-height:1.4;max-width:980px}
+@media(max-width:800px){
+  #slide-13,#slide-14,#slide-15{padding-top:58px}
+  .closing-grid,#slide-15 .shape-grid{grid-template-columns:1fr}
+  .closing-grid .core-card,.closing-grid .flip-card-inner,#slide-15 .shape-grid .core-card,#slide-15 .shape-grid .flip-card-inner{min-height:158px}
+  .closing-title{font-size:clamp(30px,9vw,44px)}
+  .closing-intro{font-size:14px;margin-top:10px}
+  .closing-grid{margin-top:17px;gap:11px}
+  .closing-grid .flip-card-face{padding:16px}
+  .closing-grid .flip-card-back p{font-size:12.5px}
+  #slide-15 .pilot-response{margin-top:14px}
+}
+
 </style>
 </head>
 <body>
@@ -1492,17 +1522,48 @@ Behaviour Shift asks...
 <div class="speaker-note">Discussion: ask one representative from each group to name something they wish others understood about their role.</div>
 <div aria-label="Slide navigation" class="slide-nav"><a aria-label="Previous slide — swipe down" class="nav-btn" href="#slide-11">↑</a><span class="slide-count">16 / 21</span><a aria-label="Next slide — swipe up" class="nav-btn" href="#slide-13">↓</a></div></section><section class="slide dark" id="slide-13">
 <div class="kicker">What Behaviour Shift Will Do</div>
-<h1 class="title">Create a common language.<br/><span class="gold">Build better responses.</span></h1>
-<div class="grid three"><div class="card"><strong>Understand</strong>Look beneath behaviour without excusing harm.</div><div class="card"><strong>Connect</strong>Protect relationships while maintaining safety.</div><div class="card"><strong>Communicate</strong>Reduce blame and make difficult conversations more productive.</div><div class="card"><strong>Collaborate</strong>Bring different perspectives into one workable plan.</div><div class="card"><strong>Reflect</strong>Help adults notice their own triggers, assumptions and impact.</div><div class="card"><strong>Change</strong>Turn insight into practical responses that can be repeated.</div></div>
+<h1 class="title closing-title">Create a common language.<br/><span class="gold">Build better responses.</span></h1>
+<p class="closing-intro">Tap each outcome to explore what Behaviour Shift is designed to change in real conversations, relationships and everyday practice.</p>
+<div class="closing-grid">
+<input class="core-flip-toggle" id="outcome-understand" type="checkbox"/><label class="flip-card core-card" for="outcome-understand"><div class="flip-card-inner"><div class="flip-card-face flip-card-front"><strong>Understand</strong><span>Look beneath behaviour<br/>Tap to flip</span></div><div class="flip-card-face flip-card-back"><strong>See the whole picture</strong><p>Move beyond “How do we stop this?” and ask what need, fear, experience or message may be sitting underneath. Understanding does not excuse harm; it gives adults a better starting point for safety and change.</p><span class="reflection-question">What might change if curiosity came before judgement?</span></div></div></label>
+<input class="core-flip-toggle" id="outcome-connect" type="checkbox"/><label class="flip-card core-card" for="outcome-connect"><div class="flip-card-inner"><div class="flip-card-face flip-card-front"><strong>Connect</strong><span>Protect the relationship<br/>Tap to flip</span></div><div class="flip-card-face flip-card-back"><strong>Connection before correction</strong><p>Help adults hold boundaries without withdrawing care, dignity or belonging. Children are more likely to hear guidance when the relationship still feels safe enough to receive it.</p><span class="reflection-question">How can the boundary stay firm without the relationship becoming the punishment?</span></div></div></label>
+<input class="core-flip-toggle" id="outcome-communicate" type="checkbox"/><label class="flip-card core-card" for="outcome-communicate"><div class="flip-card-inner"><div class="flip-card-face flip-card-front"><strong>Communicate</strong><span>Make difficult conversations useful<br/>Tap to flip</span></div><div class="flip-card-face flip-card-back"><strong>Reduce heat, increase clarity</strong><p>Replace blame, labels and defensive language with clearer conversations about what happened, what is needed and what each person can do next.</p><span class="reflection-question">What language helps people stay in the conversation rather than defend themselves?</span></div></div></label>
+<input class="core-flip-toggle" id="outcome-collaborate" type="checkbox"/><label class="flip-card core-card" for="outcome-collaborate"><div class="flip-card-inner"><div class="flip-card-face flip-card-front"><strong>Collaborate</strong><span>Bring the pieces together<br/>Tap to flip</span></div><div class="flip-card-face flip-card-back"><strong>One child, one workable direction</strong><p>Use the different knowledge held by families, carers and professionals to build responses that are realistic, consistent and understood by everyone involved.</p><span class="reflection-question">What does your role know that the wider plan cannot afford to miss?</span></div></div></label>
+<input class="core-flip-toggle" id="outcome-reflect" type="checkbox"/><label class="flip-card core-card" for="outcome-reflect"><div class="flip-card-inner"><div class="flip-card-face flip-card-front"><strong>Reflect</strong><span>Adults notice themselves first<br/>Tap to flip</span></div><div class="flip-card-face flip-card-back"><strong>Recognise what we bring</strong><p>Help adults notice their triggers, assumptions, urgency and emotional responses before those things shape the next interaction. Reflection creates choice where reaction once took over.</p><span class="reflection-question">What happens inside us just before our response becomes less helpful?</span></div></div></label>
+<input class="core-flip-toggle" id="outcome-change" type="checkbox"/><label class="flip-card core-card" for="outcome-change"><div class="flip-card-inner"><div class="flip-card-face flip-card-front"><strong>Change</strong><span>Turn insight into repeatable action<br/>Tap to flip</span></div><div class="flip-card-face flip-card-back"><strong>Make the next response different</strong><p>Translate understanding into practical responses that can be repeated under pressure: connect, frame, reflect, redirect and reinforce until a safer pattern becomes possible.</p><span class="reflection-question">What is one response you could practise differently from tomorrow?</span></div></div></label>
+</div>
 <div aria-label="Slide navigation" class="slide-nav"><a aria-label="Previous slide — swipe down" class="nav-btn" href="#slide-12">↑</a><span class="slide-count">17 / 21</span><a aria-label="Next slide — swipe up" class="nav-btn" href="#slide-14">↓</a></div></section><section class="slide dark" id="slide-14">
 <div class="kicker">What This Is Not</div>
-<h1 class="title">Not blame.<br/>Not sides.<br/><span class="gold">Not another lecture.</span></h1>
-<div class="grid two"><div class="card"><strong>It is not</strong>A space to criticise families, attack professionals or decide who is “the problem”.</div><div class="card"><strong>It is</strong>A space to understand pressure, challenge assumptions and practise better ways forward.</div></div>
+<h1 class="title closing-title">Not blame. Not sides.<br/><span class="gold">Not another lecture.</span></h1>
+<p class="closing-intro">Behaviour Shift creates challenge without humiliation and accountability without reducing a person to their worst moment.</p>
+<div class="closing-grid">
+<input class="core-flip-toggle" id="not-blame" type="checkbox"/><label class="flip-card core-card" for="not-blame"><div class="flip-card-inner"><div class="flip-card-face flip-card-front"><strong>Not Blame</strong><span>No search for a villain<br/>Tap to flip</span></div><div class="flip-card-face flip-card-back"><strong>Responsibility without shame</strong><p>We can examine impact, decisions and missed opportunities without attacking families, professionals or children. Blame closes people down; honest reflection creates room to change.</p></div></div></label>
+<input class="core-flip-toggle" id="not-sides" type="checkbox"/><label class="flip-card core-card" for="not-sides"><div class="flip-card-inner"><div class="flip-card-face flip-card-front"><strong>Not Choosing Sides</strong><span>The child needs the whole picture<br/>Tap to flip</span></div><div class="flip-card-face flip-card-back"><strong>A bridge, not an argument</strong><p>Different perspectives can all contain truth. Behaviour Shift helps people understand what each person is carrying and find shared ground where it is safe and possible.</p></div></div></label>
+<input class="core-flip-toggle" id="not-lecture" type="checkbox"/><label class="flip-card core-card" for="not-lecture"><div class="flip-card-inner"><div class="flip-card-face flip-card-front"><strong>Not Another Lecture</strong><span>Participation over passive listening<br/>Tap to flip</span></div><div class="flip-card-face flip-card-back"><strong>Learning built with the room</strong><p>People bring experience, pressure and knowledge that cannot be captured by slides alone. The session works through discussion, reflection and practising ideas together.</p></div></div></label>
+<input class="core-flip-toggle" id="not-quick-fix" type="checkbox"/><label class="flip-card core-card" for="not-quick-fix"><div class="flip-card-inner"><div class="flip-card-face flip-card-front"><strong>Not a Quick Fix</strong><span>No promise of instant change<br/>Tap to flip</span></div><div class="flip-card-face flip-card-back"><strong>Change is built through repetition</strong><p>One conversation cannot undo years of hurt, mistrust or established patterns. Behaviour Shift focuses on responses that can be repeated consistently enough to create new experiences over time.</p></div></div></label>
+<input class="core-flip-toggle" id="not-theory" type="checkbox"/><label class="flip-card core-card" for="not-theory"><div class="flip-card-inner"><div class="flip-card-face flip-card-front"><strong>Not Theory Alone</strong><span>Useful beyond the room<br/>Tap to flip</span></div><div class="flip-card-face flip-card-back"><strong>Practical under pressure</strong><p>Every principle should translate into words, actions and choices that adults can use in homes, meetings, classrooms and difficult moments—not only when everyone is calm.</p></div></div></label>
+<input class="core-flip-toggle" id="not-replacement" type="checkbox"/><label class="flip-card core-card" for="not-replacement"><div class="flip-card-inner"><div class="flip-card-face flip-card-front"><strong>Not a Replacement</strong><span>It strengthens existing roles<br/>Tap to flip</span></div><div class="flip-card-face flip-card-back"><strong>Enhancing judgement and relationships</strong><p>Behaviour Shift does not replace safeguarding, professional responsibility, family knowledge or specialist support. It offers a shared language that helps those systems work together more effectively.</p></div></div></label>
+</div>
 <div aria-label="Slide navigation" class="slide-nav"><a aria-label="Previous slide — swipe down" class="nav-btn" href="#slide-13">↑</a><span class="slide-count">18 / 21</span><a aria-label="Next slide — swipe up" class="nav-btn" href="#slide-15">↓</a></div></section><section class="slide dark" id="slide-15">
 <div class="kicker">Your Voice Shapes the Pilot</div>
-<h1 class="title">You are not just attending.<br/><span class="gold">You are helping build it.</span></h1>
-<div class="prompt"><div class="prompt-label">Closing reflection</div><p>What would make Behaviour Shift genuinely useful in your role, your family or the lives of the children you support?</p></div>
-<div class="chips"><span class="chip">What felt different?</span><span class="chip">What challenged you?</span><span class="chip">What should we keep?</span><span class="chip">What should we change?</span></div>
+<h1 class="title closing-title">You are not just attending.<br/><span class="gold">You are helping build it.</span></h1>
+<p class="closing-intro">This founding session is part of the development process. What you experienced, questioned and contributed today will influence how Behaviour Shift is delivered next.</p>
+<div class="closing-grid shape-grid">
+<input class="core-flip-toggle" id="shape-stay" type="checkbox"/><label class="flip-card core-card" for="shape-stay"><div class="flip-card-inner"><div class="flip-card-face flip-card-front"><strong>What Should Stay?</strong><span>Protect what felt valuable<br/>Tap to flip</span></div><div class="flip-card-face flip-card-back"><strong>Keep the strongest parts</strong><p>What felt different, useful or honest enough that every future Behaviour Shift session should preserve it?</p></div></div></label>
+<input class="core-flip-toggle" id="shape-change" type="checkbox"/><label class="flip-card core-card" for="shape-change"><div class="flip-card-inner"><div class="flip-card-face flip-card-front"><strong>What Should Change?</strong><span>Improve what did not land<br/>Tap to flip</span></div><div class="flip-card-face flip-card-back"><strong>Honest feedback strengthens the model</strong><p>What felt unclear, uncomfortable, rushed, repetitive or less useful than it could have been?</p></div></div></label>
+<input class="core-flip-toggle" id="shape-become" type="checkbox"/><label class="flip-card core-card" for="shape-become"><div class="flip-card-inner"><div class="flip-card-face flip-card-front"><strong>What Could It Become?</strong><span>Imagine the future<br/>Tap to flip</span></div><div class="flip-card-face flip-card-back"><strong>Help define the opportunity</strong><p>What could Behaviour Shift offer families, carers, professionals and children that does not currently exist?</p></div></div></label>
+</div>
+<div class="wall-exercise pilot-response">
+<div class="shared-input-card">
+<div class="prompt-label">One final contribution</div>
+<form class="shared-input-row live-wall-form" data-wall-details="pilot-feedback-wall" data-wall-input="pilot-feedback-message" data-wall-target="pilot-feedback-responses">
+<textarea class="shared-wall-input wall-message-input" data-wall-details="pilot-feedback-wall" data-wall-target="pilot-feedback-responses" id="pilot-feedback-message" placeholder="Share one thing we should keep, change or build next..."></textarea>
+<button class="shared-wall-send wall-send-btn" data-wall-details="pilot-feedback-wall" data-wall-input="pilot-feedback-message" data-wall-target="pilot-feedback-responses" type="submit">Send →</button>
+</form>
+<details class="mini-wall" id="pilot-feedback-wall"><summary>Reveal the founding wall</summary><div class="mini-wall-panel"><div class="live-responses has-items" id="pilot-feedback-responses"><h3>Founding group reflections</h3><div class="live-response seed">Keep the honesty and the feeling that every perspective matters.</div><div class="live-response seed">Create more opportunities to practise difficult conversations.</div><div class="live-response seed">Build a live platform that lets everyone contribute safely.</div></div></div></details>
+</div>
+</div>
+<p class="pilot-closing">Everything shared today helps shape what Behaviour Shift becomes—and how effectively it can support better outcomes for children.</p>
 <div aria-label="Slide navigation" class="slide-nav"><a aria-label="Previous slide — swipe down" class="nav-btn" href="#slide-14">↑</a><span class="slide-count">19 / 21</span><a aria-label="Next slide — swipe up" class="nav-btn" href="#slide-16">↓</a></div></section><section class="slide hero" id="slide-16">
 <div class="kicker">The Behaviour Shift</div>
 <div class="final-lockup">Everybody in this room carries a different piece of the same puzzle.</div>
