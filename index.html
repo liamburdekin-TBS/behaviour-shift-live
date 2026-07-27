@@ -1129,11 +1129,40 @@ function flashSent(button){
   }, 1200);
 }
 
+function finishWallSubmitWithoutViewportJump(input, slide, slideScrollTop, slideIndex){
+  // iOS can retain its keyboard-shrunken visual viewport for a moment after Send.
+  // Blur first, then restore only the active slide instead of using scrollIntoView,
+  // which can move the browser's root viewport and expose neighbouring slides.
+  if(input && document.activeElement === input) input.blur();
+  gesture = null;
+  wheelTotal = 0;
+
+  const restore = () => {
+    goToSlide(slideIndex, false);
+    window.scrollTo(0, 0);
+    document.documentElement.scrollTop = 0;
+    document.body.scrollTop = 0;
+    if(slide){
+      slide.scrollTop = Math.max(0, Math.min(slideScrollTop, slide.scrollHeight - slide.clientHeight));
+    }
+    document.documentElement.classList.remove('is-typing');
+    setStableAppHeight();
+  };
+
+  window.requestAnimationFrame(restore);
+  window.setTimeout(restore, 180);
+  window.setTimeout(restore, 420);
+}
+
 function submitWallMessage(trigger){
   const {input, target, details, button} = getWallParts(trigger);
   if(!input){ return false; }
   const text = cleanWallText(input.value);
   if(!text){ input.focus(); return false; }
+
+  const slide = input.closest('.slide');
+  const slideScrollTop = slide ? slide.scrollTop : 0;
+  const slideIndex = slide ? slides.indexOf(slide) : currentSlide;
 
   if(details){ details.open = true; }
   const success = pushToWall(target, text);
@@ -1142,11 +1171,7 @@ function submitWallMessage(trigger){
   input.value = '';
   if(input.dataset.persist){ typedAnswers[input.dataset.persist] = ''; }
   flashSent(button || trigger);
-
-  const newest = target ? target.querySelector('.user-response') : null;
-  if(newest && window.innerWidth <= 900){
-    setTimeout(() => newest.scrollIntoView({behavior:'smooth', block:'center'}), 80);
-  }
+  finishWallSubmitWithoutViewportJump(input, slide, slideScrollTop, slideIndex);
   return false;
 }
 
