@@ -1077,6 +1077,24 @@ body{position:fixed;inset:0;width:100%;height:var(--app-height,100%);overflow:hi
   background:none !important;
 }
 
+
+/* V80 — optical centring for all page counters and true bottom placement on landing slide only. */
+.slide-nav .slide-count{
+  display:block !important;
+  width:100% !important;
+  text-align:center !important;
+  padding-left:3px !important;
+}
+#slide-1 .slide-nav{
+  position:absolute !important;
+  left:22px !important;
+  right:22px !important;
+  bottom:calc(12px + env(safe-area-inset-bottom)) !important;
+  width:auto !important;
+  margin:0 !important;
+  padding:10px 0 0 !important;
+}
+
 </style>
 </head>
 <body>
