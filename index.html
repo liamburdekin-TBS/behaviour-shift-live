@@ -1766,7 +1766,10 @@ if(stickyButton) stickyButton.addEventListener('click',()=>{
 const interactiveSelector='button,a,input,textarea,select,label,details,summary,[contenteditable="true"],.flip-card,.reflection-tap,.pressure-expand';
 let gesture=null;
 let lastSlideGestureAt=0;
-const SLIDE_GESTURE_COOLDOWN=650;
+const SLIDE_GESTURE_COOLDOWN=720;
+const SWIPE_DISTANCE=118;
+const SWIPE_DOMINANCE=1.45;
+const EDGE_TOLERANCE=5;
 
 function isInteractiveTarget(target){
   return target instanceof Element && Boolean(target.closest(interactiveSelector));
@@ -1775,103 +1778,125 @@ function isInteractiveTarget(target){
 function activeSlideMetrics(slide){
   if(!slide) return {canScroll:false,maxScroll:0,atTop:true,atBottom:true};
   const maxScroll=Math.max(0,slide.scrollHeight-slide.clientHeight);
-  const canScroll=maxScroll>6;
+  const canScroll=maxScroll>8;
   return {
     canScroll,
     maxScroll,
-    atTop:!canScroll || slide.scrollTop<=3,
-    atBottom:!canScroll || slide.scrollTop>=maxScroll-3
+    atTop:!canScroll || slide.scrollTop<=EDGE_TOLERANCE,
+    atBottom:!canScroll || slide.scrollTop>=maxScroll-EDGE_TOLERANCE
   };
 }
 
-// Native scrolling always wins. A slide change is considered only after the
-// gesture finishes, and only when that gesture began at the relevant edge.
+function resetTouchGesture(){
+  gesture=null;
+}
+
+// One-finger vertical navigation. Scrollable slide content always gets first priority.
+// A page turn is accepted only when the same gesture remains vertical, starts and ends
+// at the required scroll edge, and travels far enough to be unmistakably deliberate.
 document.addEventListener('touchstart',event=>{
-  if(isTextEntryTarget(document.activeElement) || event.touches.length!==1){
-    gesture=null;
+  if(isTextEntryTarget(document.activeElement) || event.touches.length!==1 || isInteractiveTarget(event.target)){
+    resetTouchGesture();
     return;
   }
   const touch=event.touches[0];
   const slide=event.target.closest('.slide.active') || slides[currentSlide];
   const metrics=activeSlideMetrics(slide);
   gesture={
-    x:touch.clientX,
-    y:touch.clientY,
+    startX:touch.clientX,
+    startY:touch.clientY,
+    lastX:touch.clientX,
+    lastY:touch.clientY,
     startedAt:performance.now(),
     slide,
     startScrollTop:slide ? slide.scrollTop : 0,
-    startedAtTop:metrics.atTop,
-    startedAtBottom:metrics.atBottom,
-    canScroll:metrics.canScroll
+    beganAtTop:metrics.atTop,
+    beganAtBottom:metrics.atBottom,
+    axis:null,
+    cancelled:false
   };
+},{passive:true,capture:true});
+
+document.addEventListener('touchmove',event=>{
+  if(!gesture || event.touches.length!==1) return;
+  const touch=event.touches[0];
+  gesture.lastX=touch.clientX;
+  gesture.lastY=touch.clientY;
+  const dx=touch.clientX-gesture.startX;
+  const dy=touch.clientY-gesture.startY;
+  if(!gesture.axis && (Math.abs(dx)>10 || Math.abs(dy)>10)){
+    gesture.axis=Math.abs(dy)>Math.abs(dx)*SWIPE_DOMINANCE ? 'vertical' : 'other';
+    if(gesture.axis==='other') gesture.cancelled=true;
+  }
 },{passive:true,capture:true});
 
 document.addEventListener('touchend',event=>{
   if(!gesture || !event.changedTouches.length) return;
   const g=gesture;
-  gesture=null;
-  if(performance.now()-lastSlideGestureAt<SLIDE_GESTURE_COOLDOWN) return;
+  resetTouchGesture();
+  if(g.cancelled || g.axis==='other' || performance.now()-lastSlideGestureAt<SLIDE_GESTURE_COOLDOWN) return;
 
   const end=event.changedTouches[0];
-  const dx=end.clientX-g.x;
-  const dy=end.clientY-g.y;
+  const dx=end.clientX-g.startX;
+  const dy=end.clientY-g.startY;
   const distance=Math.abs(dy);
   const duration=Math.max(1,performance.now()-g.startedAt);
-  const verticalEnough=distance>Math.abs(dx)*1.65;
-  const deliberate=distance>=145 && duration<=1100;
-  const scrollMoved=g.slide ? Math.abs(g.slide.scrollTop-g.startScrollTop) : 0;
-  const stayedAtEdge=!g.canScroll || scrollMoved<=5;
-  const correctEdge=dy<0 ? g.startedAtBottom : g.startedAtTop;
+  const verticalEnough=distance>Math.abs(dx)*SWIPE_DOMINANCE;
+  const deliberate=distance>=SWIPE_DISTANCE && duration>=90 && duration<=1250;
+  if(!verticalEnough || !deliberate || !g.slide) return;
 
-  if(verticalEnough && deliberate && stayedAtEdge && correctEdge){
+  const metrics=activeSlideMetrics(g.slide);
+  const scrollTravel=Math.abs(g.slide.scrollTop-g.startScrollTop);
+  const goingForward=dy<0;
+  const beganAtRequiredEdge=goingForward ? g.beganAtBottom : g.beganAtTop;
+  const endedAtRequiredEdge=goingForward ? metrics.atBottom : metrics.atTop;
+  const contentDidNotScroll=scrollTravel<=EDGE_TOLERANCE;
+
+  if(beganAtRequiredEdge && endedAtRequiredEdge && contentDidNotScroll){
     lastSlideGestureAt=performance.now();
-    goToSlide(currentSlide+(dy<0?1:-1));
+    goToSlide(currentSlide+(goingForward?1:-1));
   }
 },{passive:true,capture:true});
 
-document.addEventListener('touchcancel',()=>{gesture=null},{passive:true,capture:true});
+document.addEventListener('touchcancel',resetTouchGesture,{passive:true,capture:true});
 
-// Trackpads and mouse wheels follow the same model: scroll normally, then use a
-// separate intentional gesture at an edge to move between slides.
+// Trackpads and mouse wheels: let the active slide scroll naturally. A fresh,
+// separate wheel gesture at the relevant edge is required to change pages.
 let wheelTotal=0;
 let wheelTimer=null;
 let wheelDirection=0;
 let wheelStartedAtEdge=false;
+function resetWheelGesture(){
+  wheelTotal=0;
+  wheelDirection=0;
+  wheelStartedAtEdge=false;
+  wheelTimer=null;
+}
 document.addEventListener('wheel',event=>{
-  if(isTextEntryTarget(document.activeElement)) return;
+  if(isTextEntryTarget(document.activeElement) || isInteractiveTarget(event.target)) return;
   const slide=slides[currentSlide];
   const metrics=activeSlideMetrics(slide);
   const direction=event.deltaY>0?1:-1;
 
-  if(!wheelTimer){
-    wheelDirection=direction;
-    wheelStartedAtEdge=direction>0 ? metrics.atBottom : metrics.atTop;
-    wheelTotal=0;
-  }
-  if(direction!==wheelDirection){
+  if(!wheelTimer || direction!==wheelDirection){
     wheelDirection=direction;
     wheelStartedAtEdge=direction>0 ? metrics.atBottom : metrics.atTop;
     wheelTotal=0;
   }
 
   clearTimeout(wheelTimer);
-  wheelTimer=setTimeout(()=>{
-    wheelTotal=0;
-    wheelDirection=0;
-    wheelStartedAtEdge=false;
-    wheelTimer=null;
-  },260);
+  wheelTimer=setTimeout(resetWheelGesture,300);
 
   if(metrics.canScroll && !wheelStartedAtEdge) return;
   if(performance.now()-lastSlideGestureAt<SLIDE_GESTURE_COOLDOWN) return;
 
   wheelTotal+=event.deltaY;
-  if(Math.abs(wheelTotal)>=150 && wheelStartedAtEdge){
+  if(Math.abs(wheelTotal)>=170 && wheelStartedAtEdge){
     event.preventDefault();
     lastSlideGestureAt=performance.now();
-    wheelTotal=0;
-    wheelStartedAtEdge=false;
-    goToSlide(currentSlide+direction);
+    const next=currentSlide+direction;
+    resetWheelGesture();
+    goToSlide(next);
   }
 },{passive:false});
 
