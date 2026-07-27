@@ -447,11 +447,11 @@
 
 
 
-/* V53 — vertical one-screen swipe navigation. Existing content and interactions preserved. */
+/* V54 — smoother vertical one-screen swipe navigation with a firmer gesture threshold. */
 .slide{
   opacity:1 !important;
   transform:translate3d(0,100%,0) !important;
-  transition:transform .42s cubic-bezier(.22,.72,.18,1) !important;
+  transition:transform .58s cubic-bezier(.22,.78,.18,1) !important;
   will-change:transform;
 }
 .slide.before{transform:translate3d(0,-100%,0) !important;pointer-events:none !important}
@@ -887,7 +887,7 @@ function goToSlide(index){
   if(next===currentSlide || slideLocked) return;
   slideLocked=true;
   applySlideState(next,true);
-  window.setTimeout(()=>{slideLocked=false},460);
+  window.setTimeout(()=>{slideLocked=false},620);
 }
 
 const requestedId=(location.hash||'#slide-1').slice(1);
@@ -932,7 +932,7 @@ document.addEventListener('touchstart',event=>{
     return;
   }
   const touch=event.touches[0];
-  gesture={x:touch.clientX,y:touch.clientY,lastY:touch.clientY,vertical:false};
+  gesture={x:touch.clientX,y:touch.clientY,lastY:touch.clientY,startedAt:performance.now(),vertical:false};
 },{passive:true,capture:true});
 
 document.addEventListener('touchmove',event=>{
@@ -941,7 +941,7 @@ document.addEventListener('touchmove',event=>{
   const dx=touch.clientX-gesture.x;
   const dy=touch.clientY-gesture.y;
   gesture.lastY=touch.clientY;
-  if(!gesture.vertical && Math.abs(dy)>12 && Math.abs(dy)>Math.abs(dx)*1.15){
+  if(!gesture.vertical && Math.abs(dy)>18 && Math.abs(dy)>Math.abs(dx)*1.2){
     gesture.vertical=true;
   }
   // Once it is clearly a vertical navigation gesture, stop Safari turning it into page scrolling.
@@ -953,7 +953,9 @@ document.addEventListener('touchend',event=>{
   const end=event.changedTouches[0];
   const dx=end.clientX-gesture.x;
   const dy=end.clientY-gesture.y;
-  const shouldNavigate=gesture.vertical && Math.abs(dy)>=42 && Math.abs(dy)>Math.abs(dx)*1.15;
+  const duration=Math.max(1,performance.now()-gesture.startedAt);
+  const velocity=Math.abs(dy)/duration;
+  const shouldNavigate=gesture.vertical && Math.abs(dy)>=78 && Math.abs(dy)>Math.abs(dx)*1.2 && velocity>=0.12;
   gesture=null;
   if(shouldNavigate) goToSlide(currentSlide+(dy<0?1:-1));
 },{passive:true,capture:true});
