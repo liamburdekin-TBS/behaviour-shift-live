@@ -469,6 +469,119 @@ body{position:fixed;inset:0;width:100%;height:var(--app-height,100%);overflow:hi
 .deck{position:fixed;inset:0;width:100%;height:var(--app-height,100%);overflow:hidden}
 @media(prefers-reduced-motion:reduce){.slide{transition:none !important}}
 
+
+
+/* V55 page 3 + page 4 refinements */
+#slide-2 .identity-wrap,
+#slide-live-system .identity-wrap {
+  width: min(88vw, 760px);
+  margin: 0 auto;
+}
+
+#slide-2 .kicker,
+#slide-live-system .kicker {
+  color: var(--gold);
+  letter-spacing: 0.16em;
+}
+
+#slide-2 .title,
+#slide-live-system .title {
+  font-size: clamp(2.15rem, 6.2vw, 4.5rem);
+  line-height: 0.98;
+  max-width: 13ch;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+#slide-2 .identity-back-title,
+#slide-live-system .identity-back-title {
+  font-size: clamp(1.85rem, 5.4vw, 3.8rem);
+  line-height: 1.02;
+  max-width: 14ch;
+}
+
+#slide-2 .identity-lead,
+#slide-live-system .identity-lead {
+  font-size: clamp(1rem, 2.5vw, 1.28rem);
+  line-height: 1.5;
+  color: rgba(255,255,255,0.86);
+}
+
+#slide-2 .identity-declaration,
+#slide-live-system .identity-declaration,
+#slide-2 .identity-card,
+#slide-live-system .identity-card {
+  font-size: clamp(0.95rem, 2.3vw, 1.15rem);
+  line-height: 1.48;
+}
+
+#slide-2 .identity-bullets,
+#slide-live-system .identity-bullets {
+  font-size: clamp(0.93rem, 2.15vw, 1.08rem);
+  line-height: 1.42;
+}
+
+#slide-2 .identity-card,
+#slide-live-system .identity-card {
+  background: rgba(255,255,255,0.055);
+  border-color: rgba(216,183,107,0.34);
+}
+
+#slide-2 .identity-declaration,
+#slide-live-system .identity-declaration {
+  color: rgba(255,255,255,0.9);
+}
+
+#slide-2 .identity-consequence span,
+#slide-live-system .identity-consequence span,
+#slide-2 .identity-best,
+#slide-live-system .identity-best {
+  color: var(--gold);
+}
+
+#slide-2 .tap-cue,
+#slide-live-system .tap-cue {
+  color: var(--gold);
+  font-size: clamp(0.9rem, 2vw, 1.05rem);
+  letter-spacing: 0.02em;
+}
+
+/* Make page 4 use the exact same flip behaviour and geometry as page 3 */
+#slide-live-system .identity-flip-card {
+  display: block;
+  width: 100%;
+  height: 100%;
+  cursor: pointer;
+  perspective: 1400px;
+}
+
+#slide-live-system .identity-flip-inner {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  transition: transform 0.8s cubic-bezier(.2,.75,.2,1);
+  transform-style: preserve-3d;
+}
+
+#slide-live-system .identity-flip-toggle:checked + .identity-flip-card .identity-flip-inner {
+  transform: rotateY(180deg);
+}
+
+#slide-live-system .identity-flip-face {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+#slide-live-system .identity-flip-back {
+  transform: rotateY(180deg);
+}
 </style>
 </head>
 <body>
@@ -550,7 +663,7 @@ Behaviour Shift asks...
 </label>
 <div class="speaker-note">Facilitator: keep this personal and brief. Explain that Behaviour Shift grew from lived experience and frontline practice, then let the philosophy speak for itself.</div><div aria-label="Slide navigation" class="slide-nav"><a aria-label="Previous slide — swipe down" class="nav-btn" href="#slide-invitation">↑</a><span class="slide-count">03 / 20</span><a aria-label="Next slide — swipe up" class="nav-btn" href="#slide-live-system">↓</a></div></section><section class="slide dark" id="slide-live-system">
 <input class="identity-flip-toggle" id="live-system-flip" type="checkbox"/>
-<label aria-label="Tap to unlock how Behaviour Shift Live works" class="identity-flip-card" for="live-system-flip">
+<label aria-label="Tap to flip the Behaviour Shift Live learning system page" class="identity-flip-card" for="live-system-flip">
 <div class="identity-flip-inner">
 <div class="identity-flip-face identity-flip-front">
 <div class="identity-wrap">
