@@ -1559,7 +1559,9 @@ function applySlideState(index, animate=true){
 
 function goToSlide(index){
   const next=Math.max(0,Math.min(slides.length-1,index));
-  if(isTextEntryTarget(document.activeElement) || next===currentSlide || slideLocked) return;
+  const activeSlide=slides[currentSlide];
+  const pageTwelveForwardBlocked=activeSlide && activeSlide.id==='slide-8' && next>currentSlide && !pageNineSequenceComplete;
+  if(isTextEntryTarget(document.activeElement) || next===currentSlide || slideLocked || pageTwelveForwardBlocked) return;
   slideLocked=true;
   applySlideState(next,true);
   window.setTimeout(()=>{slideLocked=false},620);
@@ -1916,14 +1918,17 @@ document.addEventListener('keydown', function(event){
 }, true);
 
 
+// V63 — Page 12: iPhone-safe timed sequence, forward-swipe lock, and four-second longer scene intervals.
 // V54 — Page 9: automatically play the five-stage reflection whenever the slide opens.
 const pageNine = document.getElementById('slide-8');
 const pageNineSteps = [1,2,3,4,5].map(number => document.getElementById('reflection-step-' + number));
 let pageNineTimers = [];
+let pageNineSequenceComplete = false;
 
 function stopPageNineSequence(reset = true){
   pageNineTimers.forEach(timer => clearTimeout(timer));
   pageNineTimers = [];
+  pageNineSequenceComplete = false;
   if(reset && pageNineSteps[0]) pageNineSteps[0].checked = true;
   if(pageNine) pageNine.classList.remove('auto-sequence');
 }
@@ -1932,13 +1937,18 @@ function playPageNineSequence(){
   stopPageNineSequence(true);
   if(!pageNine || !pageNine.classList.contains('active')) return;
   pageNine.classList.add('auto-sequence');
-  const timings = [0, 3200, 6400, 9600, 12800];
+  const timings = [0, 7200, 14400, 21600, 28800];
   pageNineSteps.forEach((step, index) => {
     if(!step) return;
     pageNineTimers.push(setTimeout(() => {
       if(pageNine.classList.contains('active')) step.checked = true;
     }, timings[index]));
   });
+  pageNineTimers.push(setTimeout(() => {
+    if(!pageNine.classList.contains('active')) return;
+    pageNineSequenceComplete = true;
+    pageNine.classList.remove('auto-sequence');
+  }, 36000));
 }
 
 function syncPageNineSequence(){
