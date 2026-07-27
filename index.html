@@ -643,6 +643,129 @@ body{position:fixed;inset:0;width:100%;height:var(--app-height,100%);overflow:hi
  #slide-live-reveal .live-reveal-finale{font-size:12px}
 }
 
+
+
+/* V61 — pages 3, 4 and 5 share one stable flip-card frame; all text remains accessible. */
+#slide-2 .identity-flip-face,
+#slide-live-reveal .identity-flip-face,
+#slide-live-system .identity-flip-face{
+  overflow-y:auto;
+  overflow-x:hidden;
+  overscroll-behavior:contain;
+  -webkit-overflow-scrolling:touch;
+  scrollbar-width:none;
+}
+#slide-2 .identity-flip-face::-webkit-scrollbar,
+#slide-live-reveal .identity-flip-face::-webkit-scrollbar,
+#slide-live-system .identity-flip-face::-webkit-scrollbar{display:none}
+#slide-2 .identity-flip-back,
+#slide-live-reveal .identity-flip-back,
+#slide-live-system .identity-flip-back{overflow-y:auto}
+
+#slide-live-system{
+  overflow:hidden;
+  justify-content:center;
+  perspective:1600px;
+  padding-top:54px;
+  padding-bottom:86px;
+}
+#slide-live-system .identity-flip-toggle{
+  position:absolute;
+  opacity:0;
+  width:1px;
+  height:1px;
+  pointer-events:none;
+}
+#slide-live-system .identity-flip-card{
+  display:block;
+  width:min(100%,1120px);
+  height:min(690px,calc(100dvh - 164px));
+  min-height:520px;
+  margin:auto;
+  cursor:pointer;
+  perspective:1600px;
+  color:inherit;
+}
+@supports (height:100svh){
+  #slide-live-system .identity-flip-card{height:min(690px,calc(100svh - 164px))}
+}
+#slide-live-system .identity-flip-inner{
+  position:relative;
+  width:100%;
+  height:100%;
+  transition:transform .72s cubic-bezier(.2,.7,.2,1);
+  transform-style:preserve-3d;
+}
+#slide-live-system .identity-flip-face{
+  position:absolute;
+  inset:0;
+  width:auto;
+  height:auto;
+  border:1px solid rgba(215,168,74,.35);
+  border-radius:32px;
+  background:linear-gradient(145deg,rgba(255,255,255,.075),rgba(255,255,255,.026));
+  box-shadow:0 28px 80px rgba(0,0,0,.28);
+  backface-visibility:hidden;
+  -webkit-backface-visibility:hidden;
+  padding:28px 30px 24px;
+  display:flex;
+  align-items:center;
+  justify-content:flex-start;
+}
+#slide-live-system .identity-wrap{width:100%;margin:0 auto}
+#slide-live-system .slide-nav{
+  position:absolute;
+  left:22px;
+  right:22px;
+  bottom:calc(12px + env(safe-area-inset-bottom));
+  margin-top:0;
+  padding:10px 0 0;
+  z-index:8;
+}
+#slide-live-system .speaker-note{z-index:7;pointer-events:none}
+
+@media(max-width:800px){
+  #slide-live-system{
+    padding:calc(48px + env(safe-area-inset-top)) 16px calc(82px + env(safe-area-inset-bottom));
+    justify-content:center;
+  }
+  #slide-live-system .identity-flip-card{
+    height:calc(100dvh - 152px - env(safe-area-inset-top) - env(safe-area-inset-bottom));
+    min-height:460px;
+  }
+  @supports (height:100svh){
+    #slide-live-system .identity-flip-card{
+      height:calc(100svh - 152px - env(safe-area-inset-top) - env(safe-area-inset-bottom));
+    }
+  }
+  #slide-2 .identity-flip-face,
+  #slide-live-reveal .identity-flip-face,
+  #slide-live-system .identity-flip-face{
+    align-items:flex-start;
+    padding-bottom:28px;
+  }
+  #slide-live-system .identity-flip-face{border-radius:26px;padding:20px 18px 28px}
+  #slide-live-system .title,
+  #slide-live-system .identity-back-title{font-size:clamp(29px,8.2vw,42px);line-height:1.02}
+  #slide-live-system .identity-lead{font-size:15px;line-height:1.28;margin-top:10px}
+  #slide-live-system .identity-declaration{font-size:15px;line-height:1.23;margin-top:12px;padding:13px 14px}
+  #slide-live-system .identity-card{margin-top:11px;padding:13px 14px}
+  #slide-live-system .identity-card strong{font-size:16px;margin-bottom:5px}
+  #slide-live-system .identity-card p{font-size:12.3px;line-height:1.28}
+  #slide-live-system .identity-bullets{font-size:12.5px;line-height:1.3;margin:10px 0 8px 18px}
+  #slide-live-system .identity-bullets li{margin:4px 0}
+  #slide-live-system .tap-cue{font-size:9px;margin-top:8px;text-align:left}
+  #slide-live-system .speaker-note{display:none}
+}
+@media(max-width:390px){
+  #slide-live-system .identity-flip-face{padding:16px 14px 26px}
+  #slide-live-system .title,#slide-live-system .identity-back-title{font-size:26px}
+  #slide-live-system .identity-lead{font-size:13.5px}
+  #slide-live-system .identity-declaration{font-size:13.3px;padding:10px 11px}
+  #slide-live-system .identity-card{padding:10px 11px}
+  #slide-live-system .identity-card p{font-size:11.2px}
+  #slide-live-system .identity-bullets{font-size:11.2px;line-height:1.24}
+}
 </style>
 </head>
 <body>
