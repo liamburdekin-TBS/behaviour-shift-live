@@ -1189,19 +1189,21 @@ function applySlideState(index, animate=true){
   currentSlide=Math.max(0,Math.min(slides.length-1,index));
   if(!animate) slides.forEach(slide=>slide.style.transition='none');
   slides.forEach((slide,i)=>{
-    slide.classList.toggle('active',i===currentSlide);
+    const isActive=i===currentSlide;
+    slide.classList.toggle('active',isActive);
     slide.classList.toggle('before',i<currentSlide);
     slide.classList.toggle('after',i>currentSlide);
-    if(i===currentSlide) slide.scrollTop=0;
+    slide.setAttribute('aria-hidden',String(!isActive));
+    if('inert' in slide) slide.inert=!isActive;
+    if(isActive) slide.scrollTop=0;
   });
   if(!animate) requestAnimationFrame(()=>slides.forEach(slide=>slide.style.transition=''));
-  // Existing slide-specific code already listens for this event.
-  window.dispatchEvent(new Event('hashchange'));
+  window.dispatchEvent(new CustomEvent('bs:slidechange',{detail:{index:currentSlide,slide:slides[currentSlide]}}));
 }
 
 function goToSlide(index){
   const next=Math.max(0,Math.min(slides.length-1,index));
-  if(next===currentSlide || slideLocked) return;
+  if(isTextEntryTarget(document.activeElement) || next===currentSlide || slideLocked) return;
   slideLocked=true;
   applySlideState(next,true);
   window.setTimeout(()=>{slideLocked=false},620);
@@ -1227,6 +1229,13 @@ function isTextEntryTarget(target){
 }
 
 document.addEventListener('keydown',event=>{
+  if(!isTextEntryTarget(event.target)) return;
+  if(event.key===' ' || event.key==='Enter' || event.key.startsWith('Arrow') || event.key==='PageUp' || event.key==='PageDown'){
+    event.stopPropagation();
+  }
+},true);
+
+document.addEventListener('keydown',event=>{
   // Never hijack keystrokes while typing, composing text, or using any editable control.
   if(event.isComposing || isTextEntryTarget(event.target) || isTextEntryTarget(document.activeElement)) return;
   // Space is deliberately not a slide shortcut: it must always remain safe for text entry.
@@ -1250,18 +1259,22 @@ window.addEventListener('resize',()=>{
 });
 window.addEventListener('orientationchange',()=>window.setTimeout(setStableAppHeight,250));
 
+let keyboardSettleFrame=0;
 function settleFieldAboveKeyboard(field){
   const viewport=window.visualViewport;
-  if(!viewport) return;
+  if(!viewport || !isTextEntryTarget(field)) return;
   const slide=field.closest('.slide');
-  if(!slide) return;
-  const rect=field.getBoundingClientRect();
-  const visibleBottom=viewport.offsetTop+viewport.height-18;
-  const visibleTop=viewport.offsetTop+18;
-  let delta=0;
-  if(rect.bottom>visibleBottom) delta=rect.bottom-visibleBottom;
-  else if(rect.top<visibleTop) delta=rect.top-visibleTop;
-  if(Math.abs(delta)>2) slide.scrollBy({top:delta,behavior:'smooth'});
+  if(!slide || !slide.classList.contains('active')) return;
+  cancelAnimationFrame(keyboardSettleFrame);
+  keyboardSettleFrame=requestAnimationFrame(()=>{
+    const rect=field.getBoundingClientRect();
+    const visibleBottom=viewport.offsetTop+viewport.height-18;
+    const visibleTop=viewport.offsetTop+18;
+    let delta=0;
+    if(rect.bottom>visibleBottom) delta=rect.bottom-visibleBottom;
+    else if(rect.top<visibleTop) delta=rect.top-visibleTop;
+    if(Math.abs(delta)>2) slide.scrollBy({top:delta,behavior:'auto'});
+  });
 }
 
 document.querySelectorAll('input,textarea,select,[contenteditable="true"]').forEach(field=>{
@@ -1276,9 +1289,10 @@ document.querySelectorAll('input,textarea,select,[contenteditable="true"]').forE
     window.setTimeout(()=>{
       if(!isTextEntryTarget(document.activeElement)){
         document.documentElement.classList.remove('is-typing');
-        setStableAppHeight();
+        const viewport=window.visualViewport;
+        if(!viewport || viewport.height>=stableAppHeight*.85) setStableAppHeight();
       }
-    },80);
+    },350);
   });
 });
 
@@ -1304,13 +1318,13 @@ function isInteractiveTarget(target){
 }
 
 document.addEventListener('touchstart',event=>{
-  // While a field is focused, all touch movement belongs to editing/scrolling that field.
   if(isTextEntryTarget(document.activeElement) || event.touches.length!==1 || isInteractiveTarget(event.target)){
     gesture=null;
     return;
   }
   const touch=event.touches[0];
-  gesture={x:touch.clientX,y:touch.clientY,lastY:touch.clientY,startedAt:performance.now(),vertical:false};
+  const slide=event.target.closest('.slide.active');
+  gesture={x:touch.clientX,y:touch.clientY,lastY:touch.clientY,startedAt:performance.now(),vertical:false,slide};
 },{passive:true,capture:true});
 
 document.addEventListener('touchmove',event=>{
@@ -1319,11 +1333,19 @@ document.addEventListener('touchmove',event=>{
   const dx=touch.clientX-gesture.x;
   const dy=touch.clientY-gesture.y;
   gesture.lastY=touch.clientY;
-  if(!gesture.vertical && Math.abs(dy)>18 && Math.abs(dy)>Math.abs(dx)*1.2){
-    gesture.vertical=true;
+  if(!gesture.vertical && Math.abs(dy)>18 && Math.abs(dy)>Math.abs(dx)*1.2) gesture.vertical=true;
+  if(!gesture.vertical) return;
+
+  const slide=gesture.slide;
+  const canScroll=slide && slide.scrollHeight>slide.clientHeight+2;
+  const movingContentDown=dy>0;
+  const atTop=!slide || slide.scrollTop<=1;
+  const atBottom=!slide || slide.scrollTop+slide.clientHeight>=slide.scrollHeight-1;
+  if(canScroll && ((movingContentDown && !atTop) || (!movingContentDown && !atBottom))){
+    gesture=null;
+    return;
   }
-  // Once it is clearly a vertical navigation gesture, stop Safari turning it into page scrolling.
-  if(gesture.vertical) event.preventDefault();
+  event.preventDefault();
 },{passive:false,capture:true});
 
 document.addEventListener('touchend',event=>{
@@ -1345,6 +1367,11 @@ let wheelTotal=0;
 let wheelTimer=null;
 document.addEventListener('wheel',event=>{
   if(isTextEntryTarget(document.activeElement) || isInteractiveTarget(event.target)) return;
+  const slide=slides[currentSlide];
+  const canScroll=slide && slide.scrollHeight>slide.clientHeight+2;
+  const atTop=!slide || slide.scrollTop<=1;
+  const atBottom=!slide || slide.scrollTop+slide.clientHeight>=slide.scrollHeight-1;
+  if(canScroll && ((event.deltaY<0 && !atTop) || (event.deltaY>0 && !atBottom))) return;
   wheelTotal+=event.deltaY;
   clearTimeout(wheelTimer);
   wheelTimer=setTimeout(()=>{wheelTotal=0},180);
@@ -1471,7 +1498,6 @@ function finishWallSubmitWithoutViewportJump(input, slide, slideScrollTop, slide
   currentSlide = slideIndex;
 
   const restore = () => {
-    applySlideState(slideIndex, false);
     const root = document.scrollingElement || document.documentElement;
     if(root) root.scrollTop = 0;
     document.documentElement.scrollTop = 0;
@@ -1480,15 +1506,16 @@ function finishWallSubmitWithoutViewportJump(input, slide, slideScrollTop, slide
       const maxScroll = Math.max(0, slide.scrollHeight - slide.clientHeight);
       slide.scrollTop = Math.max(0, Math.min(slideScrollTop, maxScroll));
     }
-    document.documentElement.classList.remove('is-typing');
     document.documentElement.style.setProperty('--app-height', stableAppHeight + 'px');
   };
 
   restore();
   window.requestAnimationFrame(restore);
-  window.setTimeout(restore, 80);
-  window.setTimeout(restore, 220);
-  window.setTimeout(restore, 500);
+  window.setTimeout(restore, 120);
+  window.setTimeout(()=>{
+    restore();
+    if(!isTextEntryTarget(document.activeElement)) document.documentElement.classList.remove('is-typing');
+  },420);
 }
 
 function submitWallMessage(trigger){
@@ -1519,15 +1546,6 @@ document.addEventListener('submit', function(event){
   event.preventDefault();
   event.stopPropagation();
   submitWallMessage(form);
-}, true);
-
-// Click delegation is a fallback for browsers that do not submit the form as expected.
-document.addEventListener('click', function(event){
-  const button = event.target.closest('.wall-send-btn');
-  if(!button) return;
-  event.preventDefault();
-  event.stopPropagation();
-  submitWallMessage(button);
 }, true);
 
 // Keyboard shortcut for textarea users: Cmd/Ctrl + Enter sends.
@@ -1572,6 +1590,7 @@ function syncPageNineSequence(){
   else stopPageNineSequence(true);
 }
 
+window.addEventListener('bs:slidechange', () => setTimeout(syncPageNineSequence, 0));
 window.addEventListener('hashchange', () => setTimeout(syncPageNineSequence, 0));
 setTimeout(syncPageNineSequence, 0);
 
