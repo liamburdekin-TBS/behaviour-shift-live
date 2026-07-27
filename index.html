@@ -206,6 +206,7 @@
 #slide-8 .closing strong{color:var(--gold)}
 #slide-8 .reflection-tap{position:absolute;inset:0;z-index:5;display:none;cursor:pointer;-webkit-tap-highlight-color:transparent;touch-action:manipulation;user-select:none}
 #slide-8 .reflection-tap span{position:absolute;left:50%;bottom:24px;transform:translateX(-50%);width:max-content;max-width:88%;padding:11px 16px;border:1px solid rgba(215,168,74,.4);border-radius:999px;background:rgba(7,7,7,.7);color:var(--gold);font-size:13px;font-weight:800;letter-spacing:.55px;text-transform:uppercase;backdrop-filter:blur(8px)}
+#slide-8.sequence-complete .tap-5{pointer-events:none;display:none}
 #reflection-step-1:checked~.scene-1,#reflection-step-2:checked~.scene-2,#reflection-step-3:checked~.scene-3,#reflection-step-4:checked~.scene-4,#reflection-step-5:checked~.scene-5{opacity:1;transform:none}
 #reflection-step-1:checked~.tap-1,#reflection-step-2:checked~.tap-2,#reflection-step-3:checked~.tap-3,#reflection-step-4:checked~.tap-4,#reflection-step-5:checked~.tap-5{display:block}
 #slide-8 .native-particles{position:absolute;inset:0;overflow:hidden;pointer-events:none;z-index:1;opacity:.65}
@@ -1695,7 +1696,8 @@ document.addEventListener('touchmove',event=>{
   if(!gesture.vertical) return;
 
   const slide=gesture.slide;
-  const canScroll=slide && slide.scrollHeight>slide.clientHeight+2;
+  const overflowY=slide ? getComputedStyle(slide).overflowY : '';
+  const canScroll=slide && (overflowY==='auto' || overflowY==='scroll') && slide.scrollHeight>slide.clientHeight+2;
   const movingContentDown=dy>0;
   const atTop=!slide || slide.scrollTop<=1;
   const atBottom=!slide || slide.scrollTop+slide.clientHeight>=slide.scrollHeight-1;
@@ -1726,7 +1728,8 @@ let wheelTimer=null;
 document.addEventListener('wheel',event=>{
   if(isTextEntryTarget(document.activeElement) || isInteractiveTarget(event.target)) return;
   const slide=slides[currentSlide];
-  const canScroll=slide && slide.scrollHeight>slide.clientHeight+2;
+  const overflowY=slide ? getComputedStyle(slide).overflowY : '';
+  const canScroll=slide && (overflowY==='auto' || overflowY==='scroll') && slide.scrollHeight>slide.clientHeight+2;
   const atTop=!slide || slide.scrollTop<=1;
   const atBottom=!slide || slide.scrollTop+slide.clientHeight>=slide.scrollHeight-1;
   if(canScroll && ((event.deltaY<0 && !atTop) || (event.deltaY>0 && !atBottom))) return;
@@ -1918,7 +1921,8 @@ document.addEventListener('keydown', function(event){
 }, true);
 
 
-// V63 — Page 12: iPhone-safe timed sequence, forward-swipe lock, and four-second longer scene intervals.
+// V65 — iPhone viewport fix: only genuinely scrollable slides may consume vertical navigation gestures.
+// V64 — Page 12: release the final replay overlay after playback, retain the forward lock, and use two-second longer scene intervals.
 // V54 — Page 9: automatically play the five-stage reflection whenever the slide opens.
 const pageNine = document.getElementById('slide-8');
 const pageNineSteps = [1,2,3,4,5].map(number => document.getElementById('reflection-step-' + number));
@@ -1930,14 +1934,14 @@ function stopPageNineSequence(reset = true){
   pageNineTimers = [];
   pageNineSequenceComplete = false;
   if(reset && pageNineSteps[0]) pageNineSteps[0].checked = true;
-  if(pageNine) pageNine.classList.remove('auto-sequence');
+  if(pageNine) pageNine.classList.remove('auto-sequence','sequence-complete');
 }
 
 function playPageNineSequence(){
   stopPageNineSequence(true);
   if(!pageNine || !pageNine.classList.contains('active')) return;
   pageNine.classList.add('auto-sequence');
-  const timings = [0, 7200, 14400, 21600, 28800];
+  const timings = [0, 5200, 10400, 15600, 20800];
   pageNineSteps.forEach((step, index) => {
     if(!step) return;
     pageNineTimers.push(setTimeout(() => {
@@ -1948,7 +1952,8 @@ function playPageNineSequence(){
     if(!pageNine.classList.contains('active')) return;
     pageNineSequenceComplete = true;
     pageNine.classList.remove('auto-sequence');
-  }, 36000));
+    pageNine.classList.add('sequence-complete');
+  }, 26000));
 }
 
 function syncPageNineSequence(){
