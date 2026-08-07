@@ -1543,9 +1543,10 @@ button:focus-visible,a:focus-visible,.flip:focus-visible,summary:focus-visible,t
     const duration=Math.max(1,performance.now()-g.startedAt);
     const velocity=distance/duration;
     const verticalEnough=distance>Math.abs(dx)*1.55;
-    const minAnywhere=Math.min(235,Math.max(175,window.innerHeight*.23));
-    const fastAnywhere=distance>=minAnywhere && duration<=560 && velocity>=.42;
-    const edgeIntent=distance>=145 && duration>=120 && (dy<0?g.startedAtBottom:g.startedAtTop);
+    /* V27 — slightly calmer mobile navigation: scrolling wins unless the swipe is clearly intentional. */
+    const minAnywhere=Math.min(270,Math.max(205,window.innerHeight*.27));
+    const fastAnywhere=distance>=minAnywhere && duration<=520 && velocity>=.50;
+    const edgeIntent=distance>=170 && duration>=140 && (dy<0?g.startedAtBottom:g.startedAtTop);
     if(verticalEnough && (fastAnywhere || edgeIntent)){
       /* Prevent the release from also clicking/flipping/focusing the control beneath it. */
       suppressGestureClickUntil=performance.now()+480;
