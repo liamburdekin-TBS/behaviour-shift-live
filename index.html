@@ -1502,12 +1502,15 @@ button:focus-visible,a:focus-visible,.flip:focus-visible,summary:focus-visible,t
     if(reveal){
       var wall=reveal.closest('.care-shared-wall');
       if(!wall || wall.dataset.ready!=='true') return;
+      /* V21: V13 question slides use the dedicated full-screen wall. Do not also
+         open/scroll the legacy inline panel; the competing scroll was able to
+         move the document root while the deck was transitioning on mobile. */
+      if(reveal.closest('.v13-question-slide')) return;
       var panel=wall.querySelector('.care-wall-panel');
       if(!panel) return;
       var opening=panel.hidden;
       panel.hidden=!opening;
       reveal.textContent=opening?'Hide wall':'Reveal wall';
-      if(opening){requestAnimationFrame(function(){panel.scrollIntoView({block:'nearest',behavior:'smooth'});});}
       return;
     }
   },true);
@@ -1677,8 +1680,8 @@ button:focus-visible,a:focus-visible,.flip:focus-visible,summary:focus-visible,t
     if(!target) return;
     var link=questionSlide.querySelector('.slide-nav a[href="#'+target+'"]');
     if(link){link.click();return;}
-    /* Fallback for future engine changes. */
-    var targetSlide=document.getElementById(target); if(targetSlide){targetSlide.scrollIntoView();}
+    /* V21: never use scrollIntoView inside the transformed deck. A missing
+       navigation link should fail safely rather than move the document root. */
   }
 
   document.querySelectorAll('.v13-wall-slide').forEach(function(wallSlide){
@@ -1710,8 +1713,9 @@ button:focus-visible,a:focus-visible,.flip:focus-visible,summary:focus-visible,t
       grid.querySelectorAll('.v13-room-card').forEach(function(c){c.classList.remove('is-focused');c.setAttribute('aria-pressed','false');});
       if(!was){card.classList.add('is-focused');card.setAttribute('aria-pressed','true');grid.classList.add('v13-has-focus');}
       else{grid.classList.remove('v13-has-focus');}
-      /* V18: the card was already visible when tapped; do not scroll the page/root. */
-      if(card.focus){try{card.focus({preventScroll:true});}catch(e){card.focus();}}
+      /* V21: visual focus does not require DOM focus. Avoid any browser focus
+         fallback that may auto-scroll the transformed deck on mobile. */
+      if(card.focus){try{card.focus({preventScroll:true});}catch(e){}}
       return;
     }
   },false);
@@ -1738,4 +1742,5 @@ button:focus-visible,a:focus-visible,.flip:focus-visible,summary:focus-visible,t
 })();
 </script>
 <!-- V19: V18 retained; mobile cinematic divider screens fitted to viewport and decorative overlay removed. -->
+<!-- V21: Shared Wall reveal stability pass. Dedicated wall navigation is now the sole reveal path on V13 question slides; root-scroll fallbacks removed. -->
 </body></html>
