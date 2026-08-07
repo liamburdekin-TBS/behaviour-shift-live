@@ -707,7 +707,143 @@ button:focus-visible,a:focus-visible,.flip:focus-visible,summary:focus-visible,t
  .v13-analysis-screen,.v13-wall-content,.v13-room-card{transition:none!important}
  .v13-question-slide .care-reveal-btn::after{animation:none!important}
 }
-</style></head><body><main class="deck"><section class="slide hero" id="slide-1"><span class="page-number">01 / 74</span><div class="logo-small">THE</div><div class="logo-main">BEHAVIOUR<br/>SHIFT<span class="tm">™</span></div><div class="gold-rule"></div><div class="tagline">CHANGE THE RESPONSE. CHANGE THE OUTCOME.</div><p class="course-line">BEHAVIOUR MANAGEMENT FOR CARE STAFF</p><p class="small">A practical one-day workshop for teams supporting children and young people.</p><nav class="slide-nav"><a aria-label="Previous slide" class="nav-btn disabled" href="#slide-1">↑</a><span>01 / 74</span><a aria-label="Next slide" class="nav-btn" href="#slide-2">↓</a></nav></section><section class="slide dark" id="slide-2"><span class="page-number">02 / 74</span>
+</style>
+<style>
+/* V18 — mobile scroll/navigation refinement. Desktop behaviour remains V17/V16. */
+.mobile-page-hud{display:none}
+@media(max-width:850px){
+  /* One global page indicator replaces the repeated in-slide nav/page labels. */
+  .page-number,.slide-nav{display:none!important}
+  .mobile-page-hud{
+    position:fixed;
+    z-index:80;
+    top:max(10px,env(safe-area-inset-top));
+    right:max(12px,env(safe-area-inset-right));
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    min-width:58px;
+    min-height:28px;
+    padding:6px 10px;
+    border:1px solid rgba(215,168,74,.28);
+    border-radius:999px;
+    background:rgba(11,11,10,.76);
+    box-shadow:0 6px 18px rgba(0,0,0,.16);
+    -webkit-backdrop-filter:blur(8px);
+    backdrop-filter:blur(8px);
+    color:rgba(215,168,74,.92);
+    font-size:10px;
+    font-weight:900;
+    line-height:1;
+    letter-spacing:1.4px;
+    pointer-events:none;
+  }
+  .slide{
+    /* Normal vertical scrolling has priority over slide navigation. */
+    touch-action:pan-y;
+    overscroll-behavior-y:contain;
+    padding-bottom:max(30px,calc(env(safe-area-inset-bottom) + 22px));
+  }
+  .v13-wall-stage{
+    padding-bottom:max(28px,calc(env(safe-area-inset-bottom) + 20px));
+  }
+  .v13-room-response-grid{
+    touch-action:pan-y;
+    overscroll-behavior-y:contain;
+  }
+  .v13-room-card,.v13-focus-bar,.v13-clear-focus{
+    touch-action:manipulation;
+  }
+}
+</style>
+
+<style>
+/* V19 — mobile cinematic screen fit fix. Desktop remains V18. */
+@media(max-width:850px){
+  /* Chapter/animated divider slides behave as true one-screen moments on phones. */
+  .slide.cinematic-section.section-divider{
+    overflow:hidden!important;
+    overscroll-behavior:none!important;
+    touch-action:none;
+    justify-content:center!important;
+    align-items:flex-start;
+    padding:
+      max(48px,calc(env(safe-area-inset-top) + 34px))
+      22px
+      max(34px,calc(env(safe-area-inset-bottom) + 24px))!important;
+  }
+
+  /* The large desktop chapter number was the stray/overlapping decorative text on small screens. */
+  .cinematic-section.section-divider .section-marker{
+    display:none!important;
+  }
+
+  .cinematic-section.section-divider .cinematic-particles{
+    position:absolute!important;
+    inset:0!important;
+  }
+
+  .cinematic-section.section-divider .kicker{
+    margin-bottom:12px!important;
+    font-size:10px!important;
+    line-height:1.25!important;
+    letter-spacing:2.8px!important;
+    max-width:calc(100vw - 76px);
+  }
+
+  .cinematic-section.section-divider .title{
+    width:100%;
+    max-width:100%!important;
+    font-size:clamp(38px,11.2vw,52px)!important;
+    line-height:.96!important;
+    letter-spacing:-1.2px!important;
+    text-wrap:balance;
+  }
+
+  .cinematic-section.section-divider .cinematic-gold-rule{
+    width:min(250px,68vw)!important;
+    margin:18px 0 16px!important;
+  }
+
+  .cinematic-section.section-divider .lead{
+    width:100%;
+    max-width:94%!important;
+    margin-top:0!important;
+    font-size:clamp(15px,4.15vw,18px)!important;
+    line-height:1.42!important;
+  }
+
+  .cinematic-section.section-divider .takeaway{
+    width:100%;
+    max-width:100%!important;
+    margin-top:18px!important;
+    padding:14px 15px!important;
+    border-radius:17px!important;
+    font-size:clamp(16px,4.45vw,20px)!important;
+    line-height:1.18!important;
+  }
+
+  /* Keep the global page pill readable but visually separate from the animation copy. */
+  .cinematic-section.section-divider.active ~ .mobile-page-hud{
+    pointer-events:none;
+  }
+}
+
+/* Extra-short phone screens: compact without turning the divider into a scroll page. */
+@media(max-width:850px) and (max-height:700px){
+  .slide.cinematic-section.section-divider{
+    padding-top:max(38px,calc(env(safe-area-inset-top) + 26px))!important;
+    padding-bottom:max(24px,calc(env(safe-area-inset-bottom) + 18px))!important;
+  }
+  .cinematic-section.section-divider .kicker{margin-bottom:8px!important}
+  .cinematic-section.section-divider .title{font-size:clamp(34px,9.8vw,44px)!important}
+  .cinematic-section.section-divider .cinematic-gold-rule{margin:13px 0 12px!important}
+  .cinematic-section.section-divider .lead{font-size:14px!important;line-height:1.34!important}
+  .cinematic-section.section-divider .takeaway{margin-top:12px!important;padding:11px 13px!important;font-size:15px!important}
+}
+</style>
+
+</head><body><main class="deck"><section class="slide hero" id="slide-1"><span class="page-number">01 / 74</span><div class="logo-small">THE</div><div class="logo-main">BEHAVIOUR<br/>SHIFT<span class="tm">™</span></div><div class="gold-rule"></div><div class="tagline">CHANGE THE RESPONSE. CHANGE THE OUTCOME.</div><p class="course-line">BEHAVIOUR MANAGEMENT FOR CARE STAFF</p><p class="small">A practical one-day workshop for teams supporting children and young people.</p><nav class="slide-nav"><a aria-label="Previous slide" class="nav-btn disabled" href="#slide-1">↑</a><span>01 / 74</span><a aria-label="Next slide" class="nav-btn" href="#slide-2">↓</a></nav></section><section class="slide dark" id="slide-2"><span class="page-number">02 / 74</span>
 <div class="kicker">Welcome</div>
 <h1 class="title">WELCOME TO<br/><span class="gold">BEHAVIOUR SHIFT.</span></h1>
 <p class="lead">Today is not about learning another behaviour-management model.</p>
@@ -1104,14 +1240,20 @@ button:focus-visible,a:focus-visible,.flip:focus-visible,summary:focus-visible,t
   let wheelEdgeDirection=0;
   let stableAppHeight=window.innerHeight;
 
+  const mobilePageHud=document.createElement('div');
+  mobilePageHud.className='mobile-page-hud';
+  mobilePageHud.setAttribute('aria-hidden','true');
+  document.body.appendChild(mobilePageHud);
+  function updateMobilePageHud(){mobilePageHud.textContent=String(currentSlide+1).padStart(2,'0')+' / '+slides.length;}
+
   function isTextEntryTarget(target){
     return target instanceof Element && Boolean(target.closest('input,textarea,select,[contenteditable="true"]'));
   }
   function isInteractiveTarget(target){
     if(!(target instanceof Element)) return false;
-    /* V14: response cards are discussion surfaces, not navigation blockers.
-       Their own click-to-focus behaviour still works, while swipe/wheel can move the deck. */
-    if(target.closest('.v13-room-card')) return false;
+    /* V18: on phones the Shared Wall is a dedicated interaction/scroll surface.
+       Desktop keeps the V14 behaviour so wheel navigation still works there. */
+    if(target.closest('.v13-room-card,.v13-room-response-grid')) return window.matchMedia('(max-width:850px)').matches;
     return Boolean(target.closest('button,a,input,textarea,select,label,details,summary,[contenteditable="true"],.flip'));
   }
   function applySlideState(index,animate=true){
@@ -1127,6 +1269,7 @@ button:focus-visible,a:focus-visible,.flip:focus-visible,summary:focus-visible,t
       if(active) slide.scrollTop=0;
     });
     if(!animate) requestAnimationFrame(()=>slides.forEach(s=>s.style.transition=''));
+    updateMobilePageHud();
     document.dispatchEvent(new CustomEvent('bs:slidechange',{detail:{index:currentSlide,slide:slides[currentSlide]}}));
   }
   function forwardBlockedByReady(next){
@@ -1219,30 +1362,40 @@ button:focus-visible,a:focus-visible,.flip:focus-visible,summary:focus-visible,t
     if(isTextEntryTarget(document.activeElement) || event.touches.length!==1){gesture=null;return}
     const t=event.touches[0];
     const slide=event.target.closest('.slide.active');
-    const canScroll=Boolean(slide && slide.scrollHeight>slide.clientHeight+2);
+    const canScroll=Boolean(slide && slide.scrollHeight>slide.clientHeight+4);
     const maxScroll=canScroll?Math.max(0,slide.scrollHeight-slide.clientHeight):0;
     const top=slide?slide.scrollTop:0;
-    gesture={x:t.clientX,y:t.clientY,startedAt:performance.now(),vertical:false,slide,startedAtTop:!canScroll||top<=2,startedAtBottom:!canScroll||top>=maxScroll-2,interactive:isInteractiveTarget(event.target)};
+    gesture={
+      x:t.clientX,
+      y:t.clientY,
+      startedAt:performance.now(),
+      slide,
+      canScroll,
+      startedAtTop:!canScroll||top<=3,
+      startedAtBottom:!canScroll||top>=maxScroll-3,
+      interactive:isInteractiveTarget(event.target),
+      moved:false
+    };
   },{passive:true,capture:true});
 
   document.addEventListener('touchmove',event=>{
-    if(!gesture || gesture.interactive || event.touches.length!==1) return;
-    const t=event.touches[0],dx=t.clientX-gesture.x,dy=t.clientY-gesture.y;
-    if(!gesture.vertical && Math.abs(dy)>24 && Math.abs(dy)>Math.abs(dx)*1.3) gesture.vertical=true;
-    if(!gesture.vertical) return;
-    const eligible=dy<0?gesture.startedAtBottom:gesture.startedAtTop;
-    if(eligible && Math.abs(dy)>=56) event.preventDefault();
-  },{passive:false,capture:true});
+    if(!gesture || event.touches.length!==1) return;
+    const t=event.touches[0];
+    if(Math.abs(t.clientY-gesture.y)>12 || Math.abs(t.clientX-gesture.x)>12) gesture.moved=true;
+    /* V18 deliberately never prevents the browser's native vertical scroll. */
+  },{passive:true,capture:true});
 
   document.addEventListener('touchend',event=>{
     if(!gesture) return;
     const g=gesture; gesture=null;
-    if(g.interactive) return;
-    const end=event.changedTouches[0],dx=end.clientX-g.x,dy=end.clientY-g.y;
+    if(g.interactive || !g.moved || !event.changedTouches.length) return;
+    const end=event.changedTouches[0];
+    const dx=end.clientX-g.x,dy=end.clientY-g.y;
     const duration=Math.max(1,performance.now()-g.startedAt);
-    const velocity=Math.abs(dy)/duration;
+    const verticalEnough=Math.abs(dy)>Math.abs(dx)*1.65;
+    const deliberate=Math.abs(dy)>=180 && duration>=140;
     const eligible=dy<0?g.startedAtBottom:g.startedAtTop;
-    if(eligible && g.vertical && Math.abs(dy)>=126 && Math.abs(dy)>Math.abs(dx)*1.4 && velocity>=.18) goToSlide(currentSlide+(dy<0?1:-1));
+    if(eligible && verticalEnough && deliberate) goToSlide(currentSlide+(dy<0?1:-1));
   },{passive:true,capture:true});
   document.addEventListener('touchcancel',()=>gesture=null,{passive:true,capture:true});
 
@@ -1538,7 +1691,8 @@ button:focus-visible,a:focus-visible,.flip:focus-visible,summary:focus-visible,t
       if(!was){card.classList.add('is-focused');card.setAttribute('aria-pressed','true');grid.classList.add('v13-has-focus');}
       else{grid.classList.remove('v13-has-focus');}
       var slide=grid.closest('.v13-wall-slide'); var bar=slide&&slide.querySelector('.v13-focus-bar'); if(bar) bar.hidden=!grid.classList.contains('v13-has-focus');
-      if(!was) card.scrollIntoView({block:'center',behavior:'smooth'});
+      /* V18: the card was already visible when tapped; do not scroll the page/root. */
+      if(card.focus){try{card.focus({preventScroll:true});}catch(e){card.focus();}}
       return;
     }
     var clear=event.target.closest && event.target.closest('.v13-clear-focus');
@@ -1570,5 +1724,5 @@ button:focus-visible,a:focus-visible,.flip:focus-visible,summary:focus-visible,t
   var active=document.querySelector('.v13-wall-slide.active'); if(active) startWallExperience(active);
 })();
 </script>
-<!-- V17: V16 ready lock/persistent reveal retained; mobile compatibility trial added. -->
+<!-- V19: V18 retained; mobile cinematic divider screens fitted to viewport and decorative overlay removed. -->
 </body></html>
