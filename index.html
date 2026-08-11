@@ -1025,6 +1025,36 @@ html.engine-ready .slide.active{will-change:transform!important}
   .v13-room-response-grid{-webkit-overflow-scrolling:touch}
 }
 </style>
+
+<style>
+/* V29 — Shared Wall long-response clearance.
+   Reserve a dedicated top label zone so longer anonymous responses never overlap the label. */
+.v13-room-card{
+  padding-top:40px!important;
+  padding-bottom:24px!important;
+}
+.v13-room-card::before{
+  top:13px!important;
+  line-height:1!important;
+  pointer-events:none;
+}
+.v13-room-response-grid.v13-has-focus .v13-room-card.is-focused{
+  padding-top:46px!important;
+}
+@media(max-width:700px){
+  .v13-room-card{
+    padding:42px 18px 22px!important;
+    min-height:132px;
+  }
+  .v13-room-card::before{
+    left:15px!important;
+    top:14px!important;
+  }
+  .v13-room-response-grid.v13-has-focus .v13-room-card.is-focused{
+    padding:48px 20px 26px!important;
+  }
+}
+</style>
 </head><body><main class="deck"><section class="slide hero" id="slide-1"><span class="page-number">01 / 74</span><div class="logo-small">THE</div><div class="logo-main">BEHAVIOUR<br/>SHIFT<span class="tm">™</span></div><div class="gold-rule"></div><div class="tagline">CHANGE THE RESPONSE. CHANGE THE OUTCOME.</div><p class="course-line">BEHAVIOUR MANAGEMENT FOR CARE STAFF</p><p class="small">A practical one-day workshop for teams supporting children and young people.</p><nav class="slide-nav"><a aria-label="Previous slide" class="nav-btn disabled" href="#slide-1">↑</a><span>01 / 74</span><a aria-label="Next slide" class="nav-btn" href="#slide-2">↓</a></nav></section><section class="slide dark" id="slide-2"><span class="page-number">02 / 74</span>
 <div class="kicker">Welcome</div>
 <h1 class="title">WELCOME TO<br/><span class="gold">BEHAVIOUR SHIFT.</span></h1>
@@ -1587,13 +1617,13 @@ html.engine-ready .slide.active{will-change:transform!important}
       /* A gesture that began mid-scroll can never become a page change merely
          because momentum carried the surface to its edge during that gesture. */
       const startedAtDirectionEdge=direction>0?g.startedAtBottom:g.startedAtTop;
-      const edgeDistance=g.startedOnWall?230:210;
-      const edgeVelocity=g.startedOnWall ? .38 : .34;
+      const edgeDistance=g.startedOnWall?220:200;
+      const edgeVelocity=g.startedOnWall ? .36 : .32;
       shouldNavigate=startedAtDirectionEdge && distance>=edgeDistance && duration>=150 && velocity>=edgeVelocity;
     }else{
-      /* Slightly calmer than V27, with the reveal walls deliberately calmer again. */
-      const minDistance=g.startedOnWall?255:235;
-      const minVelocity=g.startedOnWall ? .58 : .54;
+      /* V30 gentle ease: a small reduction from V29 so deliberate phone swipes feel natural without returning to the earlier jumpiness. */
+      const minDistance=g.startedOnWall?245:225;
+      const minVelocity=g.startedOnWall ? .55 : .51;
       shouldNavigate=distance>=minDistance && duration<=500 && velocity>=minVelocity;
     }
 
