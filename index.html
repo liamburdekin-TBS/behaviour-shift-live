@@ -1055,6 +1055,62 @@ html.engine-ready .slide.active{will-change:transform!important}
   }
 }
 </style>
+
+<style>
+/* V31 — Shared Wall long-response containment: content-sized cards on desktop + mobile */
+.v13-room-response-grid{
+  grid-auto-rows:auto !important;
+  align-items:start;
+}
+.v13-room-card{
+  height:auto !important;
+  min-height:126px;
+  max-height:none !important;
+  align-items:flex-start !important;
+  justify-content:flex-start !important;
+  padding:38px 24px 24px !important;
+  white-space:normal !important;
+  overflow:visible !important;
+  overflow-wrap:anywhere;
+  word-break:normal;
+  hyphens:auto;
+  text-align:left;
+}
+.v13-room-card::before{
+  top:14px !important;
+  left:20px !important;
+  right:20px;
+  line-height:1.2;
+  pointer-events:none;
+}
+.v13-room-response-grid.v13-has-focus .v13-room-card.is-focused{
+  height:auto !important;
+  min-height:220px;
+  max-height:none !important;
+  padding:48px 30px 30px !important;
+  align-items:flex-start !important;
+  justify-content:flex-start !important;
+  font-size:clamp(22px,2.35vw,34px) !important;
+  line-height:1.38 !important;
+  overflow:visible !important;
+  overflow-wrap:anywhere;
+}
+@media(max-width:850px){
+  .v13-room-card{
+    min-height:106px;
+    padding:36px 18px 20px !important;
+    font-size:17px;
+    line-height:1.45;
+  }
+  .v13-room-card::before{top:12px !important;left:16px !important;right:16px}
+  .v13-room-response-grid.v13-has-focus .v13-room-card.is-focused{
+    min-height:160px;
+    padding:42px 20px 22px !important;
+    font-size:clamp(20px,5.6vw,27px) !important;
+    line-height:1.42 !important;
+  }
+}
+</style>
 </head><body><main class="deck"><section class="slide hero" id="slide-1"><span class="page-number">01 / 74</span><div class="logo-small">THE</div><div class="logo-main">BEHAVIOUR<br/>SHIFT<span class="tm">™</span></div><div class="gold-rule"></div><div class="tagline">CHANGE THE RESPONSE. CHANGE THE OUTCOME.</div><p class="course-line">BEHAVIOUR MANAGEMENT FOR CARE STAFF</p><p class="small">A practical one-day workshop for teams supporting children and young people.</p><nav class="slide-nav"><a aria-label="Previous slide" class="nav-btn disabled" href="#slide-1">↑</a><span>01 / 74</span><a aria-label="Next slide" class="nav-btn" href="#slide-2">↓</a></nav></section><section class="slide dark" id="slide-2"><span class="page-number">02 / 74</span>
 <div class="kicker">Welcome</div>
 <h1 class="title">WELCOME TO<br/><span class="gold">BEHAVIOUR SHIFT.</span></h1>
