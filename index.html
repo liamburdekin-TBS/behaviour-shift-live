@@ -461,6 +461,31 @@ button,input,textarea,select{
 }
 </style>
 
+
+<style>
+/* WEBSITE TEST V2 — PHONE-ONLY LANDING BRAND FIX
+   Prevents BEHAVIOUR from wrapping independently from SHIFT.
+   Desktop/tablet website styling is untouched. */
+@media(max-width:760px){
+  .hero-brand .main{
+    font-size:clamp(38px,12.8vw,60px);
+    letter-spacing:.055em;
+    white-space:nowrap;
+    overflow-wrap:normal;
+    word-break:normal;
+  }
+  .hero-brand .main br{
+    display:block;
+  }
+}
+@media(max-width:380px){
+  .hero-brand .main{
+    font-size:11.9vw;
+    letter-spacing:.045em;
+  }
+}
+</style>
+
 </head>
 <body>
 <header class="site-header"><div class="nav-shell"><a class="brand" data-spa-route="home" data-transition="" data-transition-title="Home" href="#/home"><span class="brand-mark">BS</span><span class="brand-name">The Behaviour Shift</span></a><nav class="desktop-nav"><a class="active" data-spa-route="home" data-transition="" data-transition-title="Home" href="#/home">Home</a><a class="" data-spa-route="about" data-transition="" data-transition-title="About" href="#/about">About</a><a class="" data-spa-route="training" data-transition="" data-transition-title="Training" href="#/training">Training</a><a class="" data-spa-route="parents" data-transition="" data-transition-title="Parents" href="#/parents">Parents</a><a class="" data-spa-route="professionals" data-transition="" data-transition-title="Professionals" href="#/professionals">Professionals</a><a class="" data-spa-route="local-authorities" data-transition="" data-transition-title="Local Authorities" href="#/local-authorities">Local Authorities</a><a class="" data-spa-route="live" data-transition="" data-transition-title="Behaviour Shift Live" href="#/live">Behaviour Shift Live</a><a class="" data-spa-route="contact" data-transition="" data-transition-title="Contact" href="#/contact">Contact</a></nav><div class="nav-actions"><a class="nav-action" data-spa-route="facilitator-login" data-transition="" data-transition-title="Facilitator Login" href="#/facilitator-login">Facilitator Login</a><a class="nav-action primary" data-spa-route="create-room" data-transition="" data-transition-title="Create Room" href="#/create-room">Create Room</a></div><button aria-expanded="false" aria-label="Open menu" class="mobile-toggle"><span></span></button></div></header>
