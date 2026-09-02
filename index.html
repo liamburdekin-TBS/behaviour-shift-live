@@ -9,7 +9,7 @@
 :root{--black:#0b0b0a;--cream:#f7f0e6;--soft:rgba(247,240,230,.74);--gold:#d7a84a;--sage:#b9d8bd;--line:rgba(215,168,74,.34)}
 *{box-sizing:border-box}html,body{margin:0;min-height:100%;width:100%;max-width:100%;overflow-x:hidden;background:var(--black);color:var(--cream);font-family:-apple-system,BlinkMacSystemFont,"SF Pro Display","Avenir Next","Segoe UI",Arial,sans-serif}body{overflow:hidden}button,textarea{font:inherit}button{cursor:pointer;touch-action:manipulation;-webkit-appearance:none;appearance:none}textarea{-webkit-appearance:none;appearance:none}
 #app{height:var(--bs-app-height,100vh);min-height:100vh;width:100%;max-width:100%;position:relative;overflow:hidden;background:radial-gradient(circle at 12% 15%,rgba(215,168,74,.10),transparent 30%),radial-gradient(circle at 90% 85%,rgba(185,216,189,.055),transparent 35%),linear-gradient(180deg,#11100d,#0b0b0a 70%)}
-.screen{position:absolute;inset:0;display:flex;flex-direction:column;min-width:0;width:100%;max-width:100%;height:100%;padding:max(48px,calc(env(safe-area-inset-top) + 32px)) 20px max(76px,calc(env(safe-area-inset-bottom) + 60px));overflow-y:auto;overflow-x:hidden;-webkit-overflow-scrolling:touch;overscroll-behavior-y:contain;touch-action:pan-y;opacity:1;transform:translate3d(0,100%,0);pointer-events:none;transition:transform .58s cubic-bezier(.22,.78,.18,1);will-change:transform}
+.screen{position:absolute;inset:0;display:flex;flex-direction:column;min-width:0;width:100%;max-width:100%;height:100%;padding:max(48px,calc(env(safe-area-inset-top) + 32px)) 20px max(28px,calc(env(safe-area-inset-bottom) + 18px));overflow-y:auto;overflow-x:hidden;-webkit-overflow-scrolling:touch;overscroll-behavior-y:contain;touch-action:pan-y;opacity:1;transform:translate3d(0,100%,0);pointer-events:none;transition:transform .58s cubic-bezier(.22,.78,.18,1);will-change:transform}
 .screen.active{transform:translate3d(0,0,0);pointer-events:auto}
 .screen.before{transform:translate3d(0,-100%,0);pointer-events:none}
 .screen.after{transform:translate3d(0,100%,0);pointer-events:none}
@@ -58,7 +58,7 @@ textarea{width:100%;min-height:104px;resize:none;border:1px solid rgba(215,168,7
   .screen{
     padding-top:max(46px,calc(env(safe-area-inset-top) + 30px));
     padding-right:max(16px,env(safe-area-inset-right));
-    padding-bottom:max(82px,calc(env(safe-area-inset-bottom) + 66px));
+    padding-bottom:max(24px,calc(env(safe-area-inset-bottom) + 16px));
     padding-left:max(16px,env(safe-area-inset-left));
   }
   h1{font-size:clamp(32px,10.4vw,50px);letter-spacing:-1.2px}
@@ -87,7 +87,7 @@ textarea{width:100%;min-height:104px;resize:none;border:1px solid rgba(215,168,7
 @media(max-height:700px){
   .screen{
     padding-top:max(42px,calc(env(safe-area-inset-top) + 26px));
-    padding-bottom:max(76px,calc(env(safe-area-inset-bottom) + 60px));
+    padding-bottom:max(24px,calc(env(safe-area-inset-bottom) + 16px));
   }
   .hold-copy{margin-top:18px}
   .gold-rule{margin:21px 0 15px}
@@ -140,7 +140,7 @@ textarea{width:100%;min-height:104px;resize:none;border:1px solid rgba(215,168,7
 }
 
 @media(max-height:760px) and (max-width:699px){
-  .screen{padding-top:max(42px,calc(env(safe-area-inset-top) + 27px));padding-bottom:max(72px,calc(env(safe-area-inset-bottom) + 56px))}
+  .screen{padding-top:max(42px,calc(env(safe-area-inset-top) + 27px));padding-bottom:max(24px,calc(env(safe-area-inset-bottom) + 16px))}
   .brand{font-size:9px;letter-spacing:2.4px}
   .logo{font-size:16px}
   .kicker{margin-top:20px}
@@ -163,7 +163,7 @@ textarea{width:100%;min-height:104px;resize:none;border:1px solid rgba(215,168,7
 <body>
 <main id="app"></main>
 <div class="prototype-badge" aria-hidden="true">Prototype</div>
-<h2>Demo control</h2><p class="lead" style="margin-top:8px">Jump the phone to a section or interaction so you can manually sync it with the Mac presentation.</p><div class="jump-grid" id="jumpGrid"></div><button class="btn" id="closeMenu" style="margin-top:16px">Close</button></div></div>
+<h2></h2><p class="lead" style="margin-top:8px"></p><button class="btn" id="closeMenu" style="margin-top:16px">Close</button></div></div>
 <script>
 
 function isTextEntryFocused(){
@@ -198,7 +198,7 @@ function esc(v){return String(v??'').replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt
 function sectionData(n){const x=SECTIONS.find(s=>s[0]===n)||SECTIONS[0];return {eyebrow:x[1],name:x[2],title:x[3]}}
 function shell(inner,extra=''){return `<section class="screen ${extra}"><div class="brand">Behaviour Shift Live</div><div class="logo">THE <b>BEHAVIOUR SHIFT™</b></div>${inner}</section>`}
 function holdScreen(item){const s=sectionData(item.section);return shell(`<div class="kicker">${esc(item.label||s.eyebrow)} · PARTICIPANT VIEW</div><h1 class="hold-title">${esc(item.title||s.name)}</h1><div class="gold-rule"></div><div class="waiting-pill"><span class="dot"></span> Live session</div><p class="hold-copy">${esc(item.subtitle||s.title)}<br><br>Stay with the room. Your phone will change when the facilitator opens the next activity.</p>`,'hold')}
-function wallScreen(item){const w=item.wall,e=savedWalls.get(w.id)||{text:'',sent:false,ready:false};return shell(`<div class="kicker">${esc(w.kicker||'Shared Wall')} · Anonymous</div><h1>${w.title}</h1>${w.lead?`<p class="lead">${esc(w.lead)}</p>`:''}<div class="card"><textarea id="wallInput" placeholder="${esc(w.placeholder)}">${esc(e.text)}</textarea><div class="actions"><button class="btn primary ${e.sent?'sent':''}" id="sendWall" ${e.sent?'disabled':''}>${e.sent?'✓ Sent':'Send →'}</button><button class="btn ${e.ready?'ready-green':''}" id="readyWall" ${e.sent?'':'disabled'}>${e.ready?'✓ Ready':'Ready up'}</button></div><div class="status ${e.ready?'ready':''}" id="wallStatus">${e.ready?'You’re ready. Stay with the room.':e.sent?'Response sent. Ready up when you’re done.':'Your response is anonymous in this prototype demo.'}</div></div>`)}
+function wallScreen(item){const w=item.wall,e=savedWalls.get(w.id)||{text:'',sent:false,ready:false};return shell(`<div class="kicker">${esc(w.kicker||'Shared Wall')} · Anonymous</div><h1>${w.title}</h1>${w.lead?`<p class="lead">${esc(w.lead)}</p>`:''}<div class="card"><textarea id="wallInput" placeholder="${esc(w.placeholder)}">${esc(e.text)}</textarea><div class="actions"><button class="btn primary ${e.sent?'sent':''}" id="sendWall" ${e.sent?'disabled':''}>${e.sent?'✓ Sent':'Send →'}</button><button class="btn ${e.ready?'ready-green':''}" id="readyWall" ${e.sent?'':'disabled'}>${e.ready?'✓ Ready':'Ready up'}</button></div><div class="status ${e.ready?'ready':''}" id="wallStatus">${e.ready?'You’re ready. Stay with the room.':e.sent?'Response sent. Ready up when you’re done.':'Your response is anonymous in this prototype.'}</div></div>`)}
 function agreementScreen(){
   return shell(`
     <div class="kicker">Before we begin · Room agreement</div>
@@ -226,7 +226,7 @@ function profileResult(){const keys=Object.keys(pressureState.scores).sort((a,b)
 function shiftScreen(){return shell(`<div class="kicker">Reflection · Private by default</div><h1>YOUR<br><span class="gold">BEHAVIOUR SHIFT.</span></h1><p class="lead">Capture what you want to take back into practice.</p><div class="card"><label class="field-label">Something I will notice</label><textarea placeholder="What will you notice sooner?"></textarea><label class="field-label">Something I will manage</label><textarea placeholder="What will you manage differently in yourself?"></textarea><label class="field-label">Something I will stop</label><textarea placeholder="What will you stop doing?"></textarea><label class="field-label">Something I will start</label><textarea placeholder="What will you start doing?"></textarea><button class="btn primary" id="saveShift" style="margin-top:12px">Save my shift →</button><div class="status" id="shiftStatus">Prototype: saved only on this device.</div></div>`)}
 function ratingButtons(){return [1,2,3,4,5].map(n=>`<button data-value="${n}">${n}</button>`).join('')}
 function feedbackScreen(){return shell(`<div class="kicker">Feedback · Help us shift too</div><h1>HELP US<br><span class="gold">IMPROVE THE WORK.</span></h1><p class="lead">A lightweight participant feedback view for the prototype.</p><div class="card"><label class="field-label">How useful was this session?</label><div class="rating">${ratingButtons()}</div><label class="field-label">How confident do you feel applying it?</label><div class="rating">${ratingButtons()}</div><label class="field-label">What changed or challenged your thinking?</label><textarea placeholder="Your response..."></textarea><button class="btn primary" id="sendFeedback" style="margin-top:12px">Send feedback →</button><div class="status" id="feedbackStatus">Anonymous prototype feedback · stored nowhere.</div></div>`)}
-function endScreen(){return shell(`<div class="kicker">Prototype complete</div><h1>THE<br><span class="gold">BEHAVIOUR SHIFT™</span></h1><div class="gold-rule"></div><p class="lead">Thanks for taking part.</p><button class="btn" id="restartDemo" style="margin-top:18px;width:max-content">Restart prototype</button>`,'hold')}
+function endScreen(){return shell(`<div class="kicker">Prototype complete</div><h1>THE<br><span class="gold">BEHAVIOUR SHIFT™</span></h1><div class="gold-rule"></div><p class="lead">Thanks for taking part.</p>`,'hold')}
 function currentMarkup(){
   const item=FLOW[current];
   if(item.type==='hold')return holdScreen(item);
@@ -310,7 +310,7 @@ if(item.type==='pressure'){
 }
 if(item.type==='shift')document.getElementById('saveShift')?.addEventListener('click',()=>{const b=document.getElementById('saveShift');b.textContent='✓ Saved';b.classList.add('sent');document.getElementById('shiftStatus').textContent='Saved privately on this device for the prototype.'})
 if(item.type==='feedback'){document.querySelectorAll('.rating button').forEach(btn=>btn.addEventListener('click',()=>{const row=btn.parentElement;row.querySelectorAll('button').forEach(b=>b.classList.remove('selected'));btn.classList.add('selected')}));document.getElementById('sendFeedback')?.addEventListener('click',()=>{const rows=[...document.querySelectorAll('.rating')];if(rows.some(r=>!r.querySelector('.selected'))){document.getElementById('feedbackStatus').textContent='Choose both ratings first.';return}const b=document.getElementById('sendFeedback');b.textContent='✓ Feedback sent';b.classList.add('sent');b.disabled=true;document.getElementById('feedbackStatus').textContent='Thank you · prototype acknowledgement only.'})}
-document.getElementById('restartDemo')?.addEventListener('click',()=>{if(pressureAdvanceTimer){clearTimeout(pressureAdvanceTimer);pressureAdvanceTimer=null}current=0;pressureState={index:-1,scores:{controller:0,rescuer:0,reactor:0,withdrawer:0,problem:0,regulator:0},answers:[]};savedWalls.clear();render()})}
+}
 function bindResult(){document.getElementById('retakePressure')?.addEventListener('click',()=>{if(pressureAdvanceTimer){clearTimeout(pressureAdvanceTimer);pressureAdvanceTimer=null}pressureState={index:-1,scores:{controller:0,rescuer:0,reactor:0,withdrawer:0,problem:0,regulator:0},answers:[]};render()});document.getElementById('continuePressure')?.addEventListener('click',next)}
 function next(){
   if(current<FLOW.length-1){
