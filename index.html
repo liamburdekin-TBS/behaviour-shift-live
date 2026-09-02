@@ -9,7 +9,7 @@
 :root{--black:#0b0b0a;--cream:#f7f0e6;--soft:rgba(247,240,230,.74);--gold:#d7a84a;--sage:#b9d8bd;--line:rgba(215,168,74,.34)}
 *{box-sizing:border-box}html,body{margin:0;min-height:100%;width:100%;max-width:100%;overflow-x:hidden;background:var(--black);color:var(--cream);font-family:-apple-system,BlinkMacSystemFont,"SF Pro Display","Avenir Next","Segoe UI",Arial,sans-serif}body{overflow:hidden}button,textarea{font:inherit}button{cursor:pointer;touch-action:manipulation;-webkit-appearance:none;appearance:none}textarea{-webkit-appearance:none;appearance:none}
 #app{height:var(--bs-app-height,100vh);min-height:100vh;width:100%;max-width:100%;position:relative;overflow:hidden;background:radial-gradient(circle at 12% 15%,rgba(215,168,74,.10),transparent 30%),radial-gradient(circle at 90% 85%,rgba(185,216,189,.055),transparent 35%),linear-gradient(180deg,#11100d,#0b0b0a 70%)}
-.screen{position:absolute;inset:0;display:flex;flex-direction:column;min-width:0;width:100%;max-width:100%;height:100%;padding:max(48px,calc(env(safe-area-inset-top) + 32px)) 20px max(76px,calc(env(safe-area-inset-bottom) + 60px));overflow-y:auto;overflow-x:hidden;-webkit-overflow-scrolling:touch;overscroll-behavior-y:contain;touch-action:pan-y;opacity:1;transform:translate3d(0,100%,0);pointer-events:none;transition:transform .42s cubic-bezier(.22,.78,.18,1);will-change:transform}
+.screen{position:absolute;inset:0;display:flex;flex-direction:column;min-width:0;width:100%;max-width:100%;height:100%;padding:max(48px,calc(env(safe-area-inset-top) + 32px)) 20px max(76px,calc(env(safe-area-inset-bottom) + 60px));overflow-y:auto;overflow-x:hidden;-webkit-overflow-scrolling:touch;overscroll-behavior-y:contain;touch-action:pan-y;opacity:1;transform:translate3d(0,100%,0);pointer-events:none;transition:transform .58s cubic-bezier(.22,.78,.18,1);will-change:transform}
 .screen.active{transform:translate3d(0,0,0);pointer-events:auto}
 .screen.before{transform:translate3d(0,-100%,0);pointer-events:none}
 .screen.after{transform:translate3d(0,100%,0);pointer-events:none}
@@ -104,68 +104,7 @@ textarea{width:100%;min-height:104px;resize:none;border:1px solid rgba(215,168,7
 }
 
 
-.transition-screen{
-  justify-content:center;
-  overflow:hidden!important;
-  overscroll-behavior:none;
-  touch-action:none;
-  text-align:left;
-}
-.transition-screen .kicker{margin-top:0}
-.transition-title{
-  margin-top:10px;
-  font-size:clamp(34px,10.5vw,58px);
-  line-height:.95;
-  letter-spacing:-1.4px;
-  text-transform:uppercase;
-}
-.transition-copy{
-  margin-top:14px;
-  max-width:520px;
-  color:var(--soft);
-  font-size:14px;
-  line-height:1.45;
-}
-.transition-rule{
-  position:relative;
-  width:min(310px,72vw);
-  height:3px;
-  margin:25px 0 15px;
-  overflow:hidden;
-  border-radius:999px;
-  background:linear-gradient(90deg,var(--gold),rgba(215,168,74,.15));
-  box-shadow:0 0 12px rgba(215,168,74,.52),0 0 28px rgba(215,168,74,.2);
-}
-.transition-rule::after{
-  content:"";
-  position:absolute;
-  inset:-5px auto -5px -62%;
-  width:64%;
-  background:linear-gradient(90deg,transparent,rgba(255,232,156,.34),rgba(255,250,226,.96),#fff,rgba(255,221,118,.8),transparent);
-  filter:blur(.2px) drop-shadow(0 0 7px rgba(255,235,165,.86));
-  animation:transitionSweep 1.65s ease-in-out infinite;
-}
-@keyframes transitionSweep{
-  0%,8%{transform:translate3d(0,0,0) skewX(-18deg);opacity:0}
-  18%{opacity:1}
-  68%{transform:translate3d(275%,0,0) skewX(-18deg);opacity:1}
-  82%,100%{transform:translate3d(275%,0,0) skewX(-18deg);opacity:0}
-}
-.transition-dots{
-  display:flex;
-  gap:7px;
-  margin-top:6px;
-}
-.transition-dots span{
-  width:6px;height:6px;border-radius:50%;
-  background:rgba(215,168,74,.28);
-  animation:transitionDot 1.1s ease-in-out infinite;
-}
-.transition-dots span:nth-child(2){animation-delay:.14s}
-.transition-dots span:nth-child(3){animation-delay:.28s}
-@keyframes transitionDot{
-  0%,100%{transform:scale(.72);opacity:.35}
-  50%{transform:scale(1);opacity:1;background:var(--gold)}
+50%{transform:scale(1);opacity:1;background:var(--gold)}
 }
 .answer.is-selected{
   background:linear-gradient(135deg,rgba(215,168,74,.26),rgba(215,168,74,.09));
@@ -176,8 +115,29 @@ textarea{width:100%;min-height:104px;resize:none;border:1px solid rgba(215,168,7
   transition:background .18s ease,border-color .18s ease,box-shadow .18s ease,transform .16s ease,opacity .18s ease;
 }
 .answer.is-selected strong{color:var(--gold)}
-.answer.is-dimmed{opacity:.45}
+.answer.is-dimmed{opacity:.58}
 .answer:disabled{cursor:default}
+
+
+.prototype-badge{
+  position:fixed;
+  z-index:90;
+  top:max(12px,env(safe-area-inset-top));
+  right:max(12px,env(safe-area-inset-right));
+  padding:6px 9px;
+  border:1px solid rgba(215,168,74,.24);
+  border-radius:999px;
+  background:rgba(11,11,10,.72);
+  color:rgba(215,168,74,.72);
+  font-size:8px;
+  line-height:1;
+  font-weight:900;
+  letter-spacing:1.5px;
+  text-transform:uppercase;
+  pointer-events:none;
+  -webkit-backdrop-filter:blur(8px);
+  backdrop-filter:blur(8px);
+}
 
 @media(max-height:760px) and (max-width:699px){
   .screen{padding-top:max(42px,calc(env(safe-area-inset-top) + 27px));padding-bottom:max(72px,calc(env(safe-area-inset-bottom) + 56px))}
@@ -202,6 +162,7 @@ textarea{width:100%;min-height:104px;resize:none;border:1px solid rgba(215,168,7
 </head>
 <body>
 <main id="app"></main>
+<div class="prototype-badge" aria-hidden="true">Prototype</div>
 <h2>Demo control</h2><p class="lead" style="margin-top:8px">Jump the phone to a section or interaction so you can manually sync it with the Mac presentation.</p><div class="jump-grid" id="jumpGrid"></div><button class="btn" id="closeMenu" style="margin-top:16px">Close</button></div></div>
 <script>
 
@@ -230,8 +191,6 @@ const QUESTIONS=[["A young person has ignored the same reasonable instruction th
 const PROFILES={"controller": {"name": "THE CONTROLLER", "bring": "You bring clarity, decisiveness, consistency and structure. When a room becomes uncertain, you can help people know what matters, what happens next and where the boundary sits.", "power": "Clear expectations • Confident boundaries • Decisive action • Consistency • Leadership in uncertainty • Ability to create order when others hesitate", "child_positive": "“They make things clear. I know where I stand, and when things feel chaotic they can make the situation feel held.”", "pressure": "When you are under pressure, be mindful of becoming so focused on clarity and structure that there is less room for curiosity.", "shift": "KEEP THE CLARITY. KEEP THE BOUNDARY. LEAVE ROOM FOR CURIOSITY.", "reflection": "When you feel yourself becoming firmer, what would help you keep the useful structure without turning the interaction into a contest?"}, "rescuer": {"name": "THE RESCUER", "bring": "You bring warmth, empathy, responsiveness and a strong relational instinct. You often notice distress quickly and can make young people feel cared for, accompanied and worth staying with.", "power": "Relationship building • Reassurance • Emotional availability • Spotting distress • Repair • Compassion • Persistence with connection", "child_positive": "“They notice when I am struggling. They make it easier to believe that somebody is actually on my side.”", "pressure": "When you are under pressure, be mindful of stepping in so quickly that support starts doing too much for the young person.", "shift": "KEEP THE WARMTH. SUPPORT WITHOUT TAKING OVER.", "reflection": "How can you stay deeply caring while still leaving enough space for the young person to discover what they can manage themselves?"}, "reactor": {"name": "THE REACTOR", "bring": "You bring energy, passion, courage and visible emotional investment. You are often willing to act, challenge, protect and show that something genuinely matters rather than standing back from it.", "power": "Energy • Courage • Protective instinct • Fast response • Passion • Willingness to challenge • Visible care and emotional investment", "child_positive": "“I can tell they care. They do not act like what happens to me means nothing, and they are willing to step in when it matters.”", "pressure": "When you are under pressure, be mindful of giving yourself enough pause to choose your tone, pace and response before the room chooses them for you.", "shift": "KEEP THE PASSION. LET EMOTION INFORM THE RESPONSE — NOT DRIVE IT.", "reflection": "What helps you keep the energy and courage that make you useful while slowing the ten seconds in which the room can start setting your pace?"}, "withdrawer": {"name": "THE BREATHER", "bring": "You bring calm, restraint, patience and an instinct to create breathing space when an interaction is becoming overloaded. You can tolerate silence, reduce unnecessary pressure and give people room to process without chasing them.", "power": "De-escalation • Creating breathing space • Tolerance of silence • Patience • Not feeding conflict • Knowing when not to push • Reducing emotional heat", "child_positive": "“They do not chase me or make every moment bigger. Sometimes the breathing space they give me is exactly what helps me come back.”", "pressure": "Be mindful of making sure the breathing space has a purpose and that important conversations are returned to when the moment is right.", "shift": "KEEP THE SPACE. MAKE SURE YOU COME BACK.", "reflection": "What tells you that the space you are creating is helping the young person regulate — and what will remind you to return when the moment is ready?"}, "problem": {"name": "THE PROBLEM SOLVER", "bring": "You bring logic, organisation, resourcefulness and practical thinking. When situations become messy, you can break complexity down, identify options and create a workable route forward.", "power": "Organisation • Practical thinking • Planning • Resourcefulness • Problem solving • Making complexity manageable • Turning uncertainty into action", "child_positive": "“They can help when everything feels like a mess. They usually have a way forward and can make problems feel more manageable.”", "pressure": "When you are under pressure, be mindful of understanding what the situation means to the young person before moving too quickly into solving it.", "shift": "KEEP THE SOLUTIONS. UNDERSTAND BEFORE YOU ENGINEER THE EXIT.", "reflection": "What would change if understanding the emotional problem became the first part of your practical solution rather than something you return to afterwards?"}, "regulator": {"name": "THE REGULATOR", "bring": "You bring steadiness, observation, patience and emotional containment. You can reduce heat, hold uncertainty and manage your own state when other people are struggling to manage theirs.", "power": "Calm under pressure • Observation • Patience • Emotional containment • Reduced escalation • Thoughtful decision-making • Lending steadiness to others", "child_positive": "“They stay steady when I cannot. They do not add another problem to the room, and that can make it easier for me to settle.”", "pressure": "When you are under pressure, be mindful of making sure your calm still feels connected and that you act clearly when the moment needs it.", "shift": "KEEP THE STEADINESS. STAY HUMAN. ACT WHEN ACTION IS NEEDED.", "reflection": "How can your calm continue to feel like presence and support — not distance — while still allowing you to act decisively when the moment requires it?"}};
 const app=document.getElementById('app');
 let current=0;
-let transitionTimer=null;
-let transitionToken=0;
 let pressureAdvanceTimer=null;
 let pressureState={index:-1,scores:{controller:0,rescuer:0,reactor:0,withdrawer:0,problem:0,regulator:0},answers:[]};
 const savedWalls=new Map();
@@ -239,51 +198,7 @@ function esc(v){return String(v??'').replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt
 function sectionData(n){const x=SECTIONS.find(s=>s[0]===n)||SECTIONS[0];return {eyebrow:x[1],name:x[2],title:x[3]}}
 function shell(inner,extra=''){return `<section class="screen ${extra}"><div class="brand">Behaviour Shift Live</div><div class="logo">THE <b>BEHAVIOUR SHIFT™</b></div>${inner}</section>`}
 function holdScreen(item){const s=sectionData(item.section);return shell(`<div class="kicker">${esc(item.label||s.eyebrow)} · PARTICIPANT VIEW</div><h1 class="hold-title">${esc(item.title||s.name)}</h1><div class="gold-rule"></div><div class="waiting-pill"><span class="dot"></span> Live session</div><p class="hold-copy">${esc(item.subtitle||s.title)}<br><br>Stay with the room. Your phone will change when the facilitator opens the next activity.</p>`,'hold')}
-function wallScreen(item){const w=item.wall,e=savedWalls.get(w.id)||{text:'',sent:false,ready:false};return shell(`<div class="kicker">${esc(w.kicker||'Shared Wall')} · Anonymous</div><h1>${w.title}</h1>${w.lead?`<p class="lead">${esc(w.lead)}</p>`:''}<div class="card"><textarea id="wallInput" placeholder="${esc(w.placeholder)}">${esc(e.text)}</textarea><div class="actions"><button class="btn primary ${e.sent?'sent':''}" id="sendWall" ${e.sent?'disabled':''}>${e.sent?'✓ Sent':'Send →'}</button><button class="btn ${e.ready?'ready-green':''}" id="readyWall" ${e.sent?'':'disabled'}>${e.ready?'✓ Ready':'Ready up'}</button></div><div class="status ${e.ready?'ready':''}" id="wallStatus">${e.ready?'You’re ready. Stay with the room.':e.sent?'Response sent. Ready up when you’re done.':'Your response is anonymous in this prototype demo.'}</div></div><p class="prototype-note">Prototype participant view · No response leaves this device.</p>`)}
-function transitionScreen(nextItem){
-  const nextSection=sectionData(nextItem?.section ?? 0);
-  let eyebrow='Behaviour Shift Live';
-  let title='STAY WITH THE ROOM.';
-  let copy='Bringing the next part of the session to your phone.';
-
-  if(nextItem?.type==='wall'){
-    eyebrow='Shared Wall · Opening';
-    title='YOUR TURN.';
-    copy='The next room question is opening.';
-  }else if(nextItem?.type==='wall-revealed'){
-    eyebrow='Shared Wall · Revealing';
-    title='BRINGING THE ROOM TOGETHER.';
-    copy='The facilitator is revealing the room’s responses.';
-  }else if(nextItem?.type==='pressure'){
-    eyebrow='Behaviour Lens™ · Pressure Profile™';
-    title='TURN THE LENS AROUND.';
-    copy='Preparing your private Pressure Profile activity.';
-  }else if(nextItem?.type==='shift'){
-    eyebrow='Reflection';
-    title='MAKE THE SHIFT YOURS.';
-    copy='Opening your private reflection.';
-  }else if(nextItem?.type==='feedback'){
-    eyebrow='Feedback';
-    title='HELP US SHIFT TOO.';
-    copy='Opening the final participant feedback.';
-  }else if(nextItem?.type==='hold' || nextItem?.type==='agreement'){
-    eyebrow=nextItem?.type==='agreement'?'Room agreement':nextSection.eyebrow;
-    title=nextItem?.type==='agreement'?'SETTING THE ROOM.':nextSection.name;
-    copy=nextItem?.type==='agreement'?'A few foundations before the first room interaction.':nextSection.title;
-  }else if(nextItem?.type==='end'){
-    eyebrow='Behaviour Shift Live';
-    title='SESSION COMPLETE.';
-    copy='Closing the participant experience.';
-  }
-
-  return shell(`
-    <div class="kicker">${esc(eyebrow)}</div>
-    <div class="transition-title">${esc(title)}</div>
-    <div class="transition-rule"></div>
-    <div class="transition-dots" aria-hidden="true"><span></span><span></span><span></span></div>
-    <p class="transition-copy">${esc(copy)}</p>
-  `,'transition-screen');
-}
+function wallScreen(item){const w=item.wall,e=savedWalls.get(w.id)||{text:'',sent:false,ready:false};return shell(`<div class="kicker">${esc(w.kicker||'Shared Wall')} · Anonymous</div><h1>${w.title}</h1>${w.lead?`<p class="lead">${esc(w.lead)}</p>`:''}<div class="card"><textarea id="wallInput" placeholder="${esc(w.placeholder)}">${esc(e.text)}</textarea><div class="actions"><button class="btn primary ${e.sent?'sent':''}" id="sendWall" ${e.sent?'disabled':''}>${e.sent?'✓ Sent':'Send →'}</button><button class="btn ${e.ready?'ready-green':''}" id="readyWall" ${e.sent?'':'disabled'}>${e.ready?'✓ Ready':'Ready up'}</button></div><div class="status ${e.ready?'ready':''}" id="wallStatus">${e.ready?'You’re ready. Stay with the room.':e.sent?'Response sent. Ready up when you’re done.':'Your response is anonymous in this prototype demo.'}</div></div>`)}
 function agreementScreen(){
   return shell(`
     <div class="kicker">Before we begin · Room agreement</div>
@@ -311,7 +226,7 @@ function profileResult(){const keys=Object.keys(pressureState.scores).sort((a,b)
 function shiftScreen(){return shell(`<div class="kicker">Reflection · Private by default</div><h1>YOUR<br><span class="gold">BEHAVIOUR SHIFT.</span></h1><p class="lead">Capture what you want to take back into practice.</p><div class="card"><label class="field-label">Something I will notice</label><textarea placeholder="What will you notice sooner?"></textarea><label class="field-label">Something I will manage</label><textarea placeholder="What will you manage differently in yourself?"></textarea><label class="field-label">Something I will stop</label><textarea placeholder="What will you stop doing?"></textarea><label class="field-label">Something I will start</label><textarea placeholder="What will you start doing?"></textarea><button class="btn primary" id="saveShift" style="margin-top:12px">Save my shift →</button><div class="status" id="shiftStatus">Prototype: saved only on this device.</div></div>`)}
 function ratingButtons(){return [1,2,3,4,5].map(n=>`<button data-value="${n}">${n}</button>`).join('')}
 function feedbackScreen(){return shell(`<div class="kicker">Feedback · Help us shift too</div><h1>HELP US<br><span class="gold">IMPROVE THE WORK.</span></h1><p class="lead">A lightweight participant feedback view for the prototype.</p><div class="card"><label class="field-label">How useful was this session?</label><div class="rating">${ratingButtons()}</div><label class="field-label">How confident do you feel applying it?</label><div class="rating">${ratingButtons()}</div><label class="field-label">What changed or challenged your thinking?</label><textarea placeholder="Your response..."></textarea><button class="btn primary" id="sendFeedback" style="margin-top:12px">Send feedback →</button><div class="status" id="feedbackStatus">Anonymous prototype feedback · stored nowhere.</div></div>`)}
-function endScreen(){return shell(`<div class="kicker">Prototype complete</div><h1>THE<br><span class="gold">BEHAVIOUR SHIFT™</span></h1><div class="gold-rule"></div><p class="lead">This is the participant-phone vision: section snapshots when listening, interactions only when the room needs them.</p><button class="btn" id="restartDemo" style="margin-top:18px;width:max-content">Restart prototype</button>`,'hold')}
+function endScreen(){return shell(`<div class="kicker">Prototype complete</div><h1>THE<br><span class="gold">BEHAVIOUR SHIFT™</span></h1><div class="gold-rule"></div><p class="lead">Thanks for taking part.</p><button class="btn" id="restartDemo" style="margin-top:18px;width:max-content">Restart prototype</button>`,'hold')}
 function currentMarkup(){
   const item=FLOW[current];
   if(item.type==='hold')return holdScreen(item);
@@ -350,7 +265,7 @@ function render(animate=false,direction=1){
       incoming.classList.remove('before','after');
       incoming.classList.add('active');
     }));
-    setTimeout(()=>ghost.remove(),460);
+    setTimeout(()=>ghost.remove(),620);
   }else{
     incoming.classList.add('active');
   }
@@ -390,76 +305,58 @@ if(item.type==='pressure'){
           bindResult();
         },5000);
       }
-    },950);
+    },1100);
   }));
 }
 if(item.type==='shift')document.getElementById('saveShift')?.addEventListener('click',()=>{const b=document.getElementById('saveShift');b.textContent='✓ Saved';b.classList.add('sent');document.getElementById('shiftStatus').textContent='Saved privately on this device for the prototype.'})
 if(item.type==='feedback'){document.querySelectorAll('.rating button').forEach(btn=>btn.addEventListener('click',()=>{const row=btn.parentElement;row.querySelectorAll('button').forEach(b=>b.classList.remove('selected'));btn.classList.add('selected')}));document.getElementById('sendFeedback')?.addEventListener('click',()=>{const rows=[...document.querySelectorAll('.rating')];if(rows.some(r=>!r.querySelector('.selected'))){document.getElementById('feedbackStatus').textContent='Choose both ratings first.';return}const b=document.getElementById('sendFeedback');b.textContent='✓ Feedback sent';b.classList.add('sent');b.disabled=true;document.getElementById('feedbackStatus').textContent='Thank you · prototype acknowledgement only.'})}
-document.getElementById('restartDemo')?.addEventListener('click',()=>{clearTransitionTimer();transitionToken++;if(pressureAdvanceTimer){clearTimeout(pressureAdvanceTimer);pressureAdvanceTimer=null}current=0;pressureState={index:-1,scores:{controller:0,rescuer:0,reactor:0,withdrawer:0,problem:0,regulator:0},answers:[]};savedWalls.clear();render()})}
+document.getElementById('restartDemo')?.addEventListener('click',()=>{if(pressureAdvanceTimer){clearTimeout(pressureAdvanceTimer);pressureAdvanceTimer=null}current=0;pressureState={index:-1,scores:{controller:0,rescuer:0,reactor:0,withdrawer:0,problem:0,regulator:0},answers:[]};savedWalls.clear();render()})}
 function bindResult(){document.getElementById('retakePressure')?.addEventListener('click',()=>{if(pressureAdvanceTimer){clearTimeout(pressureAdvanceTimer);pressureAdvanceTimer=null}pressureState={index:-1,scores:{controller:0,rescuer:0,reactor:0,withdrawer:0,problem:0,regulator:0},answers:[]};render()});document.getElementById('continuePressure')?.addEventListener('click',next)}
-function clearTransitionTimer(){
-  if(transitionTimer){
-    clearTimeout(transitionTimer);
-    transitionTimer=null;
+function next(){
+  if(current<FLOW.length-1){
+    current++;
+    render(true,1);
   }
 }
-function navigateWithTransition(target,direction=1){
-  if(target<0 || target>=FLOW.length || target===current)return;
-  clearTransitionTimer();
-  const token=++transitionToken;
-  const existing=app.querySelector('.screen.active');
-  let ghost=null;
-  if(existing){
-    ghost=existing.cloneNode(true);
-    stripGhostIds(ghost);
-    ghost.classList.add('motion-ghost','active');
+function prev(){
+  if(current>0){
+    current--;
+    render(true,-1);
   }
-  app.innerHTML=transitionScreen(FLOW[target]);
-  const loading=app.querySelector('.screen');
-  if(!loading)return;
-  if(ghost){
-    app.prepend(ghost);
-    loading.classList.add(direction>0?'after':'before');
-    requestAnimationFrame(()=>requestAnimationFrame(()=>{
-      ghost.classList.remove('active');
-      ghost.classList.add(direction>0?'before':'after');
-      loading.classList.remove('before','after');
-      loading.classList.add('active');
-    }));
-    setTimeout(()=>ghost.remove(),460);
-  }else{
-    loading.classList.add('active');
-  }
-  transitionTimer=setTimeout(()=>{
-    transitionTimer=null;
-    if(token!==transitionToken)return;
-    current=target;
-    render(true,direction);
-  },760);
 }
-function next(){if(current<FLOW.length-1)navigateWithTransition(current+1,1)}
-function prev(){if(current>0)navigateWithTransition(current-1,-1)}
 let gesture=null,swipeLocked=false,suppressGestureClickUntil=0;
 function clearGesture(){gesture=null}
 function isTextOrControl(target){
-  return target instanceof Element && Boolean(target.closest('textarea,button,input,select,label,a,[contenteditable="true"]'));
+  return target instanceof Element && Boolean(
+    target.closest('textarea,button,input,select,label,a,[contenteditable="true"]')
+  );
 }
 function getPhoneScrollSurface(target){
-  const screen=target instanceof Element?target.closest('.screen.active'):null;
+  const screen=target instanceof Element ? target.closest('.screen.active') : null;
   if(!screen)return null;
-  return screen.scrollHeight>screen.clientHeight+6?screen:null;
+  return screen.scrollHeight>screen.clientHeight+6 ? screen : null;
 }
+
 app.addEventListener('touchstart',event=>{
-  if(event.touches.length!==1 || transitionTimer || isTextOrControl(event.target)){gesture=null;return}
+  if(event.touches.length!==1 || isTextOrControl(event.target)){
+    gesture=null;
+    return;
+  }
+
   const t=event.touches[0];
   const screen=event.target.closest('.screen.active');
   const scrollSurface=getPhoneScrollSurface(event.target);
-  const maxScroll=scrollSurface?Math.max(0,scrollSurface.scrollHeight-scrollSurface.clientHeight):0;
-  const top=scrollSurface?scrollSurface.scrollTop:0;
+  const maxScroll=scrollSurface ? Math.max(0,scrollSurface.scrollHeight-scrollSurface.clientHeight) : 0;
+  const top=scrollSurface ? scrollSurface.scrollTop : 0;
+
   gesture={
-    x:t.clientX,y:t.clientY,startedAt:performance.now(),screen,scrollSurface,
-    startedAtTop:!scrollSurface||top<=5,
-    startedAtBottom:!scrollSurface||top>=maxScroll-5,
+    x:t.clientX,
+    y:t.clientY,
+    startedAt:performance.now(),
+    screen,
+    scrollSurface,
+    startedAtTop:!scrollSurface || top<=5,
+    startedAtBottom:!scrollSurface || top>=maxScroll-5,
     moved:false
   };
 },{passive:true,capture:true});
@@ -467,40 +364,57 @@ app.addEventListener('touchstart',event=>{
 app.addEventListener('touchmove',event=>{
   if(!gesture || event.touches.length!==1)return;
   const t=event.touches[0];
-  if(Math.abs(t.clientY-gesture.y)>14 || Math.abs(t.clientX-gesture.x)>14)gesture.moved=true;
+  if(Math.abs(t.clientY-gesture.y)>16 || Math.abs(t.clientX-gesture.x)>16){
+    gesture.moved=true;
+  }
 },{passive:true,capture:true});
 
 app.addEventListener('touchend',event=>{
   if(!gesture || swipeLocked)return;
-  const g=gesture;gesture=null;
+
+  const g=gesture;
+  gesture=null;
+
   if(!g.moved || !event.changedTouches.length)return;
+
   const end=event.changedTouches[0];
-  const dx=end.clientX-g.x,dy=end.clientY-g.y;
+  const dx=end.clientX-g.x;
+  const dy=end.clientY-g.y;
   const distance=Math.abs(dy);
   const duration=Math.max(1,performance.now()-g.startedAt);
   const velocity=distance/duration;
-  if(distance<=Math.abs(dx)*1.35)return;
+
+  /* Vertical intent only. */
+  if(distance<=Math.abs(dx)*1.45)return;
 
   const direction=dy<0?1:-1;
-  const fastFlick=distance>=68 && duration<=300 && velocity>=.42;
+
+  /* Calmer than the previous prototype:
+     quick flicks still work, but accidental short gestures do not. */
+  const fastFlick=distance>=78 && duration<=320 && velocity>=.42;
+  const deliberateSwipe=distance>=120 && duration<=760 && velocity>=.22;
+
   let shouldNavigate=false;
 
   if(g.scrollSurface){
-    const startedAtDirectionEdge=direction>0?g.startedAtBottom:g.startedAtTop;
-    shouldNavigate=startedAtDirectionEdge && (fastFlick || (distance>=104 && duration<=650 && velocity>=.25));
+    const startedAtEdge=direction>0 ? g.startedAtBottom : g.startedAtTop;
+    shouldNavigate=startedAtEdge && (fastFlick || deliberateSwipe);
   }else{
-    shouldNavigate=fastFlick || (distance>=108 && duration<=650 && velocity>=.28);
+    shouldNavigate=fastFlick || deliberateSwipe;
   }
 
-  if(shouldNavigate){
-    swipeLocked=true;
-    suppressGestureClickUntil=performance.now()+500;
-    direction>0?next():prev();
-    setTimeout(()=>{swipeLocked=false},440);
-  }else{
+  if(!shouldNavigate)return;
+
+  swipeLocked=true;
+  suppressGestureClickUntil=performance.now()+650;
+
+  direction>0 ? next() : prev();
+
+  setTimeout(()=>{
     swipeLocked=false;
-  }
+  },620);
 },{passive:true,capture:true});
+
 app.addEventListener('touchcancel',clearGesture,{passive:true,capture:true});
 
 document.addEventListener('click',event=>{
