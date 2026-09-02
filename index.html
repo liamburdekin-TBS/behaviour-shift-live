@@ -33,8 +33,7 @@ textarea{width:100%;min-height:104px;resize:none;border:1px solid rgba(215,168,7
 .progress-shell{height:3px;background:rgba(247,240,230,.10);margin-top:22px;overflow:hidden;border-radius:4px}.progress{height:100%;width:0;background:var(--gold);transition:width .28s ease}.question{margin-top:22px;font-size:clamp(20px,5.7vw,25px);line-height:1.27;font-weight:850}.answer-grid{display:grid;gap:8px;margin-top:16px}.answer{text-align:left;width:100%;border:1px solid rgba(215,168,74,.28);background:rgba(255,255,255,.035);color:var(--cream);border-radius:17px;padding:12px 13px;font-size:13.5px;line-height:1.38;transition:transform .16s ease,background .16s ease,border-color .16s ease}.answer:active{transform:scale(.985);background:rgba(215,168,74,.08);border-color:rgba(215,168,74,.5)}
 .analysis{display:flex;min-height:62vh;flex-direction:column;justify-content:center}.result-name{color:var(--gold)}.result-grid{display:grid;gap:10px;margin-top:18px}.result-card{border:1px solid var(--line);border-radius:19px;padding:15px;background:rgba(255,255,255,.035)}.result-card.sage{border-color:rgba(185,216,189,.36);background:rgba(185,216,189,.045)}.result-card b{display:block;color:var(--gold);font-size:10px;letter-spacing:1.6px;text-transform:uppercase;margin-bottom:7px}.result-card p{margin:0;color:var(--soft);font-size:14px;line-height:1.45}.takeaway{margin-top:14px;border-left:3px solid var(--gold);border-radius:0 18px 18px 0;padding:15px 16px;background:rgba(215,168,74,.085);font-size:17px;line-height:1.32;font-weight:900}
 .field-label{display:block;margin:15px 0 7px;color:var(--gold);font-size:10px;letter-spacing:1.6px;text-transform:uppercase;font-weight:900}.rating{display:flex;gap:8px;flex-wrap:wrap;margin-top:8px}.rating button{width:44px;height:44px;border-radius:50%;border:1px solid var(--line);background:rgba(255,255,255,.03);color:var(--cream);font-weight:900}.rating button.selected{background:var(--gold);color:var(--black);border-color:var(--gold)}
-.demo-ui{position:fixed;z-index:100;left:max(12px,env(safe-area-inset-left));bottom:max(12px,env(safe-area-inset-bottom));display:flex;gap:7px;align-items:center}.demo-ui button{width:46px;height:46px;min-width:46px;min-height:46px;border-radius:50%;border:1px solid rgba(247,240,230,.18);background:rgba(11,11,10,.78);color:var(--cream);backdrop-filter:blur(8px)}.demo-ui .menu-btn{width:auto;padding:0 13px;border-radius:999px;color:var(--gold);font-size:9px;letter-spacing:1.4px;font-weight:900}.demo-index{position:fixed;z-index:100;right:max(14px,env(safe-area-inset-right));top:max(13px,env(safe-area-inset-top));font-size:9px;letter-spacing:1.5px;color:rgba(215,168,74,.78);font-weight:900}
-.demo-menu{position:fixed;z-index:150;inset:0;background:rgba(0,0,0,.74);backdrop-filter:blur(10px);display:none;padding:max(22px,env(safe-area-inset-top)) max(16px,env(safe-area-inset-right)) max(22px,env(safe-area-inset-bottom)) max(16px,env(safe-area-inset-left));overflow:auto;-webkit-overflow-scrolling:touch;overscroll-behavior:contain}.demo-menu.open{display:block}.demo-menu-panel{max-width:540px;margin:0 auto;border:1px solid var(--line);border-radius:24px;padding:18px;background:#11100e}.demo-menu h2{margin:0 0 6px;font-size:24px}.jump-grid{display:grid;gap:8px;margin-top:14px}.jump-grid button{text-align:left;border:1px solid rgba(215,168,74,.25);border-radius:14px;padding:12px;background:rgba(255,255,255,.025);color:var(--cream)}.jump-grid small{display:block;color:var(--gold);margin-bottom:3px}.prototype-note{margin-top:16px;color:rgba(247,240,230,.45);font-size:11px;line-height:1.5}
+.prototype-note{margin-top:16px;color:rgba(247,240,230,.45);font-size:11px;line-height:1.5}
 
 
 .agreement-screen{justify-content:center;overflow:hidden;touch-action:none}
@@ -84,8 +83,6 @@ textarea{width:100%;min-height:104px;resize:none;border:1px solid rgba(215,168,7
   .brand{letter-spacing:2.2px}
   .logo{font-size:16px;letter-spacing:.16em}
   .btn{padding:10px 13px;letter-spacing:1.2px}
-  .demo-ui{gap:5px}
-  .demo-ui button{width:44px;height:44px;min-width:44px;min-height:44px}
 }
 @media(max-height:700px){
   .screen{
@@ -109,7 +106,8 @@ textarea{width:100%;min-height:104px;resize:none;border:1px solid rgba(215,168,7
 
 .transition-screen{
   justify-content:center;
-  overflow:hidden;
+  overflow:hidden!important;
+  overscroll-behavior:none;
   touch-action:none;
   text-align:left;
 }
@@ -170,11 +168,12 @@ textarea{width:100%;min-height:104px;resize:none;border:1px solid rgba(215,168,7
   50%{transform:scale(1);opacity:1;background:var(--gold)}
 }
 .answer.is-selected{
-  background:linear-gradient(135deg,rgba(215,168,74,.22),rgba(215,168,74,.08));
+  background:linear-gradient(135deg,rgba(215,168,74,.26),rgba(215,168,74,.09));
   border-color:var(--gold);
   color:var(--cream);
   box-shadow:0 0 0 1px rgba(215,168,74,.12),0 10px 28px rgba(0,0,0,.18),0 0 22px rgba(215,168,74,.12);
-  transform:scale(.99);
+  transform:scale(.985);
+  transition:background .18s ease,border-color .18s ease,box-shadow .18s ease,transform .16s ease,opacity .18s ease;
 }
 .answer.is-selected strong{color:var(--gold)}
 .answer.is-dimmed{opacity:.45}
@@ -203,9 +202,7 @@ textarea{width:100%;min-height:104px;resize:none;border:1px solid rgba(215,168,7
 </head>
 <body>
 <main id="app"></main>
-<div class="demo-index" id="demoIndex"></div>
-<div class="demo-ui"><button id="prevBtn" aria-label="Previous">↑</button><button class="menu-btn" id="menuBtn">DEMO</button><button id="nextBtn" aria-label="Next">↓</button></div>
-<div class="demo-menu" id="demoMenu" role="dialog" aria-modal="true"><div class="demo-menu-panel"><div class="brand">Behaviour Shift Live</div><h2>Demo control</h2><p class="lead" style="margin-top:8px">Jump the phone to a section or interaction so you can manually sync it with the Mac presentation.</p><div class="jump-grid" id="jumpGrid"></div><button class="btn" id="closeMenu" style="margin-top:16px">Close</button></div></div>
+<h2>Demo control</h2><p class="lead" style="margin-top:8px">Jump the phone to a section or interaction so you can manually sync it with the Mac presentation.</p><div class="jump-grid" id="jumpGrid"></div><button class="btn" id="closeMenu" style="margin-top:16px">Close</button></div></div>
 <script>
 
 function isTextEntryFocused(){
@@ -231,7 +228,7 @@ const FLOW=[{"type": "hold", "section": 0, "label": "JOINED", "title": "YOU’RE
 const SECTIONS=[[0, "WELCOME", "ROOM AGREEMENT", "Join the room. Respond when the facilitator opens an activity."], [1, "SECTION 01", "MINDSET", "HOW I SHOW UP."], [2, "SECTION 02", "PRESSURE PROFILES", "UNDER PRESSURE."], [3, "SECTION 03", "TEAM CULTURE", "FROM ME TO WE."], [4, "SECTION 04", "THE HUMAN ANIMAL", "READ THE PERSON BEFORE THE PROBLEM."], [5, "SECTION 05", "MEANING", "WHAT MIGHT THIS BE DOING FOR THEM?"], [6, "SECTION 06", "RESPECT", "RESPECT IS A TWO-WAY STREET."], [7, "SECTION 07", "LANGUAGE", "DIFFERENT LANGUAGE. SAME MEANING."], [8, "SECTION 08", "TOOLS", "CHANGE THE RESPONSE."], [9, "SECTION 09", "REPAIR", "WHAT HAPPENS AFTERWARDS?"]];
 const QUESTIONS=[["A young person has ignored the same reasonable instruction three times. Other staff are watching. What do you instinctively do next?", [["Restate the boundary clearly and hold it.", {"controller": 3, "regulator": 1}], ["Ask what is getting in the way first.", {"rescuer": 3, "regulator": 1}], ["Lower my intensity and choose the next useful step.", {"regulator": 3, "withdrawer": 1}], ["Give it space and come back to it shortly.", {"withdrawer": 3, "regulator": 1}], ["Work out a practical way to get the task done.", {"problem": 3, "controller": 1}], ["Address the challenge directly so it does not grow.", {"reactor": 3, "controller": 1}]]], ["A young person has self-harmed. Immediate medical and safeguarding actions are underway. In the relational moment afterwards, where do you naturally go?", [["Stay steady, present and let them set the pace.", {"regulator": 3, "rescuer": 1}], ["Reassure them strongly that they are not alone.", {"rescuer": 3, "regulator": 1}], ["Gently explore what happened beforehand.", {"problem": 3, "rescuer": 1}], ["Make sure they understand how seriously I take it.", {"reactor": 3, "rescuer": 1}], ["Create some breathing room and reconnect when ready.", {"withdrawer": 3, "regulator": 1}], ["Bring calm structure to what needs to happen next.", {"controller": 3, "problem": 1}]]], ["A young person returns from family time withdrawn, refuses to talk, then snaps at you over something minor. What is your instinct?", [["Stay curious about what changed for them.", {"regulator": 3, "rescuer": 1}], ["Acknowledge the feeling but keep expectations clear.", {"controller": 3, "regulator": 1}], ["Create another chance for them to open up.", {"rescuer": 3, "regulator": 1}], ["Give them space without chasing the conversation.", {"withdrawer": 3, "regulator": 1}], ["Think through what may have happened and what could help.", {"problem": 3, "rescuer": 1}], ["Respond firmly to the snap before it escalates.", {"reactor": 3, "controller": 1}]]], ["After a physical intervention, a young person says, ‘You put your hands on me. I don't trust you anymore.’ What do you do first?", [["Stay with how it felt for them before explaining.", {"regulator": 3, "rescuer": 1}], ["Reassure them that the relationship still matters to me.", {"rescuer": 3, "regulator": 1}], ["Explain clearly why staff acted to keep people safe.", {"problem": 3, "controller": 1}], ["Acknowledge it, give space, then return to repair.", {"withdrawer": 3, "regulator": 1}], ["Make sure the facts and boundaries around what happened are clear.", {"controller": 3, "problem": 1}], ["Defend the seriousness of the decision because it mattered.", {"reactor": 3, "controller": 1}]]], ["A young person is missing from care. Procedures are underway and concern is rising. What happens to you under that pressure?", [["I become very structured about roles and actions.", {"controller": 3, "problem": 1}], ["I keep doing something — calls, checks, updates.", {"reactor": 3, "problem": 1}], ["I focus hard on information and practical next steps.", {"problem": 3, "controller": 1}], ["I keep bringing myself back to what we actually know.", {"regulator": 3, "problem": 1}], ["I focus on keeping everyone emotionally supported too.", {"rescuer": 3, "regulator": 1}], ["I step back from the noise so I can think clearly.", {"withdrawer": 3, "regulator": 1}]]], ["A young person swears at you and calls you useless in front of colleagues. You feel embarrassed and angry. What is your instinct?", [["Address the disrespect briefly and firmly.", {"controller": 3, "reactor": 1}], ["Stay steady and return to the disrespect later.", {"regulator": 3, "withdrawer": 1}], ["Let some of my firmness and emotion show.", {"reactor": 3, "controller": 1}], ["Step back so I do not respond from embarrassment.", {"withdrawer": 3, "regulator": 1}], ["Try to understand what triggered the attack on me.", {"rescuer": 3, "regulator": 1}], ["Move the situation towards a practical resolution.", {"problem": 3, "controller": 1}]]], ["A young person deliberately damages something after being told no, then looks at you waiting for your reaction. What do you naturally do?", [["State the limit and what needs to happen next.", {"controller": 3, "problem": 1}], ["Make clear that this has crossed a serious line.", {"reactor": 3, "controller": 1}], ["Secure the area and sort the practical consequences.", {"problem": 3, "controller": 1}], ["Keep connection while making clear it cannot be ignored.", {"rescuer": 3, "controller": 1}], ["Slow myself down so their reaction does not set mine.", {"regulator": 3, "withdrawer": 1}], ["Reduce the interaction and give the moment space.", {"withdrawer": 3, "regulator": 1}]]], ["Near the end of a difficult shift, a young person refuses the bedtime routine and argues over every request. What do you want to do?", [["Keep the routine clear and consistent.", {"controller": 3, "regulator": 1}], ["Find a workable compromise that still gets things done.", {"problem": 3, "rescuer": 1}], ["Reduce the back-and-forth and try again shortly.", {"withdrawer": 3, "regulator": 1}], ["Notice my tiredness and deliberately slow down.", {"regulator": 3, "withdrawer": 1}], ["Soften the approach and reconnect before pushing again.", {"rescuer": 3, "regulator": 1}], ["Deal with the challenge directly so it does not take over.", {"reactor": 3, "controller": 1}]]], ["A colleague says in front of a young person that your approach is making things worse. What is your first instinct?", [["Respond there and then so I am not undermined.", {"reactor": 3, "controller": 1}], ["Let them lead briefly, then address it privately.", {"withdrawer": 3, "regulator": 1}], ["Smooth the moment so the room does not split.", {"rescuer": 3, "regulator": 1}], ["Deal with the immediate situation and solve the disagreement later.", {"problem": 3, "controller": 1}], ["Keep the team boundary clear without arguing in front of the young person.", {"controller": 3, "regulator": 1}], ["Stay composed and choose whichever response lowers pressure most.", {"regulator": 3, "withdrawer": 1}]]], ["After an incident you try to repair. The young person says, ‘Leave me alone. I don't want your fake apology.’ What do you do?", [["Respect the space and make sure I return later.", {"withdrawer": 3, "regulator": 1}], ["Make clear that I genuinely care and mean the apology.", {"rescuer": 3, "regulator": 1}], ["Clarify what I am apologising for and what still matters.", {"controller": 3, "problem": 1}], ["Suggest a practical way to revisit the conversation later.", {"problem": 3, "withdrawer": 1}], ["Accept the reaction without becoming defensive and stay available.", {"regulator": 3, "rescuer": 1}], ["Push back a little because I need them to know I am being genuine.", {"reactor": 3, "rescuer": 1}]]]];
 const PROFILES={"controller": {"name": "THE CONTROLLER", "bring": "You bring clarity, decisiveness, consistency and structure. When a room becomes uncertain, you can help people know what matters, what happens next and where the boundary sits.", "power": "Clear expectations • Confident boundaries • Decisive action • Consistency • Leadership in uncertainty • Ability to create order when others hesitate", "child_positive": "“They make things clear. I know where I stand, and when things feel chaotic they can make the situation feel held.”", "pressure": "When you are under pressure, be mindful of becoming so focused on clarity and structure that there is less room for curiosity.", "shift": "KEEP THE CLARITY. KEEP THE BOUNDARY. LEAVE ROOM FOR CURIOSITY.", "reflection": "When you feel yourself becoming firmer, what would help you keep the useful structure without turning the interaction into a contest?"}, "rescuer": {"name": "THE RESCUER", "bring": "You bring warmth, empathy, responsiveness and a strong relational instinct. You often notice distress quickly and can make young people feel cared for, accompanied and worth staying with.", "power": "Relationship building • Reassurance • Emotional availability • Spotting distress • Repair • Compassion • Persistence with connection", "child_positive": "“They notice when I am struggling. They make it easier to believe that somebody is actually on my side.”", "pressure": "When you are under pressure, be mindful of stepping in so quickly that support starts doing too much for the young person.", "shift": "KEEP THE WARMTH. SUPPORT WITHOUT TAKING OVER.", "reflection": "How can you stay deeply caring while still leaving enough space for the young person to discover what they can manage themselves?"}, "reactor": {"name": "THE REACTOR", "bring": "You bring energy, passion, courage and visible emotional investment. You are often willing to act, challenge, protect and show that something genuinely matters rather than standing back from it.", "power": "Energy • Courage • Protective instinct • Fast response • Passion • Willingness to challenge • Visible care and emotional investment", "child_positive": "“I can tell they care. They do not act like what happens to me means nothing, and they are willing to step in when it matters.”", "pressure": "When you are under pressure, be mindful of giving yourself enough pause to choose your tone, pace and response before the room chooses them for you.", "shift": "KEEP THE PASSION. LET EMOTION INFORM THE RESPONSE — NOT DRIVE IT.", "reflection": "What helps you keep the energy and courage that make you useful while slowing the ten seconds in which the room can start setting your pace?"}, "withdrawer": {"name": "THE BREATHER", "bring": "You bring calm, restraint, patience and an instinct to create breathing space when an interaction is becoming overloaded. You can tolerate silence, reduce unnecessary pressure and give people room to process without chasing them.", "power": "De-escalation • Creating breathing space • Tolerance of silence • Patience • Not feeding conflict • Knowing when not to push • Reducing emotional heat", "child_positive": "“They do not chase me or make every moment bigger. Sometimes the breathing space they give me is exactly what helps me come back.”", "pressure": "Be mindful of making sure the breathing space has a purpose and that important conversations are returned to when the moment is right.", "shift": "KEEP THE SPACE. MAKE SURE YOU COME BACK.", "reflection": "What tells you that the space you are creating is helping the young person regulate — and what will remind you to return when the moment is ready?"}, "problem": {"name": "THE PROBLEM SOLVER", "bring": "You bring logic, organisation, resourcefulness and practical thinking. When situations become messy, you can break complexity down, identify options and create a workable route forward.", "power": "Organisation • Practical thinking • Planning • Resourcefulness • Problem solving • Making complexity manageable • Turning uncertainty into action", "child_positive": "“They can help when everything feels like a mess. They usually have a way forward and can make problems feel more manageable.”", "pressure": "When you are under pressure, be mindful of understanding what the situation means to the young person before moving too quickly into solving it.", "shift": "KEEP THE SOLUTIONS. UNDERSTAND BEFORE YOU ENGINEER THE EXIT.", "reflection": "What would change if understanding the emotional problem became the first part of your practical solution rather than something you return to afterwards?"}, "regulator": {"name": "THE REGULATOR", "bring": "You bring steadiness, observation, patience and emotional containment. You can reduce heat, hold uncertainty and manage your own state when other people are struggling to manage theirs.", "power": "Calm under pressure • Observation • Patience • Emotional containment • Reduced escalation • Thoughtful decision-making • Lending steadiness to others", "child_positive": "“They stay steady when I cannot. They do not add another problem to the room, and that can make it easier for me to settle.”", "pressure": "When you are under pressure, be mindful of making sure your calm still feels connected and that you act clearly when the moment needs it.", "shift": "KEEP THE STEADINESS. STAY HUMAN. ACT WHEN ACTION IS NEEDED.", "reflection": "How can your calm continue to feel like presence and support — not distance — while still allowing you to act decisively when the moment requires it?"}};
-const app=document.getElementById('app'), demoIndex=document.getElementById('demoIndex');
+const app=document.getElementById('app');
 let current=0;
 let transitionTimer=null;
 let transitionToken=0;
@@ -358,7 +355,6 @@ function render(animate=false,direction=1){
     incoming.classList.add('active');
   }
 
-  demoIndex.textContent=`${String(current+1).padStart(2,'0')} / ${String(FLOW.length).padStart(2,'0')}`;
   incoming.scrollTop=0;
   setStableAppHeight();
   bindCurrent();
@@ -402,7 +398,10 @@ if(item.type==='feedback'){document.querySelectorAll('.rating button').forEach(b
 document.getElementById('restartDemo')?.addEventListener('click',()=>{clearTransitionTimer();transitionToken++;if(pressureAdvanceTimer){clearTimeout(pressureAdvanceTimer);pressureAdvanceTimer=null}current=0;pressureState={index:-1,scores:{controller:0,rescuer:0,reactor:0,withdrawer:0,problem:0,regulator:0},answers:[]};savedWalls.clear();render()})}
 function bindResult(){document.getElementById('retakePressure')?.addEventListener('click',()=>{if(pressureAdvanceTimer){clearTimeout(pressureAdvanceTimer);pressureAdvanceTimer=null}pressureState={index:-1,scores:{controller:0,rescuer:0,reactor:0,withdrawer:0,problem:0,regulator:0},answers:[]};render()});document.getElementById('continuePressure')?.addEventListener('click',next)}
 function clearTransitionTimer(){
-  if(transitionTimer){clearTimeout(transitionTimer);transitionTimer=null}
+  if(transitionTimer){
+    clearTimeout(transitionTimer);
+    transitionTimer=null;
+  }
 }
 function navigateWithTransition(target,direction=1){
   if(target<0 || target>=FLOW.length || target===current)return;
@@ -431,8 +430,8 @@ function navigateWithTransition(target,direction=1){
   }else{
     loading.classList.add('active');
   }
-  demoIndex.textContent='LIVE';
   transitionTimer=setTimeout(()=>{
+    transitionTimer=null;
     if(token!==transitionToken)return;
     current=target;
     render(true,direction);
@@ -440,7 +439,6 @@ function navigateWithTransition(target,direction=1){
 }
 function next(){if(current<FLOW.length-1)navigateWithTransition(current+1,1)}
 function prev(){if(current>0)navigateWithTransition(current-1,-1)}
-document.getElementById('nextBtn').addEventListener('click',()=>{if(!transitionTimer)next()});document.getElementById('prevBtn').addEventListener('click',()=>{if(!transitionTimer)prev()});
 let gesture=null,swipeLocked=false,suppressGestureClickUntil=0;
 function clearGesture(){gesture=null}
 function isTextOrControl(target){
@@ -452,7 +450,7 @@ function getPhoneScrollSurface(target){
   return screen.scrollHeight>screen.clientHeight+6?screen:null;
 }
 app.addEventListener('touchstart',event=>{
-  if(event.touches.length!==1 || transitionTimer || demoMenu.classList.contains('open') || isTextOrControl(event.target)){gesture=null;return}
+  if(event.touches.length!==1 || transitionTimer || isTextOrControl(event.target)){gesture=null;return}
   const t=event.touches[0];
   const screen=event.target.closest('.screen.active');
   const scrollSurface=getPhoneScrollSurface(event.target);
@@ -499,6 +497,8 @@ app.addEventListener('touchend',event=>{
     suppressGestureClickUntil=performance.now()+500;
     direction>0?next():prev();
     setTimeout(()=>{swipeLocked=false},440);
+  }else{
+    swipeLocked=false;
   }
 },{passive:true,capture:true});
 app.addEventListener('touchcancel',clearGesture,{passive:true,capture:true});
@@ -510,8 +510,6 @@ document.addEventListener('click',event=>{
   }
 },true);
 
-const demoMenu=document.getElementById('demoMenu');document.getElementById('menuBtn').addEventListener('click',()=>{if(transitionTimer)return;clearGesture();demoMenu.classList.add('open')});document.getElementById('closeMenu').addEventListener('click',()=>demoMenu.classList.remove('open'));demoMenu.addEventListener('click',e=>{if(e.target===demoMenu)demoMenu.classList.remove('open')});document.addEventListener('keydown',e=>{if(e.key==='Escape')demoMenu.classList.remove('open')});
-const jumpGrid=document.getElementById('jumpGrid'),jumps=[];FLOW.forEach((item,i)=>{if(['hold','agreement','pressure','wall','wall-revealed','shift','feedback'].includes(item.type)){let title='';if(item.type==='hold')title=sectionData(item.section).name;if(item.type==='agreement')title='Room Agreement';if(item.type==='pressure')title='Pressure Profile';if(item.type==='wall')title=item.wall.title;if(item.type==='wall-revealed')title='Wall Revealed';if(item.type==='shift')title='Your Behaviour Shift';if(item.type==='feedback')title='Feedback';jumps.push({i,type:item.type,title})}});jumpGrid.innerHTML=jumps.map(j=>`<button data-jump="${j.i}"><small>${j.type.toUpperCase()}</small>${esc(j.title)}</button>`).join('');jumpGrid.addEventListener('click',e=>{const b=e.target.closest('[data-jump]');if(!b)return;const target=Number(b.dataset.jump);const direction=target>=current?1:-1;current=target;demoMenu.classList.remove('open');render(true,direction)});
 render();
 </script>
 </body>
